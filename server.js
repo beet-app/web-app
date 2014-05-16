@@ -19,7 +19,7 @@ app.configure(function() {
 });
 
 // load the routes
-require('./app/routes')(app);
+require('./app/scripts/router')(app);
 
 
 // listen (start app with node server.js) ======================================

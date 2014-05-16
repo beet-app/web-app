@@ -6,7 +6,8 @@ angular.module('MainController', [])
 
         Menu.get()
             .success(function(data) {
+                $("#container-menu").show();
                 $scope.menus = data;
-            });
+            })
 
     });

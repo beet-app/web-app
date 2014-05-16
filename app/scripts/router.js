@@ -1,10 +1,21 @@
 BeetApp.config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
 
         // HOME STATES AND NESTED VIEWS ========================================
+        .state('index', {
+            url: '/',
+            controller: 'IndexController'
+        })
+
+        .state('login', {
+            url: '/login',
+            templateUrl: 'views/login.html',
+            controller: 'LoginController'
+        })
+
         .state('home', {
             url: '/home',
             templateUrl: 'views/home.html',
@@ -54,26 +65,14 @@ BeetApp.config(function($stateProvider, $urlRouterProvider) {
 
 });
 
-    //$routeProvider
-    //    .when('/', {
-    //        templateUrl: 'views/menu/menu.html',
-    //        controller: 'MenuController'
-    //    })
-    //    .when('/todo', {
-    //        templateUrl: 'views/todo/todo.html',
-    //        controller: 'TodoController'
-    //    })
-    //    .when('/menu', {
-    //        templateUrl: 'views/menu/menu.html',
-    //        controller: 'MenuController'
-    //    })
-    //    .otherwise({
-    //        redirectTo: '/'
-    //    });
 
 
+BeetApp.run(function ($rootScope, $location) {
 
-
+    $rootScope.$on('$routeChangeStart', function(next, current){
+        console.debug('Could not change route! Not authenticated!');
+    });
+});
 
 
 
