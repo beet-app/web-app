@@ -11,8 +11,9 @@ BeetApp
 
                 Login.checkLogin($scope.formData)
                     .success(function(data) {
+                        Login.checkLoggedin();
                         $scope.formData = {};
-                        $location.path('home')
+                        $location.path('home');
                     });
             }
         };

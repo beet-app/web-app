@@ -11,25 +11,14 @@ BeetApp
                 return $http.post('http://127.0.0.1:1313/api/login', data);
                 //return $http.delete('http://localhost:1313/api/menu/' + id);
             },
-            checkLoggedin : function($q, $timeout, $http, $location, $rootScope){
+            checkLoggedin : function(){
               // Initialize a new promise
-              var deferred = $q.defer();
-              alert("a");
-              // Make an AJAX call to check if the user is logged in
-              $http.get('http://127.0.0.1:1313/api/loggedin').success(function(user){
-                // Authenticated
-                if (user !== '0')
-                  $timeout(deferred.resolve, 0);
-
-                // Not Authenticated
-                else {
-                  $rootScope.message = 'You need to log in.';
-                  $timeout(function(){deferred.reject();}, 0);
-                  $location.url('/login');
-                }
-              });
-
-              return deferred.promise;
+              for (x=1;x<2000000;x++){
+                for (y=1;y<2000000;y++){
+                  y++;
+                }                
+                x++;
+              }
             }          
         }
      });

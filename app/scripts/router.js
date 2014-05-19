@@ -84,7 +84,7 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 });
 
 
-
+/*
 BeetApp.run(function ($rootScope, $location) {
 
     $rootScope.$on('$stateChangeStart', function(next, current){
@@ -93,7 +93,7 @@ BeetApp.run(function ($rootScope, $location) {
 });
 
 
-
+*/
 
 
 
