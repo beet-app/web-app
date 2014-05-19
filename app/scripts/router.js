@@ -1,14 +1,32 @@
-BeetApp.config(function($stateProvider, $urlRouterProvider) {
+BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    $urlRouterProvider.otherwise('/');
+
+    $httpProvider.responseInterceptors.push(function($q, $location) {
+      return function(promise) {
+        return promise.then(
+          // Success: just return the response
+          function(response){
+            return response;
+          }, 
+          // Error: check the error status to get only the 401
+          function(response) {
+            if (response.status === 401)
+              $location.url('/login');
+            return $q.reject(response);
+          }
+        );
+      }
+    });
+
+    $urlRouterProvider.otherwise('/login');
 
     $stateProvider
 
         // HOME STATES AND NESTED VIEWS ========================================
-        .state('index', {
-            url: '/',
-            controller: 'IndexController'
-        })
+        //.state('index', {
+        //    url: '/',
+        //    controller: 'IndexController'
+        //})
 
         .state('login', {
             url: '/login',
@@ -69,7 +87,7 @@ BeetApp.config(function($stateProvider, $urlRouterProvider) {
 
 BeetApp.run(function ($rootScope, $location) {
 
-    $rootScope.$on('$routeChangeStart', function(next, current){
+    $rootScope.$on('$stateChangeStart', function(next, current){
         console.debug('Could not change route! Not authenticated!');
     });
 });
