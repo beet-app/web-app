@@ -1,0 +1,16 @@
+    <!-- FORM TO CREATE MENUS -->
+    <br /><br /><br />
+    <div id="todo-form" class="row">
+
+
+        <div class="col-sm-8 col-sm-offset-2">
+            <form>
+                <div class="form-group" ng-repeat="attribute in attributes">
+                    <input type="text" class="form-control input-lg" id="{{attribute.description}}" placeholder="{{attribute.description}}" ><!--ng-model="formData.{{attribute.description}}">-->
+                </div>
+
+                <!-- createToDo() WILL CREATE NEW TODOS -->
+                <button type="submit" class="btn btn-primary btn-lg"">Add</button>
+            </form>
+        </div>
+    </div>

@@ -1,5 +1,5 @@
 BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-
+    $httpProvider.defaults.withCredentials = true;
 
     $httpProvider.responseInterceptors.push(function($q, $location) {
       return function(promise) {
@@ -11,8 +11,8 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
           // Error: check the error status to get only the 401
           function(response) {
             if (response.status === 401)
-              $location.url('/login');
-            return $q.reject(response);
+             $location.url('/login');
+             return $q.reject(response);
           }
         );
       }
@@ -44,6 +44,12 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             url: '/menu',
             templateUrl: 'views/menu/menu.html',
             controller: 'MenuController'
+        })
+
+        .state('person', {
+            url: '/person',
+            templateUrl: 'views/person/person.html',
+            controller: 'PersonController'
         })
 
         .state('todo', {
@@ -82,6 +88,8 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         });
 
 });
+
+
 
 
 /*

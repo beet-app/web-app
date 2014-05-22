@@ -1,5 +1,1 @@
-var BeetApp = angular
-    .module('beetApp', [
-        'ui.router','TodoController', 'TodoService','MainController','MainService'
-    ]);
-
+var BeetApp = angular.module('beetApp', ['ui.router','MainController','MainService']);

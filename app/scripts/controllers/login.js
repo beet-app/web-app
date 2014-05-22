@@ -3,26 +3,29 @@ BeetApp
 
         $scope.formData = {};
 
+        Login.get()
+            .success(function (data) {
+                $location.path('home');
+            })
+            .error(function (error) {
+
+            });
+
         $scope.checkLogin = function() {
 
 
             if ($scope.formData.email != undefined) {
 
 
-                Login.checkLogin($scope.formData)
+                Login.post($scope.formData)
+
                     .success(function(data) {
-                        Login.checkLoggedin();
-                        $scope.formData = {};
                         $location.path('home');
+                    })
+                    .error(function(data) {
+                        alert("Login inválido");
                     });
             }
-        };
-
-
-            
-            
-            
-            
-
+        };                
 
     });
