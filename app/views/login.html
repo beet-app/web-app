@@ -1,12 +1,56 @@
-<form>
-    <div class="form-group">
-        <label>Email</label>
-        <input type="text" class="form-control" ng-model="formData.email">
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control" ng-model="formData.password">
-    </div>
+<link href="/styles/animate-custom.css" rel="stylesheet">
 
-    <button type="submit" class="btn btn-warning btn-lg"  ng-click="checkLogin()">Login</button>
-</form>
+<div class="container" id="login-block">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+            <div class="login-box clearfix animated flipInY">
+                <div class="page-icon animated bounceInDown">
+                    <img src="/images/account/user-icon.png" alt="Key icon">
+                </div>
+                <div class="login-logo">
+                    <a href="#?login-theme-3">
+                        <img src="/images/logo.png" alt="Company Logo">
+                    </a>
+                </div>
+                <hr>
+                <div class="login-form">
+                    <!-- BEGIN ERROR BOX -->
+                    <div class="alert alert-danger hide">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>Error!</h4>
+                        Your Error Message goes here
+                    </div>
+                    <!-- END ERROR BOX -->
+
+                    <form>
+                        <div class="form-group">
+                            <label></label>
+                            <input type="text" placeholder="Email" class="input-field form-control user" ng-model="formData.email">
+                        </div>
+                        <div class="form-group">
+                            <label></label>
+                            <input type="password" placeholder="Password" class="input-field form-control password" ng-model="formData.password">
+                        </div>
+
+                        <button type="submit" class="btn btn-login"  ng-click="checkLogin()">Login</button>
+                    </form>
+
+
+                    <div class="login-links">
+                        <a href="password_forgot.html">Forgot password?</a>
+                        <br>
+                        <a href="signup.html">Don't have an account? <strong>Sign Up</strong></a>
+                    </div>
+                </div>
+            </div>
+            <div class="social-login row">
+                <div class="fb-login col-lg-6 col-md-12 animated flipInX">
+                    <a href="#" class="btn btn-facebook btn-block">Connect with <strong>Facebook</strong></a>
+                </div>
+                <div class="twit-login col-lg-6 col-md-12 animated flipInX">
+                    <a href="#" class="btn btn-twitter btn-block">Connect with <strong>Twitter</strong></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

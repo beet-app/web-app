@@ -20,8 +20,8 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Ruster">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -32,7 +32,15 @@
 
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-
+    <link rel="stylesheet" href="styles/icons/icons.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="styles/plugins.css" rel="stylesheet">
+    <style>
+      #loaderImage {  
+            margin-top:150px;
+            margin-left:500px;
+      }
+</style>
     <!-- endbuild -->
 </head>
 
@@ -42,23 +50,92 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="container" id="container-menu" style="display:none;">
+    
+    <!-- BEGIN TOP MENU -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="top-menu" style="display:none;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html"></a>
+            </div>
+            <div class="navbar-center">Dashboard</div>
+            <div class="navbar-collapse collapse">
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <ul class="nav navbar-nav pull-right header-menu">
+                    <!-- BEGIN USER DROPDOWN -->
+                    <li class="dropdown" id="user-header">
+                        <a class="dropdown-toggle c-white" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img src="/images/avatars/avatar2.png" alt="user avatar" width="30" class="p-r-5">
+                            <span class="username">Bob Nilson</span>
+                            <i class="fa fa-angle-down p-r-10"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="profil.html">
+                                    <i class="glyph-icon flaticon-account"></i> My Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="profil_edit.html">
+                                    <i class="glyph-icon flaticon-settings21"></i> Account Settings
+                                </a>
+                            </li>
+                            <li class="dropdown-footer clearfix">
+                                <a href="javascript:;" class="toggle_fullscreen" title="Fullscreen">
+                                    <i class="glyph-icon flaticon-fullscreen3"></i>
+                                </a>
+                                <a href="lockscreen.html" title="Lock Screen">
+                                    <i class="glyph-icon flaticon-padlock23"></i>
+                                </a>
+                                <a href="login.html" title="Logout">
+                                    <i class="fa fa-power-off"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END USER DROPDOWN -->
+                </ul>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+        </div>
+    </nav>
+    <!-- END TOP MENU -->
 
-    <div class="header">
-        <ul class="nav nav-pills pull-right" ng-repeat="menu in menus">
-            <li><a ui-sref="{{ menu.url }}">{{ menu.description }}</a></li>
-        </ul>
-        <h3 class="text-muted">Beet</h3>
+    <!-- BEGIN WRAPPER -->
+    <div id="wrapper">
+
+        <!-- BEGIN MAIN SIDEBAR -->
+        <nav id="sidebar" style="display:none;">
+            <div id="main-menu">
+                <ul class="sidebar-nav">
+                    <li>
+                        <a ui-sref="home"><i class="fa fa-dashboard"></i><span class="sidebar-text">Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a ui-sref="person"><i class="glyph-icon flaticon-star105"></i><span class="sidebar-text">Atletas</span></a>
+                    </li>
+                    <li>
+                        <a href="../frontend/index.html" target="_blank"><i class="glyph-icon flaticon-frontend"></i><span class="sidebar-text">Frontend</span></a>
+                    </li>
+                    <br>
+                </ul>
+            </div>
+        </nav>
+        <!-- END MAIN SIDEBAR -->
+
+        <!-- Add your site or application content here -->
+        <div ui-view="">
+
+            
+        </div>
+        <div id='loaderImage' style="display:none;"></div> 
+
     </div>
+    <!-- END WRAPPER -->
 
-</div>
 
-<!-- Add your site or application content here -->
-<div class="container" ui-view="">
 
-</div>
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -75,6 +152,7 @@
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
 </script>
+-->
 
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -93,6 +171,10 @@
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
+
+
+
+
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>

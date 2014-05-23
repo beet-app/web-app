@@ -1,13 +1,18 @@
 BeetApp
-    .controller('PersonController', function($scope, $http, $timeout, Person) {
+    .controller('PersonController', function($scope, $http, $location, $timeout, Person) {
 
         $scope.formData = {};
+
+        $('#main-content').hide();
+        $('#loaderImage').show(); 
 
 
         Person.getAttributes()
             .success(function(data) {
                 $scope.attributes = data;
                 $timeout(function(){
+                    $('#main-content').show();
+                    $('#loaderImage').hide();                      
                     $("#POSTCODE").keyup(function(){
                         if($("#POSTCODE").val().replace("-","").length == 8)
                         {
@@ -18,7 +23,7 @@ BeetApp
                                     $("#STREET").val(data.logradouro);
                                     $("#STATE").val(data.estado);
                                     $("#CITY").val(data.cidade);
-                                    $("#COMPLEMENT").focus();
+                                    $("#COMPLEMENT").focus();                                   
                                 });
                             $("#POSTCODE").removeAttr("disabled");
                         }
@@ -50,3 +55,4 @@ BeetApp
             //   });
         };
     });
+

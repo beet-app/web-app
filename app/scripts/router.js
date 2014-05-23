@@ -90,7 +90,15 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 });
 
 
+BeetApp.run(function ($rootScope, $location) {
 
+    $rootScope.$on('$viewContentLoaded', function(next, current){
+        $("#main-menu .current").removeClass("current");
+        $("a[ui-sref='" + $location.path().replace("/","") + "']").parent("li").addClass("current");    
+
+    });
+
+});
 
 /*
 BeetApp.run(function ($rootScope, $location) {
