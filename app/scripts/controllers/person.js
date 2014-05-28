@@ -1,5 +1,5 @@
 BeetApp
-    .controller('PersonController', function($scope, $http, $location, $timeout, Person) {
+    .controller('PersonController', function($scope, $sce, $http, $location, $timeout, Person) {
 
         $scope.formData = {};
 
@@ -12,7 +12,8 @@ BeetApp
                 $scope.attributes = data;
                 $timeout(function(){
                     $('#main-content').show();
-                    $('#loaderImage').hide();                      
+                    $('#loaderImage').hide();
+
                     $("#POSTCODE").keyup(function(){
                         if($("#POSTCODE").val().replace("-","").length == 8)
                         {
@@ -30,6 +31,53 @@ BeetApp
                     });
                 });
             });
+
+
+
+        $scope.htmlElement = function(attribute){
+
+            var html;
+            var value = "";
+
+            var attr = "ng-model='" +attribute.description+ "' id='" +attribute.description+ "'";
+
+            if (attribute.size != null){
+                attr += "size='" +attribute.size+ "' ";
+            }
+
+            if (attribute.required){
+                attr += "required ";
+            }
+
+            switch (attribute.type.template){
+                case "TEXT":
+                    html = "<input type='TEXT' "+attr+" value='"+value+"' class='form-control input-lg' />";
+                    break;
+                case "TEXTAREA":
+                    html = "<textarea "+attr+">"+value+"</textarea>";
+                    break;
+                case "DROPDOWN":
+                    html = "<select "+attr+">"
+                    for (option in attribute.type.selection)
+                    {
+                        if (option != value) {
+                            html += "<option value='" + option + "'>" + option + "</option>";
+                        } else {
+                            html += "<option value='" + option + "' selected>" + option + "</option>";
+                        }
+                    }
+                    html += "</select>";
+                    break;
+                case "RADIO":
+                    html = '<div class="ui-radio"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-on">One</label><input type="radio" name="radio-choice-0" checked="" data-cacheval="false"></div><div class="ui-radio"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off">One</label><input type="radio" name="radio-choice-0" data-cacheval="true"></div>';
+
+                    break;
+
+
+            }
+            return $sce.trustAsHtml(html);
+        }
+
 
 
         $scope.createMenu = function() {

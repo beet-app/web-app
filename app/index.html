@@ -52,7 +52,7 @@
 
     
     <!-- BEGIN TOP MENU -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="top-menu" style="display:none;">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="top-menu">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.html"></a>
@@ -104,7 +104,7 @@
     <div id="wrapper">
 
         <!-- BEGIN MAIN SIDEBAR -->
-        <nav id="sidebar" style="display:none;">
+        <nav id="sidebar">
             <div id="main-menu">
                 <ul class="sidebar-nav">
                     <li>
@@ -123,7 +123,7 @@
         <!-- END MAIN SIDEBAR -->
 
         <!-- Add your site or application content here -->
-        <div ui-view="">
+        <div ui-view="" id="main-content">
 
             
         </div>
@@ -179,6 +179,7 @@
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/router.js"></script>
+<script src="scripts/util.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/menu.js"></script>
 <script src="scripts/controllers/login.js"></script>

@@ -1,11 +1,11 @@
 /*------------------------------------------------------------------------------------*/
 /*--------------------------------  GLOBAL CSS STYLE  --------------------------------*/
 
-html { font-size: 100%; height: 100%; overflow: hidden;}
-body {font-family: 'Open Sans', verdana, arial;font-weight: 300; margin-top: 40px;background: #DFE5E9; overflow: hidden;}
-#wrapper { width: 100%; overflow: hidden;}
-#main-content {width: 100%;padding:10px 20px;background-color: #DFE5E9; overflow: hidden;}
-#sidebar{background-color: #2B2E33; overflow: hidden;}
+html { font-size: 100%; height: 100%;}
+body {font-family: 'Open Sans', verdana, arial;font-weight: 300; margin-top: 40px;background: #DFE5E9;}
+#wrapper { width: 100%;}
+#main-content {width: 100%;padding:10px 20px;background-color: #DFE5E9; overflow: scroll;position: fixed;height: 100%;}
+#sidebar{background-color: #2B2E33;position: fixed;height: 100%;}
 ul {margin: 0;padding: 0;list-style: none;}
 
 /****  Margin  ****/
@@ -201,7 +201,6 @@ img.img-right { border: 1px solid #ccc; float: right; margin-left: 15px; padding
 ::-webkit-scrollbar-thumb:hover { background-color: #aaa; }  
 ::-webkit-scrollbar-track {border-radius: 0;box-shadow: none;border: 0;}
 ::-webkit-scrollbar-thumb {border-radius: 0;box-shadow: none;border: 0;} 
-
 @media print{    
   body {margin-top: 0;}
   #main-content {padding: 0;background-color: transparent;}
