@@ -52,6 +52,12 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             controller: 'PersonController'
         })
 
+        .state('person/list', {
+            url: '/person/list',
+            templateUrl: 'views/person/person-list.html',
+            controller: 'PersonListController'
+        })
+
         .state('todo', {
             url: '/todo',
             templateUrl: 'views/todo/todo.html',
@@ -93,14 +99,26 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 BeetApp.run(function ($rootScope, $location) {
 
     $rootScope.$on('$viewContentLoaded', function(next, current){
-        $("#main-menu .current").removeClass("current");
-        $("a[ui-sref='" + $location.path().replace("/","") + "']").parent("li").addClass("current");    
+
+        $(".current").removeClass("current");
+
+        var actual = $("a[ui-sref='" + $location.path().replace("/","") + "']");
+
+        if ($(actual).parents("li").length == 1){
+
+            $(actual).parent("li").addClass("current");
+        }else{
+            $(actual).parent("li").addClass("current");
+            $(actual).parent("li").parents("li").addClass("active current hasSub");
+        }
+
+        //
 
     });
 
 });
-
 /*
+
 BeetApp.run(function ($rootScope, $location) {
 
     $rootScope.$on('$stateChangeStart', function(next, current){

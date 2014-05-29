@@ -10,7 +10,7 @@ angular.module('MainController', [])
 
 
 
-
+/*
 
 		if ($location.path() != "/login"){
 		    $(document).ready(function(){
@@ -22,7 +22,7 @@ angular.module('MainController', [])
 
 
 
-/*
+
         Menu.get()
             .success(function(data) {
                 $("#container-menu").show();
@@ -34,13 +34,13 @@ angular.module('MainController', [])
 
 
 
-
+/*
         jQuery(document).ready(function () {
                 $('html').addClass('sidebar-medium');
         });
 
 
-
+*/
     var cSpeed=8;
     var cWidth=128;
     var cHeight=128;

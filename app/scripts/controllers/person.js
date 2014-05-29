@@ -33,13 +33,27 @@ BeetApp
             });
 
 
+        $scope.savePerson = function() {
+
+
+            alert(JSON.stringify($scope.formData));
+
+            /*
+            Person.create($scope.formData)
+
+                .success(function(data) {
+                    alert("ok");
+                    $location.path("person/list");
+                });
+            */
+        };
 
         $scope.htmlElement = function(attribute){
 
             var html;
             var value = "";
 
-            var attr = "ng-model='" +attribute.description+ "' id='" +attribute.description+ "'";
+            var attr = "ng-model='formData." +attribute.description+ "' id='" +attribute.description+ "'";
 
             if (attribute.size != null){
                 attr += "size='" +attribute.size+ "' ";
@@ -58,6 +72,7 @@ BeetApp
                     break;
                 case "DROPDOWN":
                     html = "<select "+attr+">"
+
                     for (option in attribute.type.selection)
                     {
                         if (option != value) {
@@ -69,10 +84,44 @@ BeetApp
                     html += "</select>";
                     break;
                 case "RADIO":
-                    html = '<div class="ui-radio"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-on">One</label><input type="radio" name="radio-choice-0" checked="" data-cacheval="false"></div><div class="ui-radio"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off">One</label><input type="radio" name="radio-choice-0" data-cacheval="true"></div>';
-
+                    html = "<select class='form-control' "+attr+"><option value=''>Selecione</option>"
+                    arrSelection = attribute.type.selection;
+                    for (x=0;x<arrSelection.length;x++)
+                    {
+                        if (arrSelection[x] != value) {
+                            html += "<option value='" + arrSelection[x] + "'>" + arrSelection[x] + "</option>";
+                        } else {
+                            html += "<option value='" + arrSelection[x] + "' selected>" + arrSelection[x] + "</option>";
+                        }
+                    }
+                    html += "</select>";
                     break;
 
+                case "DATE":
+                    html = "<input type='TEXT' "+attr+" value='"+value+"' class='form-control input-lg' />";
+                    break;
+
+                    
+                    /*
+                    arrSelection = attribute.type.selection;
+                    html = "<div class='form-group'><div class='skin-section'>";
+
+                    for (x=0;x<arrSelection.length;x++)
+                    {
+                        
+                        if (arrSelection[x] != value) {
+                            html += "";
+                        } else {
+                            html += "";
+                        }
+
+                        html += "<div class='ui-checkbox'><label class='ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-on'>"+arrSelection[x]+"</label><input type='checkbox' checked='' data-cacheval='false'></div>";
+                    }
+                    html += "</div></div>";
+
+
+                    break;
+                    */
 
             }
             return $sce.trustAsHtml(html);

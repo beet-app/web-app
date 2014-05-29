@@ -4,12 +4,15 @@ BeetApp
             getAttributes : function() {
                 return $http.get('http://127.0.0.1:1313/api/attribute');
             },
+            getPersons : function() {
+                return $http.get('http://127.0.0.1:1313/api/person');
+            },
             getPostCodeDetails : function(postcode) {
                 $http.defaults.withCredentials = false;
                 return $http.get('http://api.postmon.com.br/v1/cep/' + postcode);
             },
             create : function(data) {
-                return $http.post('http://127.0.0.1:1313/api/menu', data);
+                return $http.post('http://127.0.0.1:1313/api/person', data);
             },
             delete : function(id) {
                 return $http.delete('http://127.0.0.1:1313/api/menu/' + id);
