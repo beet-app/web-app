@@ -3,6 +3,7 @@ BeetApp
 
         $scope.formData = {};
 
+
         $('#main-content').hide();
         $('#loaderImage').show(); 
 
@@ -14,19 +15,19 @@ BeetApp
                     $('#main-content').show();
                     $('#loaderImage').hide();
 
-                    $("#POSTCODE").keyup(function(){
-                        if($("#POSTCODE").val().replace("-","").length == 8)
+                    $("#postcode").keyup(function(){
+                        if($("#postcode").val().replace("-","").length == 8)
                         {
-                            $("#POSTCODE").attr("disabled","disabled");
-                            Person.getPostCodeDetails($("#POSTCODE").val())
+                            $("#postcode").attr("disabled","disabled");
+                            Person.getPostCodeDetails($("#postcode").val())
                                 .success(function (data) {
-                                    $("#NEIGHBORHOOD").val(data.bairro);
-                                    $("#STREET").val(data.logradouro);
-                                    $("#STATE").val(data.estado);
-                                    $("#CITY").val(data.cidade);
-                                    $("#COMPLEMENT").focus();                                   
+                                    $("#neighborhood").val(data.bairro);
+                                    $("#street").val(data.logradouro);
+                                    $("#state").val(data.estado);
+                                    $("#city").val(data.cidade);
+                                    $("#complement").focus();                                   
                                 });
-                            $("#POSTCODE").removeAttr("disabled");
+                            $("#postcode").removeAttr("disabled");
                         }
                     });
                 });
@@ -35,8 +36,23 @@ BeetApp
 
         $scope.savePerson = function() {
 
+            var objSend = new Object();
+            var objAttributes = new Object();
+            $("[ng-model]").each(function(){
+                objAttributes[$(this).attr("ng-model")] = $(this).val();
+            });
 
-            alert(JSON.stringify($scope.formData));
+            objSend["attributes"] = objAttributes;
+            objSend["active"] = true;
+
+            Person.create(objSend)
+            .success(function(data) {
+                $("#beet-modal-success").trigger("click");
+                $location.path("person/list");
+            });
+
+
+
 
             /*
             Person.create($scope.formData)
@@ -53,7 +69,7 @@ BeetApp
             var html;
             var value = "";
 
-            var attr = "ng-model='formData." +attribute.description+ "' id='" +attribute.description+ "'";
+            var attr = "ng-model='" +attribute.description+ "' id='" +attribute.description+ "'";
 
             if (attribute.size != null){
                 attr += "size='" +attribute.size+ "' ";

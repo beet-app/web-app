@@ -1,11 +1,11 @@
 BeetApp
-    .factory('Login', function($http) {
+    .factory('Login', function($http, Config) {
         return {
             get : function() {
-                return $http.get('http://127.0.0.1:1313/api/loggedin');
+                return $http.get(Config.getApiUrl() + '/loggedin');
             },
             post : function(data) {
-                return $http.post('http://127.0.0.1:1313/api/login', data);
+                return $http.post(Config.getApiUrl() + '/login', data);
             }            
         }
      });

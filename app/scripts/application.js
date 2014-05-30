@@ -42,6 +42,14 @@ var $sidebar = $('#sidebar');
 var $sidebar_toggle = $('.sidebar-toggle');
 var $sidebar_submenu = $('.submenu');
 
+function hideMenus(){
+    $("#Beet-top-menu").hide();
+    $("#sidebar").hide();
+}
+function showMenus(){
+    $("#Beet-top-menu").show();
+    $("#sidebar").show();
+}
 function manageSidebar() {
 
     /* We change sidebar type on resize event */
@@ -502,21 +510,6 @@ if ($('.sortable_table').length && $.fn.sortable) {
 /****  Nestable List  ****/
 if ($('.nestable').length && $.fn.nestable) {
     $(".nestable").nestable();
-}
-
-/****  Sparkline Inline Charts  ****/
-if ($('.sparkline').length && $.fn.sparkline) {
-    $('.sparkline').each(function () {
-        $(this).sparkline(
-            $(this).data("sparkline-value"), {
-                type: $(this).data("sparkline-type") ? $(this).data("sparkline-type") : 'bar',
-                barWidth: $(this).data("sparkline-bar-width") ? $(this).data("sparkline-bar-width") : 5,
-                barSpacing: $(this).data("sparkline-bar-spacing") ? $(this).data("sparkline-bar-spacing") : 2,
-                height: $(this).data("sparkline-height") ? $(this).data("sparkline-height") : '20px',
-                barColor: $(this).data("sparkline-color") ? $(this).data("sparkline-color") : '#7BB2B4',
-                enableTagOptions: true
-            });
-    });
 }
 
 /****  Animation CSS3  ****/

@@ -1,14 +1,14 @@
 BeetApp
-    .factory('Menu', function($http) {
+    .factory('Menu', function($http, Config) {
         return {
             get : function() {
-                return $http.get('http://127.0.0.1:1313/api/menu');
+                return $http.get(Config.getApiUrl() + '/menu');
             },
             create : function(data) {
-                return $http.post('http://127.0.0.1:1313/api/menu', data);
+                return $http.post(Config.getApiUrl() + '/menu', data);
             },
             delete : function(id) {
-                return $http.delete('http://127.0.0.1:1313/api/menu/' + id);
+                return $http.delete(Config.getApiUrl() + '/menu/' + id);
             }
         }
      });

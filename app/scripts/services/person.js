@@ -1,34 +1,19 @@
 BeetApp
-    .factory('Person', function($http) {
+    .factory('Person', function($http, Config) {
         return {
             getAttributes : function() {
-                return $http.get('http://127.0.0.1:1313/api/attribute');
+                return $http.get(Config.getApiUrl() + '/attribute');
             },
             getPersons : function() {
-                return $http.get('http://127.0.0.1:1313/api/person');
+                return $http.get(Config.getApiUrl() + '/person');
             },
             getPostCodeDetails : function(postcode) {
                 $http.defaults.withCredentials = false;
                 return $http.get('http://api.postmon.com.br/v1/cep/' + postcode);
             },
             create : function(data) {
-                return $http.post('http://127.0.0.1:1313/api/person', data);
-            },
-            delete : function(id) {
-                return $http.delete('http://127.0.0.1:1313/api/menu/' + id);
+                return $http.post(Config.getApiUrl() + '/person', data);
             }
 
         }
      });
-
-BeetApp
-    .factory('Form', function($http) {
-        return {
-            get : function() {
-                return $http.get('http://127.0.0.1:1313/api/loggedin');
-            },
-            post : function(data) {
-                return $http.post('http://127.0.0.1:1313/api/login', data);
-            }
-        }
-    });
