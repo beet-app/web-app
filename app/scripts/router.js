@@ -34,6 +34,11 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             controller: 'LoginController'
         })
 
+        .state('logout', {
+            url: '/logout',
+            controller: 'LogoutController'
+        })
+
         .state('home', {
             url: '/home',
             templateUrl: 'views/home.html',
