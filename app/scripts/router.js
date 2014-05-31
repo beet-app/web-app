@@ -39,6 +39,12 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             controller: 'LogoutController'
         })
 
+        .state('signup', {
+            url: '/signup',
+            templateUrl: 'views/signup.html',
+            controller: 'SignupController'
+        })
+
         .state('home', {
             url: '/home',
             templateUrl: 'views/home.html',

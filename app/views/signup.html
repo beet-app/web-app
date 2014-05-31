@@ -1,0 +1,44 @@
+
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+                <div class="login-box clearfix animated flipInY">
+                    <div class="page-icon animated bounceInDown">
+                        <img src="assets/img/account/register-icon.png" alt="Register icon" />
+                    </div>
+                    <div class="login-logo">
+                        <a href="#">
+                            <img src="assets/img/account/login-logo.png" alt="Company Logo" />
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="login-form">
+                        <!-- Start Error box -->
+                        <div class="alert alert-danger hide">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <h4>Error!</h4>
+                            Your Error Message goes here
+                        </div>
+                        <!-- End Error box -->
+
+                        <form>
+                            <input type="text" placeholder="Name" class="input-field" ng-model="formData.name" required/>
+                            <input type="email" placeholder="E-mail" class="input-field" ng-model="formData.email" required/>
+                            <input type="password" placeholder="Password" class="input-field" ng-model="formData.password" required/>
+                            <input type="password" placeholder="Confirm Password" class="input-field" required/>
+                            <label class="checkbox ui-hidden-accessible">
+                                <input type="checkbox" value="option1" required>
+                            </label>
+                            <span>I agree to something I will never read</span>
+                            <button type="submit" class="btn btn-login" ng-click="signup()">Sign Up</button>
+                        </form>
+                        <div class="login-links">
+                            <a href="password_forgot.html">Forgot password?</a>
+                            <br>
+                            <a href="login.html">Already have an account? <strong>Sign In</strong></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
