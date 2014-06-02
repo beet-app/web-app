@@ -1,5 +1,5 @@
 BeetApp
-    .controller('PersonController', function($scope, $sce, $http, $location, $timeout, Person) {
+    .controller('PersonController', function($scope, $rootScope, $sce, $http, $location, $timeout, Person) {
 
         $scope.formData = {};
 
@@ -8,12 +8,25 @@ BeetApp
         $('#loaderImage').show(); 
 
 
+
         Person.getAttributes()
             .success(function(data) {
                 $scope.attributes = data;
                 $timeout(function(){
                     $('#main-content').show();
                     $('#loaderImage').hide();
+
+                    $("#name").keyup(function(){
+                        $("#lblName").text($("#name").val());
+
+                    });
+                    $("#birth_date").change(function(){
+                        $("#lblBirthDate").text($("#birth_date").val());
+                    });
+                    $("#city").change(function(){
+                        $("#lblCity").text($("#city").val());
+                    });
+
 
                     $("#postcode").keyup(function(){
                         if($("#postcode").val().replace("-","").length == 8)

@@ -238,6 +238,12 @@
 <nav id="sidebar" style="display:none;">
 <div id="main-menu">
 <ul class="sidebar-nav">
+
+<li ng-repeat="menu in menus">
+    <a ui-sref="{{menu.url}}"><i class="fa fa-dashboard"></i><span class="sidebar-text">{{menu.description}}</span></a>
+</li>
+
+
 <li>
     <a ui-sref="home"><i class="fa fa-dashboard"></i><span class="sidebar-text">Dashboard</span></a>
 </li>
@@ -340,6 +346,7 @@
 <script src="scripts/services/main.js"></script>
 <script src="scripts/services/menu.js"></script>
 <script src="scripts/services/login.js"></script>
+<script src="scripts/services/signup.js"></script>
 <script src="scripts/services/person.js"></script>
 <!-- endbuild -->
 

@@ -26,11 +26,11 @@
                                             <div class="col-md-9">
                                                 <div class="row">
                                                     <div class="col-md-12 profile-info">
-                                                        <h1>John Addams</h1>
+                                                        <h1 id="lblName"></h1>
                                                         <div class="m-t-10"></div>
                                                         <ul class="list-unstyled list-inline">
-                                                            <li class="m-r-20"><i class="fa fa-map-marker p-r-5 c-dark"></i> New York</li>
-                                                            <li class="m-r-20"><i class="fa fa-calendar p-r-5 c-purple"></i> July 2012</li>
+                                                            <li class="m-r-20"><i class="fa fa-map-marker p-r-5 c-dark"></i> <label id="lblCity"></label></li>
+                                                            <li class="m-r-20"><i class="fa fa-calendar p-r-5 c-purple"></i> <label id="lblBirthDate"></label></li>
                                                         </ul>
                                                         <div class="m-t-20"></div>
                                                     </div>
@@ -43,12 +43,15 @@
                                         <div class="row profile-classic">
                                             <div class="col-md-12">
                                                 <div class="panel">
+                                                    <div class="panel-title line">
+                                                        <div class="caption"><i class="fa fa-phone c-gray m-r-10"></i> Informações</div>
+                                                    </div>                                                    
                                                     <div class="panel-body">
                                                         <div class="row" ng-repeat="attribute in attributes">
-                                                            <div class="control-label col-md-3">{{attribute.description}}:</div> 
-                                                            <div class="col-md-6" ng-bind-html="htmlElement({{attribute}})">
+                                                            <div class="control-label c-gray col-md-3">{{attribute.description}}:</div> 
+                                                            <div class="col-md-6" ng-bind-html='htmlElement({{attribute}})'>
                                                             </div>
-                                                        </div>
+                                                        </div>                                               
                                                     </div>
                                                 </div>
                                             </div>

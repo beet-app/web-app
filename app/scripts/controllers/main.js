@@ -1,9 +1,10 @@
 angular.module('MainController', [])
 
     // inject the Todo service factory into our controller
-    .controller('MainController', function($scope, $http, $location, Menu) {
+    .controller('MainController', function($scope, $rootScope, $http, $location, Login) {
         $scope.formData = {};
 
+    
 
 
 
