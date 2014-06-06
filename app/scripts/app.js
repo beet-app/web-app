@@ -1,1 +1,1 @@
-var BeetApp = angular.module('beetApp', ['ui.router','MainController','MainService']);
+var BeetApp = angular.module('beetApp', ['ui.router']);

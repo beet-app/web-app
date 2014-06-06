@@ -46,10 +46,41 @@ function hideMenus(){
     $("#Beet-top-menu").hide();
     $("#sidebar").hide();
 }
-function showMenus(){
+function showMenus(arrMenus){
+
+    if (1 == 2){
+        var html = "";
+
+        html = '<ul class="sidebar-nav">';
+
+        for (x=0;x<arrMenus.length;x++){
+            html +=  "<li>";
+            if (arrMenus[x].menus != null){
+                html +=  "<a href='#'><i class='glyph-icon flaticon-pages'></i><span class='sidebar-text'>"+arrMenus[x].description+"</span></a>";
+                html +=  "<ul class='submenu collapse'>";
+                for (y=0;y<arrMenus[x].menus.length;y++){
+                    html +=  "<li><a ui-sref='"+arrMenus[x].menus[y].url+"'><span class='sidebar-text'>"+arrMenus[x].menus[y].description+"</span></a></li>";
+                }
+                html +=  "</ul>";
+            }else{
+                html += "<a ui-sref='" + arrMenus[x].url + "'><i class='fa fa-dashboard'></i><span class='sidebar-text'>" + arrMenus[x].description + "</span></a>";
+            }
+            html +=  "</li>";
+        }
+
+        html += '</ul>';
+
+        $("#main-menu").html(html);
+    }else{
+
+
+    }
+
     $("#Beet-top-menu").show();
     $("#sidebar").show();
 }
+
+
 function manageSidebar() {
 
     /* We change sidebar type on resize event */

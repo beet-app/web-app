@@ -237,37 +237,25 @@
 <!-- BEGIN MAIN SIDEBAR -->
 <nav id="sidebar" style="display:none;">
 <div id="main-menu">
+    
 <ul class="sidebar-nav">
 
 <li ng-repeat="menu in menus">
     <a ui-sref="{{menu.url}}"><i class="fa fa-dashboard"></i><span class="sidebar-text">{{menu.description}}</span></a>
+    <!--
+        <a href="#">
+            <i class="glyph-icon flaticon-pages"></i>
+            <span class="sidebar-text">{{menu.description}}</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="submenu collapse">
+            <li ng-repeat="submenu in menu.menus">
+                <a ui-sref="{{submenu.url}}"><span class="sidebar-text">{{submenu.description}}</span></a>
+            </li>
+        </ul>
+    -->
 </li>
 
-
-<li>
-    <a ui-sref="home"><i class="fa fa-dashboard"></i><span class="sidebar-text">Dashboard</span></a>
-</li>
-<li>
-    <a href="#">
-        <i class="glyph-icon flaticon-pages"></i>
-        <span class="sidebar-text">Atletas</span>
-        <span class="fa arrow"></span>
-    </a>
-    <ul class="submenu collapse">
-        <li>
-            <a ui-sref="person"><span class="sidebar-text">Cadastrar</span></a>
-        </li>
-        <li>
-            <a ui-sref="person/list"><span class="sidebar-text">Lista de Atletas</span></a>
-        </li>
-        <li>
-            <a href="members.html"><span class="sidebar-text">Members</span></a>
-        </li>
-    </ul>
-</li>
-<li>
-    <a href="widgets.html"><i class="glyph-icon flaticon-widgets"></i><span class="sidebar-text">Ajuda</span></a>
-</li>
 <br>
 </ul>
 

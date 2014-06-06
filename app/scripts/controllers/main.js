@@ -1,10 +1,9 @@
-angular.module('MainController', [])
-
-    // inject the Todo service factory into our controller
+BeetApp
     .controller('MainController', function($scope, $rootScope, $http, $location, Login) {
         $scope.formData = {};
 
-    
+        
+        
 
 
 

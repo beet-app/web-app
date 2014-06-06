@@ -5,9 +5,10 @@ BeetApp
         hideMenus();
         Login.get()
             .success(function (data) {
+                $rootScope.user = data;
+                $rootScope.menus = $rootScope.user.companies[0].menu;
                 showMenus();
-
-                $location.path('home');
+                $location.path('home');                
             })
             .error(function (error) {
 
@@ -23,6 +24,7 @@ BeetApp
 
                     .success(function(data) {
                         $rootScope.user = data;
+                        $rootScope.menus = $rootScope.user.companies[0].menu;
                         showMenus();
                         $location.path('home');
                     })

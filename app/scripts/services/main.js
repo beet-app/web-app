@@ -1,7 +1,5 @@
-angular.module('MainService', [])
+BeetApp
 
-    // super simple service
-    // each function returns a promise object
     .factory('Main', function($http) {
         return {
             getMenus : function() {
@@ -9,4 +7,3 @@ angular.module('MainService', [])
             }
         }
      });
-
