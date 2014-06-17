@@ -3,8 +3,9 @@ BeetApp
         $scope.formData = {};
 
         
-        
-
+        $rootScope.changeCompany = function() {
+            $rootScope.menus = $rootScope.user.companies[$("#company-select").val()].menu;
+        };
 
 
 

@@ -63,7 +63,16 @@
     </a>
     <a class="navbar-brand" href="index.html"></a>
 </div>
-<div class="navbar-center">Members</div>
+<div class="navbar-center" style="font-size:8px;height:10px;margin-top:-5px;">
+    <select data-style="btn-dark" id='company-select'>
+        <option value="0">Principal</option>
+        <option value="1">Clube Atlético Mineiro</option>
+        <option value="2">Barcelona</option>
+    </select>
+    <button class="btn btn-danger" type="button" ng-click="changeCompany();" style="font-size:8px;margin-top:-5px;">
+            <i class="fa fa-angle-right"></i>
+    </button>
+</div>
 <div class="navbar-collapse collapse">
 <!-- BEGIN TOP NAVIGATION MENU -->
 <ul class="nav navbar-nav pull-right header-menu">
