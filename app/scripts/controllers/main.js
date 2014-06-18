@@ -5,6 +5,7 @@ BeetApp
         
         $rootScope.changeCompany = function() {
             $rootScope.menus = $rootScope.user.companies[$("#company-select").val()].menu;
+            $rootScope.company = $rootScope.user.companies[$("#company-select").val()];
         };
 
 

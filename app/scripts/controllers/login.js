@@ -7,6 +7,7 @@ BeetApp
             .success(function (data) {
                 $rootScope.user = data;
                 $rootScope.menus = $rootScope.user.companies[0].menu;
+                $rootScope.company = $rootScope.user.companies[0];
                 showMenus();
                 $location.path('home');                
             })
@@ -25,6 +26,7 @@ BeetApp
                     .success(function(data) {
                         $rootScope.user = data;
                         $rootScope.menus = $rootScope.user.companies[0].menu;
+                        $rootScope.company = $rootScope.user.companies[0];
                         showMenus();
                         $location.path('home');
                     })
