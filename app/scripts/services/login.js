@@ -4,6 +4,9 @@ BeetApp
             get : function() {
                 return $http.get(Config.getApiUrl() + '/loggedin');
             },
+            getCompanies : function() {
+                return $http.get(Config.getApiUrl() + '/company');
+            },            
             logout : function() {
                 return $http.get(Config.getApiUrl() + '/logout');
             },  

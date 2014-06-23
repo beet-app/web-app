@@ -6,8 +6,15 @@ BeetApp
         Login.get()
             .success(function (data) {
                 $rootScope.user = data;
-                $rootScope.menus = $rootScope.user.companies[0].menu;
-                $rootScope.company = $rootScope.user.companies[0];
+                Login.getCompanies()
+                    .success(function (companies) {
+                        $rootScope.companies = companies;
+                        $rootScope.menus = companies[0].menus;
+                        $rootScope.company = 0;       
+                    })
+                    .error(function (error) {
+
+                    });
                 showMenus();
                 $location.path('home');                
             })
@@ -25,8 +32,16 @@ BeetApp
 
                     .success(function(data) {
                         $rootScope.user = data;
-                        $rootScope.menus = $rootScope.user.companies[0].menu;
-                        $rootScope.company = $rootScope.user.companies[0];
+                        Login.getCompanies()
+                            .success(function (companies) {
+                                $rootScope.companies = companies;
+                                $rootScope.menus = companies[0].menus;
+                                $rootScope.company = 0;       
+                            })
+                            .error(function (error) {
+
+                            });
+
                         showMenus();
                         $location.path('home');
                     })

@@ -65,9 +65,8 @@
 </div>
 <div class="navbar-center" style="font-size:8px;height:10px;margin-top:-5px;">
     <select data-style="btn-dark" id='company-select'>
-        <option value="0">Principal</option>
-        <option value="1">Clube Atlético Mineiro</option>
-        <option value="2">Barcelona</option>
+        <option ng-repeat="company in companies" value="{{company.description}}">{{company.description}}</option>
+        <option value="teste">testeteste</option>
     </select>
     <button class="btn btn-danger" type="button" ng-click="changeCompany();" style="font-size:8px;margin-top:-5px;">
             <i class="fa fa-angle-right"></i>

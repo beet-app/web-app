@@ -2,10 +2,13 @@ BeetApp
     .controller('MainController', function($scope, $rootScope, $http, $location, Login) {
         $scope.formData = {};
 
+        $(document).ready(function(){
+
+        });
         
         $rootScope.changeCompany = function() {
-            $rootScope.menus = $rootScope.user.companies[$("#company-select").val()].menu;
-            $rootScope.company = $rootScope.user.companies[$("#company-select").val()];
+            $rootScope.menus = $rootScope.companies[$("#company-select").val()].menus;
+            $rootScope.company = $rootScope.companies[$("#company-select").val()];
         };
 
 
