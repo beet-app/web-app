@@ -1,5 +1,5 @@
 BeetApp
-    .controller('PersonController', function($scope, $rootScope, $sce, $http, $location, $timeout, Person) {
+    .controller('PersonController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Person) {
 
         $scope.formData = {};
 
@@ -7,44 +7,74 @@ BeetApp
         $('#main-content').hide();
         $('#loaderImage').show(); 
 
+        Person.getPersons($rootScope.company._id)
+            .success(function(data) {
+                $timeout(function(){
+                    $scope.persons = data;    
+                });
+            });
 
 
         Person.getAttributes()
             .success(function(data) {
-                $scope.attributes = data;
+                $scope.attributeGroups = data;
                 $timeout(function(){
                     $('#main-content').show();
                     $('#loaderImage').hide();
 
                     $("#name").keyup(function(){
-                        $("#lblName").text($("#name").val());
+                        $("#lblName").text($("#name").val());   
 
                     });
-                    $("#birth_date").change(function(){
+                    $("#name").trigger("keyup");
+
+                    $("#birth_date").keyup(function(){
                         $("#lblBirthDate").text($("#birth_date").val());
                     });
-                    $("#city").change(function(){
+                    $("#birth_date").trigger("keyup");
+
+                    $("#city").keyup(function(){
                         $("#lblCity").text($("#city").val());
                     });
+                    $("#city").trigger("keyup");
 
 
                     $("#postcode").keyup(function(){
                         if($("#postcode").val().replace("-","").length == 8)
                         {
                             $("#postcode").attr("disabled","disabled");
+
                             Person.getPostCodeDetails($("#postcode").val())
                                 .success(function (data) {
-                                    $("#neighborhood").val(data.bairro);
-                                    $("#street").val(data.logradouro);
-                                    $("#state").val(data.estado);
-                                    $("#city").val(data.cidade);
-                                    $("#complement").focus();                                   
+                                    $timeout(function(){
+                                        $("#neighborhood").val(data.bairro);
+                                        $("#street").val(data.logradouro);
+                                        $("#state").val(data.estado);
+                                        $("#city").val(data.cidade);
+                                        $("#complement").focus();   
+                                    });                                
                                 });
+
                             $("#postcode").removeAttr("disabled");
+
                         }
                     });
+
+                    $(".tab-pane:first").addClass("active");
+                    $(".tab-index:first").addClass("active");
                 });
             });
+
+
+        if ($stateParams.personId != undefined){
+            Person.getOne($stateParams.personId)
+                .success(function(data) {
+                    $timeout(function(){
+                        $scope.person = data;
+                        $scope.personId = $scope.person._id;
+                    });
+                });
+        }
 
 
         $scope.savePerson = function() {
@@ -56,13 +86,23 @@ BeetApp
             });
 
             objSend["attributes"] = objAttributes;
+            objSend["company"] = $rootScope.company._id;
             objSend["active"] = true;
 
-            Person.create(objSend)
-            .success(function(data) {
-                $("#beet-modal-success").trigger("click");
-                $location.path("person/list");
-            });
+            if ($scope.personId != undefined){
+                Person.update(objSend, $scope.personId)
+                .success(function(data) {
+                    $("#beet-modal-success").trigger("click");
+                    $location.path("person/list");
+                });
+            }else{
+                Person.create(objSend)
+                .success(function(data) {
+                    $("#beet-modal-success").trigger("click");
+                    $location.path("person/list");
+                });                
+            }
+
 
 
 
@@ -81,6 +121,12 @@ BeetApp
 
             var html;
             var value = "";
+
+            if ($scope.person != undefined){
+                if ($scope.person.attributes[attribute.description] != undefined){
+                    value = $scope.person.attributes[attribute.description];
+                }
+            }
 
             var attr = "ng-model='" +attribute.description+ "' id='" +attribute.description+ "'";
 
@@ -157,28 +203,8 @@ BeetApp
         }
 
 
-
-        $scope.createMenu = function() {
-
-
-            //if ($scope.formData.description != undefined) {
-
-
-                //Menu.create($scope.formData)
-//
-                //    .success(function(data) {
-                //        $scope.formData = {}; // clear the form so our user is ready to enter another
-                //        $scope.menus = data; // assign our new list of todos
-                //    });
-            //}
-        };
-
-        $scope.deleteMenu = function(id) {
-            //enu.delete(id)
-            //   // if successful creation, call our get function to get all the new todos
-            //   .success(function(data) {
-            //       $scope.menus = data; // assign our new list of todos
-            //   });
-        };
+        $scope.editPerson = function(personId) {
+            $location.path('person/edit/' + personId);
+        };     
     });
 

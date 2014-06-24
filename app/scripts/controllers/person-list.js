@@ -10,4 +10,12 @@ BeetApp
                 $scope.persons = data;
             });
 
+
+        $scope.newPerson = function() {
+            $location.path('person/create'); 
+        };
+
+        $scope.editPerson = function(personId) {
+        	$location.path('person/edit/' + personId);
+        };     
     });

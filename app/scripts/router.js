@@ -57,11 +57,17 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             controller: 'MenuController'
         })
 
-        .state('person', {
-            url: '/person',
+        .state('person/create', {
+            url: '/person/create',
             templateUrl: 'views/person/person.html',
             controller: 'PersonController'
-        })
+        })     
+
+        .state('person/edit', {
+            url: '/person/edit/:personId',
+            templateUrl: 'views/person/person.html',
+            controller: 'PersonController'
+        })        
 
         .state('person/list', {
             url: '/person/list',
