@@ -3,12 +3,11 @@ BeetApp
         $scope.formData = {};
 
         
-        $scope.changeCompany = function() {
-            alert($("#beet-modal-success").html());
-            $("#beet-modal-success").trigger("click");
-            $("#beet-modal-companies").trigger("click");
-            //$rootScope.menus = $rootScope.companies[$("#company-select").val()].menus;
-            //$rootScope.company = $rootScope.companies[$("#company-select").val()];
+        $scope.changeCompany = function(intIndex) {
+            $rootScope.menus = $rootScope.companies[intIndex].menus;
+            $rootScope.company = $rootScope.companies[intIndex];
+            $("#modal-companies-close").trigger("click");
+            $location.path('home'); 
         };
 
 
@@ -45,7 +44,6 @@ BeetApp
         });
 
 
-*/
     var cSpeed=8;
     var cWidth=128;
     var cHeight=128;
@@ -108,3 +106,5 @@ BeetApp
     
     //The following code starts the animation
     new imageLoader(cImageSrc, 'startAnimation()');    
+
+*/

@@ -4,8 +4,8 @@ BeetApp
             getAttributes : function() {
                 return $http.get(Config.getApiUrl() + '/attribute');
             },
-            getPersons : function() {
-                return $http.get(Config.getApiUrl() + '/person');
+            getPersons : function(companyId) {
+                return $http.get(Config.getApiUrl() + '/person/' + companyId);
             },
             getPostCodeDetails : function(postcode) {
                 $http.defaults.withCredentials = false;

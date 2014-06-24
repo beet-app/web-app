@@ -1,9 +1,11 @@
 BeetApp
-    .controller('PersonListController', function($scope, $sce, $http, $location, $timeout, Person) {
+    .controller('PersonListController', function($scope, $rootScope, $http, $location, $timeout, Person) {
 
         $scope.formData = {};
 
-        Person.getPersons()
+        var companyId = $rootScope.company._id;
+
+        Person.getPersons(companyId)
             .success(function(data) {
                 $scope.persons = data;
             });

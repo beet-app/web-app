@@ -10,7 +10,7 @@ BeetApp
                     .success(function (companies) {
                         $rootScope.companies = companies;
                         $rootScope.menus = companies[0].menus;
-                        $rootScope.company = 0;       
+                        $rootScope.company = companies[0];       
                     })
                     .error(function (error) {
 
@@ -36,7 +36,7 @@ BeetApp
                             .success(function (companies) {
                                 $rootScope.companies = companies;
                                 $rootScope.menus = companies[0].menus;
-                                $rootScope.company = 0;       
+                                $rootScope.company = companies[0];       
                             })
                             .error(function (error) {
 
