@@ -2,13 +2,13 @@ BeetApp
     .controller('MainController', function($scope, $rootScope, $http, $location, Login) {
         $scope.formData = {};
 
-        $(document).ready(function(){
-
-        });
         
-        $rootScope.changeCompany = function() {
-            $rootScope.menus = $rootScope.companies[$("#company-select").val()].menus;
-            $rootScope.company = $rootScope.companies[$("#company-select").val()];
+        $scope.changeCompany = function() {
+            alert($("#beet-modal-success").html());
+            $("#beet-modal-success").trigger("click");
+            $("#beet-modal-companies").trigger("click");
+            //$rootScope.menus = $rootScope.companies[$("#company-select").val()].menus;
+            //$rootScope.company = $rootScope.companies[$("#company-select").val()];
         };
 
 

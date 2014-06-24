@@ -64,13 +64,10 @@
     <a class="navbar-brand" href="index.html"></a>
 </div>
 <div class="navbar-center" style="font-size:8px;height:10px;margin-top:-5px;">
-    <select data-style="btn-dark" id='company-select'>
-        <option ng-repeat="company in companies" value="{{company.description}}">{{company.description}}</option>
-        <option value="teste">testeteste</option>
-    </select>
-    <button class="btn btn-danger" type="button" ng-click="changeCompany();" style="font-size:8px;margin-top:-5px;">
-            <i class="fa fa-angle-right"></i>
-    </button>
+    <div data-style="btn-dark" >
+        <label id='lbl-company'>{{company.description}}</label>
+        <button class="btn btn-danger" type="button" ng-click="changeCompany();" style="font-size:8px;margin-top:-5px;">Alterar</button>
+    </div>
 </div>
 <div class="navbar-collapse collapse">
 <!-- BEGIN TOP NAVIGATION MENU -->
@@ -284,6 +281,13 @@
             </div>
         </div>
     </div>
+
+    <button class="btn btn-dark" id="beet-modal-companies" data-modal="modal-12" style="display:none;">Super Scaled</button>
+    <div class="md-modal md-effect-11" id="modal-12">
+        <div class="md-content md-content-black">
+            <h3 ng-repeat="company in companies">{{company.description}}</h3>
+        </div>
+    </div>    
 
     <div class="md-overlay"></div>
 
