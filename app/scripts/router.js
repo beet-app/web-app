@@ -75,6 +75,24 @@ BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             controller: 'PersonListController'
         })
 
+        .state('company/create', {
+            url: '/company/create',
+            templateUrl: 'views/company/company.html',
+            controller: 'CompanyController'
+        })     
+
+        .state('company/edit', {
+            url: '/company/edit/:companyId',
+            templateUrl: 'views/company/company.html',
+            controller: 'CompanyController'
+        })        
+
+        .state('company/list', {
+            url: '/company/list',
+            templateUrl: 'views/company/list.html',
+            controller: 'CompanyListController'
+        })
+
         .state('todo', {
             url: '/todo',
             templateUrl: 'views/todo/todo.html',
