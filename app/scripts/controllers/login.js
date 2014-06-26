@@ -5,12 +5,13 @@ BeetApp
         hideMenus();
         Login.get()
             .success(function (data) {
-                $rootScope.user = data;
+                $rootScope.session = new Object();
+                $rootScope.session.user = data;
                 Login.getCompanies()
                     .success(function (companies) {
-                        $rootScope.companies = companies;
-                        $rootScope.menus = companies[0].menus;
-                        $rootScope.company = companies[0];       
+                        $rootScope.session.companies = companies;
+                        $rootScope.session.menus = companies[0].menus;
+                        $rootScope.session.company = companies[0];       
                     })
                     .error(function (error) {
 
@@ -31,12 +32,13 @@ BeetApp
                 Login.post($scope.formData)
 
                     .success(function(data) {
-                        $rootScope.user = data;
+                        $rootScope.session = new Object();
+                        $rootScope.session.user = data;
                         Login.getCompanies()
                             .success(function (companies) {
-                                $rootScope.companies = companies;
-                                $rootScope.menus = companies[0].menus;
-                                $rootScope.company = companies[0];       
+                                $rootScope.session.companies = companies;
+                                $rootScope.session.menus = companies[0].menus;
+                                $rootScope.session.company = companies[0];       
                             })
                             .error(function (error) {
 

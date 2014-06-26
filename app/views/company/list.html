@@ -1,11 +1,11 @@
 <div class="row">
     <div class="page-title col-md-4" > 
         <i class="icon-custom-left"></i>
-        <h2>Atletas <small>{{company.description}}</small></h2>
+        <h2></small></h2>
     </div>
 
     <div class="col-md-8 align-right m-t-10">
-        <button type="submit" class="btn btn-primary" ng-click="newPerson()">Novo Atleta</button>
+        <button type="submit" class="btn btn-primary" ng-click="createCompany()">Nova Empresa</button>
     </div>
 </div>
 
@@ -25,20 +25,20 @@
             <div class="panel-body">
                 <div class="row">
 
-                    <div class="col-md-4 member-entry" ng-repeat="person in persons">
+                    <div class="col-md-4 member-entry" ng-repeat="company in companies">
                         <div class="row member">
-                            <div class="col-xs-3"  style="cursor:pointer" ng-click='editPerson(person._id)'>
-                                <img src="/images/avatars/avatar2_big.png" alt="avatar 2" class="pull-left img-responsive">
+                            <div class="col-xs-3"  style="cursor:pointer" ng-click='editCompany(company._id)'>
+                                <img src="images/uploads/companies/{{company._id}}.png"  class="pull-left img-responsive">
                             </div>
                             <div class="col-xs-9">
-                                <h3 class="m-t-0 member-name" style="cursor:pointer" ng-click='editPerson(person._id)'><strong>{{person.attributes.name}}</strong></h3>
+                                <h3 class="m-t-0 member-name" style="cursor:pointer" ng-click='editCompany(company._id)'><strong>{{company.attributes.personal.name}}</strong></h3>
                                 <div class="pull-left">
-                                    <p><i class="fa fa-envelope-o c-gray-light p-r-10"></i>{{person.attributes.gender}}</p>
-                                    <p><i class="fa fa-facebook c-gray-light p-r-10"></i>{{person.attributes.cpf}}</p>
+                                    <p><i class="fa fa-envelope-o c-gray-light p-r-10"></i>{{company.attributes.personal.gender}}</p>
+                                    <p><i class="fa fa-facebook c-gray-light p-r-10"></i>{{company.attributes.personal.cpf}}</p>
                                 </div>
                                 <div class="pull-right align-right">
-                                    <p><i class="fa fa-calendar c-gray-light p-r-10"></i>{{person.attributes.birth_date}}</p>
-                                    <p><i class="fa fa-map-marker c-gray-light p-r-10"></i>{{person.attributes.city}}</p>
+                                    <p><i class="fa fa-calendar c-gray-light p-r-10"></i>{{company.attributes.personal.birth_date}}</p>
+                                    <p><i class="fa fa-map-marker c-gray-light p-r-10"></i>{{company.attributes.personal.city}}</p>
                                 </div>
                             </div>
                         </div>

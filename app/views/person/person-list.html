@@ -28,17 +28,18 @@
                     <div class="col-md-4 member-entry" ng-repeat="person in persons">
                         <div class="row member">
                             <div class="col-xs-3"  style="cursor:pointer" ng-click='editPerson(person._id)'>
-                                <img src="/images/avatars/avatar2_big.png" alt="avatar 2" class="pull-left img-responsive">
+                                <img src="images/uploads/persons/{{person._id}}.png" alt="{{person.attributes.personal.name}}" class="pull-left img-responsive">
+                                <!--assets/img/avatars/avatar2_big.png-->
                             </div>
                             <div class="col-xs-9">
-                                <h3 class="m-t-0 member-name" style="cursor:pointer" ng-click='editPerson(person._id)'><strong>{{person.attributes.name}}</strong></h3>
+                                <h3 class="m-t-0 member-name" style="cursor:pointer" ng-click='editPerson(person._id)'><strong>{{person.attributes.personal.name}}</strong></h3>
                                 <div class="pull-left">
-                                    <p><i class="fa fa-envelope-o c-gray-light p-r-10"></i>{{person.attributes.gender}}</p>
-                                    <p><i class="fa fa-facebook c-gray-light p-r-10"></i>{{person.attributes.cpf}}</p>
+                                    <p><i class="fa fa-envelope-o c-gray-light p-r-10"></i>{{person.attributes.personal.gender}}</p>
+                                    <p><i class="fa fa-facebook c-gray-light p-r-10"></i>{{person.attributes.personal.cpf}}</p>
                                 </div>
                                 <div class="pull-right align-right">
-                                    <p><i class="fa fa-calendar c-gray-light p-r-10"></i>{{person.attributes.birth_date}}</p>
-                                    <p><i class="fa fa-map-marker c-gray-light p-r-10"></i>{{person.attributes.city}}</p>
+                                    <p><i class="fa fa-calendar c-gray-light p-r-10"></i>{{person.attributes.personal.birth_date}}</p>
+                                    <p><i class="fa fa-map-marker c-gray-light p-r-10"></i>{{person.attributes.personal.city}}</p>
                                 </div>
                             </div>
                         </div>

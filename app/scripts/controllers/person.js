@@ -7,7 +7,7 @@ BeetApp
         $('#main-content').hide();
         $('#loaderImage').show(); 
 
-        Person.getPersons($rootScope.company._id)
+        Person.getPersons($rootScope.session.company._id)
             .success(function(data) {
                 $timeout(function(){
                     $scope.persons = data;    
@@ -22,40 +22,40 @@ BeetApp
                     $('#main-content').show();
                     $('#loaderImage').hide();
 
-                    $("#name").keyup(function(){
-                        $("#lblName").text($("#name").val());   
+                    $("[id='personal.name']").keyup(function(){
+                        $("#lblName").text($("[id='personal.name']").val());   
 
                     });
-                    $("#name").trigger("keyup");
+                    $("[id='personal.name']").trigger("keyup");
 
-                    $("#birth_date").keyup(function(){
-                        $("#lblBirthDate").text($("#birth_date").val());
+                    $("[id='personal.birth_date']").keyup(function(){
+                        $("#lblBirthDate").text($("[id='personal.birth_date']").val());
                     });
-                    $("#birth_date").trigger("keyup");
+                    $("[id='personal.birth_date']").trigger("keyup");
 
-                    $("#city").keyup(function(){
-                        $("#lblCity").text($("#city").val());
+                    $("[id='personal.city']").keyup(function(){
+                        $("#lblCity").text($("[id='personal.city']").val());
                     });
-                    $("#city").trigger("keyup");
+                    $("[id='personal.city']").trigger("keyup");
 
 
-                    $("#postcode").keyup(function(){
-                        if($("#postcode").val().replace("-","").length == 8)
+                    $("[id='personal.postcode']").keyup(function(){
+                        if($("[id='personal.postcode']").val().replace("-","").length == 8)
                         {
-                            $("#postcode").attr("disabled","disabled");
+                            $("[id='personal.postcode']").attr("disabled","disabled");
 
-                            Person.getPostCodeDetails($("#postcode").val())
+                            Company.getPostCodeDetails($("[id='personal.postcode']").val())
                                 .success(function (data) {
                                     $timeout(function(){
-                                        $("#neighborhood").val(data.bairro);
-                                        $("#street").val(data.logradouro);
-                                        $("#state").val(data.estado);
-                                        $("#city").val(data.cidade);
-                                        $("#complement").focus();   
+                                        $("[id='personal.neighborhood']").val(data.bairro);
+                                        $("[id='personal.street']").val(data.logradouro);
+                                        $("[id='personal.state']").val(data.estado);
+                                        $("[id='personal.city']").val(data.cidade);
+                                        $("[id='personal.complement']").focus();   
                                     });                                
                                 });
 
-                            $("#postcode").removeAttr("disabled");
+                            $("[id='personal.postcode']").removeAttr("disabled");
 
                         }
                     });
@@ -71,6 +71,7 @@ BeetApp
                 .success(function(data) {
                     $timeout(function(){
                         $scope.person = data;
+                        $("#imgPerson").attr("src","/images/uploads/persons/" + data._id + ".png");
                         $scope.personId = $scope.person._id;
                     });
                 });
@@ -90,7 +91,7 @@ BeetApp
             });
 
             objSend["attributes"] = objAttributes;
-            objSend["company"] = $rootScope.company._id;
+            objSend["company"] = $rootScope.session.company._id;
             objSend["active"] = true;
 
             if ($scope.personId != undefined){
@@ -219,3 +220,26 @@ BeetApp
         };     
     });
 
+BeetApp
+    .controller('PersonListController', function($scope, $rootScope, $http, $location, $timeout, Person) {
+
+        $scope.formData = {};
+
+        var companyId = $rootScope.session.company._id;
+
+        Person.getPersons(companyId)
+            .success(function(data) {
+
+                $scope.persons = data;
+                //images/uploads/persons/{{person._id}}.png
+            });
+
+
+        $scope.newPerson = function() {
+            $location.path('person/create'); 
+        };
+
+        $scope.editPerson = function(personId) {
+            $location.path('person/edit/' + personId);
+        };     
+    });

@@ -4,8 +4,8 @@ BeetApp
 
         
         $scope.changeCompany = function(intIndex) {
-            $rootScope.menus = $rootScope.companies[intIndex].menus;
-            $rootScope.company = $rootScope.companies[intIndex];
+            $rootScope.session.menus = $rootScope.session.companies[intIndex].menus;
+            $rootScope.session.company = $rootScope.session.companies[intIndex];
             $("#modal-companies-close").trigger("click");
             $location.path('home'); 
         };

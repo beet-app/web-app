@@ -10,8 +10,14 @@ BeetApp
             create : function(data) {
                 return $http.post(Config.getApiUrl() + '/company', data);
             },
-            update : function(data, personId) {
+            update : function(data, companyId) {
                 return $http.put(Config.getApiUrl() + '/company/' + companyId, data);
-            }
+            },
+            getAttributes : function() {
+                return $http.get(Config.getApiUrl() + '/attribute-grouped');
+            },          
+            getPostCodeDetails : function(postcode) {
+                return $http.get('http://api.postmon.com.br/v1/cep/' + postcode,{withCredentials : false});
+            },            
         }
      });

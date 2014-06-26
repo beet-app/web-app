@@ -66,8 +66,10 @@
 </div>
 <div class="navbar-center" style="font-size:8px;height:10px;margin-top:-5px;">
     <div data-style="btn-dark" >
-        <button class="btn btn-dark" data-modal="modal-12">
-            {{company.description}}
+        <img src="images/uploads/companies/{{session.company._id}}.png" style="width:32px;height:32px;"/>
+        <button class="btn btn-dark" data-modal="modal-12" style="padding-left:1px;">
+            &nbsp;&nbsp;
+            {{session.company.attributes.personal.name}}
             &nbsp;&nbsp;
             <i class="fa fa-angle-down p-r-10"></i>
         </button>
@@ -211,7 +213,7 @@
             </a>
         </li>
         <li>
-            <a ui-sref="company">
+            <a ui-sref="company/list">
                 <i class="glyphicon glyphicon-lock"></i> Empresas
             </a>
         </li>
@@ -249,7 +251,7 @@
     
 <ul class="sidebar-nav">
 
-<li ng-repeat="menu in menus">
+<li ng-repeat="menu in session.menus">
     <a ui-sref="{{menu.url}}"><i class="{{menu.icon_class}}"></i><span class="sidebar-text">{{menu.description}}</span></a>
     <!--
         <a href="#">
@@ -294,9 +296,11 @@
             <div>
                 <h2>Escolha a companhia : </h3>
                 <ul>
-                    <li style="padding:20px;"ng-repeat="company in companies">
+                    <li style="padding:20px;"ng-repeat="company in session.companies">
                         <div ng-click='changeCompany($index)' style='cursor:pointer;'>
-                            <strong>{{company.description}}</strong>
+                            <img src="images/uploads/companies/{{company._id}}.png" style="width:24px;height:24px;"/>
+                            &nbsp;&nbsp;
+                            <strong>{{company.attributes.personal.name}}</strong>
                         </div>
                     </li>
                 </ul>
@@ -360,12 +364,16 @@
 <script src="scripts/controllers/logout.js"></script>
 <script src="scripts/controllers/person.js"></script>
 <script src="scripts/controllers/person-list.js"></script>
+<script src="scripts/controllers/company.js"></script>
+<script src="scripts/controllers/company-list.js"></script>
 <script src="scripts/services/main.js"></script>
 <script src="scripts/services/menu.js"></script>
 <script src="scripts/services/login.js"></script>
 <script src="scripts/services/signup.js"></script>
 <script src="scripts/services/person.js"></script>
+<script src="scripts/services/company.js"></script>
 <!-- endbuild -->
 
 </body>
 </html>
+
