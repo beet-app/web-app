@@ -10,8 +10,9 @@ BeetApp
                 Login.getCompanies()
                     .success(function (companies) {
                         $rootScope.session.companies = companies;
-                        $rootScope.session.menus = companies[0].menus;
                         $rootScope.session.company = companies[0];       
+                        $rootScope.session.menus = companies[0].menus;
+                        $rootScope.session.menu = companies[0].menus[0];                        
                     })
                     .error(function (error) {
 
@@ -37,8 +38,9 @@ BeetApp
                         Login.getCompanies()
                             .success(function (companies) {
                                 $rootScope.session.companies = companies;
+                                $rootScope.session.company = companies[0];
                                 $rootScope.session.menus = companies[0].menus;
-                                $rootScope.session.company = companies[0];       
+                                $rootScope.session.menu = companies[0].menus[0];
                             })
                             .error(function (error) {
 

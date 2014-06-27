@@ -35,8 +35,8 @@ BeetApp
                 });
             });
 
-
-        Company.getAttributes()
+        var moduleId = $rootScope.session.menu.modules[0]; 
+        Company.getAttributes(moduleId)
             .success(function(data) {
                 $scope.attributeGroups = data;
                 $timeout(function(){

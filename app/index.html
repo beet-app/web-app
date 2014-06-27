@@ -203,7 +203,7 @@
 <li class="dropdown" id="user-header">
     <a href="#" class="dropdown-toggle c-white" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <img src="/images/avatars/avatar2.png" alt="user avatar" width="30" class="p-r-5">
-        <span class="username">Bob Nilson</span>
+        <span class="username">{{session.user.local.email}}</span>
         <i class="fa fa-angle-down p-r-10"></i>
     </a>
     <ul class="dropdown-menu">
@@ -240,7 +240,7 @@
 </ul>
 <!-- END TOP NAVIGATION MENU -->
 </div>
-</div>
+</div>  
 </nav>
 <!-- END TOP MENU -->
 <!-- BEGIN WRAPPER -->
@@ -252,7 +252,7 @@
 <ul class="sidebar-nav">
 
 <li ng-repeat="menu in session.menus">
-    <a ui-sref="{{menu.url}}"><i class="{{menu.icon_class}}"></i><span class="sidebar-text">{{menu.description}}</span></a>
+    <a ng-click="changeMenu(menu)" style="cursor:pointer;"><i class="{{menu.icon_class}}"></i><span class="sidebar-text">{{menu.description}}</span></a>
     <!--
         <a href="#">
             <i class="glyph-icon flaticon-pages"></i>

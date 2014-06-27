@@ -10,6 +10,11 @@ BeetApp
             $location.path('home'); 
         };
 
+        $scope.changeMenu = function(menu) {
+            $rootScope.session.menu = menu;
+            $location.path(menu.url); 
+        };
+
 
 
 

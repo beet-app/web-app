@@ -14,8 +14,8 @@ BeetApp
                 });
             });
 
-
-        Person.getAttributes()
+        var moduleId = $rootScope.session.menu.modules[0];
+        Person.getAttributes(moduleId)
             .success(function(data) {
                 $scope.attributeGroups = data;
                 $timeout(function(){

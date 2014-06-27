@@ -1,8 +1,8 @@
 BeetApp
     .factory('Person', function($http, Config) {
         return {
-            getAttributes : function() {
-                return $http.get(Config.getApiUrl() + '/attribute-grouped');
+            getAttributes : function(moduleId) {
+                return $http.get(Config.getApiUrl() + '/attribute-grouped/' + moduleId);
             },
             getPersons : function(companyId) {
                 return $http.get(Config.getApiUrl() + "/" + companyId +'/person');
