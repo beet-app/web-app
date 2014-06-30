@@ -3,16 +3,19 @@ BeetApp
 
         $scope.formData = {};
         hideMenus();
+        $('#beet-loader-open').trigger("click"); 
         Login.get()
             .success(function (data) {
                 $rootScope.session = new Object();
                 $rootScope.session.user = data;
                 Login.getCompanies()
                     .success(function (companies) {
+                        
                         $rootScope.session.companies = companies;
                         $rootScope.session.company = companies[0];       
                         $rootScope.session.menus = companies[0].menus;
-                        $rootScope.session.menu = companies[0].menus[0];                        
+                        $rootScope.session.menu = companies[0].menus[0];
+                        $('#beet-loader-close').trigger("click");                         
                     })
                     .error(function (error) {
 
@@ -21,7 +24,7 @@ BeetApp
                 $location.path('home');                
             })
             .error(function (error) {
-
+                $('#beet-loader-close').trigger("click");
             });
 
         $scope.checkLogin = function() {
@@ -29,7 +32,7 @@ BeetApp
 
             if ($scope.formData.email != undefined) {
 
-
+                $('#beet-loader-open').trigger("click"); 
                 Login.post($scope.formData)
 
                     .success(function(data) {
@@ -37,10 +40,12 @@ BeetApp
                         $rootScope.session.user = data;
                         Login.getCompanies()
                             .success(function (companies) {
+
                                 $rootScope.session.companies = companies;
                                 $rootScope.session.company = companies[0];
                                 $rootScope.session.menus = companies[0].menus;
                                 $rootScope.session.menu = companies[0].menus[0];
+                                $('#beet-loader-close').trigger("click"); 
                             })
                             .error(function (error) {
 

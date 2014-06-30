@@ -4,13 +4,13 @@ BeetApp
         $scope.formData = {};
 
 
-        $('#main-content').hide();
-        $('#loaderImage').show(); 
+        $('#beet-loader-open').trigger("click");
 
         Person.getPersons($rootScope.session.company._id)
             .success(function(data) {
                 $timeout(function(){
-                    $scope.persons = data;    
+                    $scope.persons = data;
+
                 });
             });
 
@@ -19,8 +19,7 @@ BeetApp
             .success(function(data) {
                 $scope.attributeGroups = data;
                 $timeout(function(){
-                    $('#main-content').show();
-                    $('#loaderImage').hide();
+                    $('#beet-loader-close').trigger("click"); 
 
                     $("[id='personal.name']").keyup(function(){
                         $("#lblName").text($("[id='personal.name']").val());   
@@ -58,6 +57,8 @@ BeetApp
                             $("[id='personal.postcode']").removeAttr("disabled");
 
                         }
+
+
                     });
 
                     $(".tab-pane:first").addClass("active");
@@ -73,8 +74,11 @@ BeetApp
                         $scope.person = data;
                         $("#imgPerson").attr("src","/images/uploads/persons/" + data._id + ".png");
                         $scope.personId = $scope.person._id;
+                        $('#beet-loader-close').trigger("click");
                     });
                 });
+        }else{
+            $('#beet-loader-close').trigger("click");
         }
 
 
@@ -133,84 +137,8 @@ BeetApp
                     }
                 }
             }
-
-
-            if (attribute.group != undefined){
-
-
-                var strName = attribute.group.description + "." + attribute.description;
-                var attr = "ng-model='" +strName+ "' id='" +strName+ "'";
-
-                if (attribute.size != null){
-                    attr += "size='" +attribute.size+ "' ";
-                }
-
-                if (attribute.required){
-                    attr += "required ";
-                }
-
-                switch (attribute.type.template){
-                    case "TEXT":
-                        html = "<input type='TEXT' "+attr+" value='"+value+"' class='form-control input-lg' />";
-                        break;
-                    case "TEXTAREA":
-                        html = "<textarea "+attr+">"+value+"</textarea>";
-                        break;
-                    case "DROPDOWN":
-                        html = "<select "+attr+">"
-
-                        for (option in attribute.type.selection)
-                        {
-                            if (option != value) {
-                                html += "<option value='" + option + "'>" + option + "</option>";
-                            } else {
-                                html += "<option value='" + option + "' selected>" + option + "</option>";
-                            }
-                        }
-                        html += "</select>";
-                        break;
-                    case "RADIO":
-                        html = "<select class='form-control' "+attr+"><option value=''>Selecione</option>"
-                        arrSelection = attribute.type.selection;
-                        for (x=0;x<arrSelection.length;x++)
-                        {
-                            if (arrSelection[x] != value) {
-                                html += "<option value='" + arrSelection[x] + "'>" + arrSelection[x] + "</option>";
-                            } else {
-                                html += "<option value='" + arrSelection[x] + "' selected>" + arrSelection[x] + "</option>";
-                            }
-                        }
-                        html += "</select>";
-                        break;
-
-                    case "DATE":
-                        html = "<input type='TEXT' "+attr+" value='"+value+"' class='form-control input-lg' />";
-                        break;
-
-                        
-                        /*
-                        arrSelection = attribute.type.selection;
-                        html = "<div class='form-group'><div class='skin-section'>";
-
-                        for (x=0;x<arrSelection.length;x++)
-                        {
-                            
-                            if (arrSelection[x] != value) {
-                                html += "";
-                            } else {
-                                html += "";
-                            }
-
-                            html += "<div class='ui-checkbox'><label class='ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-on'>"+arrSelection[x]+"</label><input type='checkbox' checked='' data-cacheval='false'></div>";
-                        }
-                        html += "</div></div>";
-
-
-                        break;
-                        */
-
-                }
-            }
+            html = createHtml(attribute, value);
+            
             return $sce.trustAsHtml(html);
         }
 
@@ -223,13 +151,14 @@ BeetApp
 BeetApp
     .controller('PersonListController', function($scope, $rootScope, $http, $location, $timeout, Person) {
 
+        $('#beet-loader-open').trigger("click"); 
         $scope.formData = {};
 
         var companyId = $rootScope.session.company._id;
 
         Person.getPersons(companyId)
             .success(function(data) {
-
+                $('#beet-loader-close').trigger("click"); 
                 $scope.persons = data;
                 //images/uploads/persons/{{person._id}}.png
             });

@@ -1,0 +1,126 @@
+<div style="float:left;width:auto;display:none;">
+    <div style="float:left;cursor:pointer;" ng-repeat="company in companies" ng-click='editCompany(company._id)'>
+        <img src="images/uploads/companies/{{company._id}}.png" alt="{{person.attributes.personal.name}}" title="{{company.attributes.personal.name}}" class="" style="width:20%;height:20%">
+    </div>   
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <!-- BEGIN TABS -->
+            <div class="tabbable tabbable-custom form">
+                <ul class="nav nav-tabs">
+                    <li class="tab-index" ng-repeat="(description,attributeGroup) in attributeGroups">
+                        <a href="#{{description}}" data-toggle="tab">{{description}}</a>
+                    </li>
+                    <li class="tab-index">
+                        <a href="#tabUsers" data-toggle="tab">Membros</a>
+                    </li>                    
+                </ul>
+
+
+                <div class="tab-content">
+                    <div class="space20"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-unstyled profile-nav col-md-3">
+                                <li>
+                                    <img src="images/uploads/companies/{{company._id}}.png" style="width:128px;height:128px;" alt="{{company.attributes.personal.name}}"/>
+                                </li>
+                            </ul>
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-12 profile-info">
+                                        <h1 id="lblName"></h1>
+                                        <div class="m-t-10"></div>
+                                        <ul class="list-unstyled list-inline">
+                                            <li class="m-r-20"><i class="fa fa-map-marker p-r-5 c-dark"></i> <label id="lblCity"></label></li>
+                                            <li class="m-r-20"><i class="fa fa-calendar p-r-5 c-purple"></i> <label id="lblBirthDate"></label></li>
+                                        </ul>
+                                        <div class="m-t-20"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" ng-repeat="(description,attributeGroup) in attributeGroups" id="{{description}}" >
+                        <div class="row profile">
+                            <div class="col-md-12">
+                                <div class="row profile-classic">
+                                    <div class="col-md-12">
+                                        <div class="panel">                                                   
+                                            <div class="panel-body">
+                                                <div class="row" ng-repeat="attribute in attributeGroup">
+                                                    <div class="control-label c-gray col-md-3">{{attribute.description}}:</div> 
+                                                    <div class="col-md-6" ng-bind-html='htmlElement({{attribute}})'>
+                                                    </div>
+                                                </div>                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tabUsers" >
+
+
+                        <div class="page-title"> <i class="icon-custom-left"></i>
+                            <h3><strong>Membros</strong>{{company.personal.name}}</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 m-b-20">
+                                                <div class="btn-group">
+                                                    <button id="table-edit_new" class="btn btn-danger">
+                                                        Adicionar <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12 table-responsive table-red">
+                                                <table class="table table-striped table-hover dataTable" id="table-editable">
+                                                    <thead>
+                                                        <tr role="row">
+                                                            <th>Nome</th>
+                                                            <th>E-mail</th>
+                                                            <th>Perfil</th>
+                                                            <th class="text-center">Remover</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="member in company.members">
+                                                            <td>{{member.user.local.name}}</td>
+                                                            <td>{{member.user.local.email}}</td>
+                                                            <td>{{member.profile.description}}</td>
+                                                            <td class="text-center">
+                                                                <a class="delete btn btn-danger" href="javascript:;">
+                                                                    <i class="fa fa-times-circle"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <!--END TABS-->
+            <div class="col-sm-12">
+                <div class="align-center">
+                    <button class="btn btn-primary m-r-20" type="submit" ng-click="saveCompany()">Save</button>
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                </div>
+            </div>                 
+        </form>
+    </div>
+</div>
+
+

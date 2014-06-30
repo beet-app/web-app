@@ -1,8 +1,7 @@
 BeetApp
-    .controller('MainController', function($scope, $rootScope, $http, $location, Login) {
+    .controller('MainController', function($scope, $rootScope, $http, $location, $translate, Login) {
         $scope.formData = {};
 
-        
         $scope.changeCompany = function(intIndex) {
             $rootScope.session.menus = $rootScope.session.companies[intIndex].menus;
             $rootScope.session.company = $rootScope.session.companies[intIndex];
@@ -15,7 +14,9 @@ BeetApp
             $location.path(menu.url); 
         };
 
-
+        $scope.changeLanguage = function (key) {
+            $translate.use(key);
+        };
 
 
 
@@ -48,12 +49,12 @@ BeetApp
                 $('html').addClass('sidebar-medium');
         });
 
-
-    var cSpeed=8;
-    var cWidth=128;
+*/
+    var cSpeed=5;
+    var cWidth=120;
     var cHeight=128;
-    var cTotalFrames=20;
-    var cFrameWidth=128;
+    var cTotalFrames=29;
+    var cFrameWidth=120;
     var cImageSrc='images/sprites.gif';
     
     var cImageTimeout=false;
@@ -64,7 +65,7 @@ BeetApp
     
     function startAnimation(){
         
-        document.getElementById('loaderImage').style.background='url('+cImageSrc+') no-repeat';
+        document.getElementById('loaderImage').style.backgroundImage='url('+cImageSrc+')';
         document.getElementById('loaderImage').style.width=cWidth+'px';
         document.getElementById('loaderImage').style.height=cHeight+'px';
         
@@ -110,6 +111,86 @@ BeetApp
     }
     
     //The following code starts the animation
-    new imageLoader(cImageSrc, 'startAnimation()');    
+    new imageLoader(cImageSrc, 'startAnimation()');
 
-*/
+
+    function createHtml(attribute, value){
+        var html = "";
+            if (attribute.group != undefined){
+
+
+                var strName = attribute.group.description + "." + attribute.description;
+                var attr = "ng-model='" +strName+ "' id='" +strName+ "'";
+
+                if (attribute.size != null){
+                    attr += "size='" +attribute.size+ "' ";
+                }
+
+                if (attribute.required){
+                    attr += "required ";
+                }
+
+                switch (attribute.type.template){
+                    case "TEXT":
+                        html = "<input type='TEXT' "+attr+" value='"+value+"' class='form-control input-lg' />";
+                        break;
+                    case "TEXTAREA":
+                        html = "<textarea "+attr+">"+value+"</textarea>";
+                        break;
+                    case "DROPDOWN":
+                        html = "<select "+attr+">"
+
+                        for (option in attribute.type.selection)
+                        {
+                            if (option != value) {
+                                html += "<option value='" + option + "'>" + option + "</option>";
+                            } else {
+                                html += "<option value='" + option + "' selected>" + option + "</option>";
+                            }
+                        }
+                        html += "</select>";
+                        break;
+                    case "RADIO":
+                        html = "<select class='form-control' "+attr+"><option value=''>Selecione</option>"
+                        arrSelection = attribute.type.selection;
+                        for (x=0;x<arrSelection.length;x++)
+                        {
+                            if (arrSelection[x] != value) {
+                                html += "<option value='" + arrSelection[x] + "'>" + arrSelection[x] + "</option>";
+                            } else {
+                                html += "<option value='" + arrSelection[x] + "' selected>" + arrSelection[x] + "</option>";
+                            }
+                        }
+                        html += "</select>";
+                        break;
+
+                    case "DATE":
+                        html = "<input type='TEXT' "+attr+" value='"+value+"' class='form-control input-lg' />";
+                        break;
+
+                        
+                        /*
+                        arrSelection = attribute.type.selection;
+                        html = "<div class='form-group'><div class='skin-section'>";
+
+                        for (x=0;x<arrSelection.length;x++)
+                        {
+                            
+                            if (arrSelection[x] != value) {
+                                html += "";
+                            } else {
+                                html += "";
+                            }
+
+                            html += "<div class='ui-checkbox'><label class='ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-on'>"+arrSelection[x]+"</label><input type='checkbox' checked='' data-cacheval='false'></div>";
+                        }
+                        html += "</div></div>";
+
+
+                        break;
+                        */
+
+                }
+            }
+            return html;
+    }
