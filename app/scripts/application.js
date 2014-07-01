@@ -1,4 +1,4 @@
-/****  Variables Initiation  ****/
+﻿/****  Variables Initiation  ****/
 var doc = document;
 var docEl = document.documentElement;
 var page = $("body").data("page");

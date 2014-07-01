@@ -1,4 +1,4 @@
-BeetApp
+﻿BeetApp
     .factory('Signup', function($http, Config) {
         return {
             get : function() {

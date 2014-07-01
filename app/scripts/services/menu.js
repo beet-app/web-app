@@ -1,4 +1,4 @@
-BeetApp
+﻿BeetApp
     .factory('Menu', function($http, Config) {
         return {
             get : function() {

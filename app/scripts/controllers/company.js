@@ -1,4 +1,4 @@
-BeetApp
+﻿BeetApp
     .controller('CompanyListController', function($scope, $rootScope, $http, $location, $timeout, Company) {
 
         $scope.formData = {};

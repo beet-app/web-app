@@ -86,36 +86,16 @@
         </li>
         <li class="dropdown-body">
             <ul class="dropdown-menu-list withScroll" data-height="130">
-                <li class="clearfix" ng-click="changeLanguage('en')">
+                <li class="clearfix" ng-repeat="language in languages" ng-click="changeLanguage(language)">
                     <span class="pull-left p-r-5">
-                        <img src="/images/flags/english.png" alt="avatar 4">
+                        <img src="/images/flags/{{language}}.png" alt="avatar 4">
                     </span>
                     <div class="clearfix">
                         <div>
-                            <strong translate="languages.en"></strong>
+                            <strong translate="languages.{{language}}"></strong>
                         </div>
                     </div>
-                </li>
-                <li class="clearfix" ng-click="changeLanguage('pt-br')">
-                    <span class="pull-left p-r-5">
-                        <img src="/images/flags/portuguese(br).png" alt="avatar 4">
-                    </span>
-                    <div class="clearfix">
-                        <div>
-                            <strong translate="languages.pt_br"></strong>
-                        </div>
-                    </div>
-                </li>
-                <li class="clearfix" ng-click="changeLanguage('es')">
-                    <span class="pull-left p-r-5">
-                        <img src="/images/flags/spanish.png" alt="avatar 4">
-                    </span>
-                    <div class="clearfix">
-                        <div>
-                            <strong translate="languages.es"></strong>
-                        </div>
-                    </div>
-                </li>                
+                </li>              
             </ul>
         </li>
         <li class="dropdown-footer clearfix">
@@ -272,52 +252,6 @@
 </nav>
 <!-- END MAIN SIDEBAR -->
 
-    <link href="assets/plugins/modal/css/component.css" rel="stylesheet">
-
-    <button class="btn btn-dark" id="beet-modal-success" data-modal="modal-11" style="display:none">Super Scaled</button>
-    
-<button class="btn btn-dark" id="beet-loader-open" data-modal="modal-13" style="display:none">Super Scaled</button>
-    <div class="md-modal md-effect-11" id="modal-11">
-        <div class="md-content md-content-green">
-            <h3>Confirmação</h3>
-            <div>
-                <p>Dados salvos com sucesso !</p>
-                <button class="btn btn-default">Ok</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="md-modal md-effect-12" id="modal-12">
-        <div class="md-content">
-            
-            <div>
-                <h2 translate="global.choose_company">
-                    Escolha a companhia : </h3>
-                    <ul>
-                        <li style="padding:20px;" ng-repeat="company in session.companies">
-                            <div ng-click='changeCompany($index)' style='cursor:pointer;'>
-                                <img src="images/uploads/companies/{{company._id}}.png" style="width:24px;height:24px;" />
-                                &nbsp;&nbsp;
-                                <strong>{{company.attributes.personal.name}}</strong>
-                            </div>
-                        </li>
-                    </ul>
-                    <button class="btn btn-default" id="modal-companies-close" style='display:none;'>Ok</button>
-</div>
-        </div>
-    </div>
-
-    
-    <div class="md-modal md-effect-12" id="modal-13">
-        <div class="md-content">
-            <div id="loaderImage" style="margin-left:250px;margin-top:0px;"></div>
-            <button class="btn btn-default" id="beet-loader-close" style="display:none;">Ok</button>
-        </div>
-    </div>    
-
-
-    <div class="md-overlay"></div>
-
 
     
 <!-- Add your site or application content here -->
@@ -331,6 +265,67 @@
 </div>
 
 <!-- END WRAPPER -->
+
+
+
+
+<!-- BEGIN MODALS -->
+    <link href="assets/plugins/modal/css/component.css" rel="stylesheet">
+
+    <button class="btn btn-dark" id="beet-modal-success" data-modal="modal-11" style="display:none"></button>  
+    <button class="btn btn-dark" id="beet-loader-open" data-modal="modal-13" style="display:none"></button>
+    <button class="btn btn-dark" id="beet-modal-login-failed" data-modal="modal-14" style="display:none"></button>
+
+    <div class="md-modal md-effect-11" id="modal-11">
+        <div class="md-content md-content-green">
+            <h3>Confirmação</h3>
+            <div>
+                <p>Dados salvos com sucesso !</p>
+                <button class="btn btn-default">Ok</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="md-modal md-effect-12" id="modal-12">
+        <div class="md-content">
+            <div>
+                <h2 translate="global.choose_company"></h2>
+                <ul>
+                    <li style="padding:20px;" ng-repeat="company in session.companies">
+                        <div ng-click='changeCompany($index)' style='cursor:pointer;'>
+                            <img src="images/uploads/companies/{{company._id}}.png" style="width:24px;height:24px;" />
+                            &nbsp;&nbsp;
+                            <strong>{{company.attributes.personal.name}}</strong>
+                        </div>
+                    </li>
+                </ul>
+                <button class="btn btn-default" id="modal-companies-close" style='display:none;'>Ok</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="md-modal md-effect-12" id="modal-13">
+        <div class="md-content">
+            <div id="loaderImage" style="margin-left:250px;margin-top:0px;"></div>
+            <button class="btn btn-default" id="beet-loader-close" style="display:none;">Ok</button>
+        </div>
+    </div>    
+
+    <div class="md-modal md-effect-11" id="modal-14">
+        <div class="md-content md-content-red">
+            <h3>Acesso Negado</h3>
+            <div>
+                <p>Dados Inválidos !</p>
+                <button class="btn btn-default">Ok</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="md-overlay"></div>
+<!-- END MODALS -->
+
 
 <!-- BEGIN MANDATORY SCRIPTS -->
 <script src="bower_components/jquery/jquery.js"></script>

@@ -1,4 +1,4 @@
-BeetApp
+﻿BeetApp
     .factory('Person', function($http, Config) {
         return {
             getAttributes : function(moduleId) {

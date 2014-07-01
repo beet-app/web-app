@@ -1,6 +1,9 @@
-BeetApp
+﻿BeetApp
     .controller('MainController', function($scope, $rootScope, $http, $location, $translate, Login) {
         $scope.formData = {};
+
+        $rootScope.languages = new Array("pt_br", "en", "es");
+        
 
         $scope.changeCompany = function(intIndex) {
             $rootScope.session.menus = $rootScope.session.companies[intIndex].menus;

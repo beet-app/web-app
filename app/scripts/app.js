@@ -1,4 +1,4 @@
-var BeetApp = angular.module('beetApp', ['ui.router','pascalprecht.translate']);
+﻿var BeetApp = angular.module('beetApp', ['ui.router','pascalprecht.translate']);
 
 
 BeetApp.config(function($translateProvider) {
@@ -6,5 +6,5 @@ BeetApp.config(function($translateProvider) {
 	  prefix: '/scripts/languages/',
 	  suffix: '.json'
 	});	
-	$translateProvider.preferredLanguage('pt-br');
+	$translateProvider.preferredLanguage('pt_br');
 });

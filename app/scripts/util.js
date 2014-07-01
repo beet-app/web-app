@@ -1,4 +1,4 @@
-BeetApp
+﻿BeetApp
     .factory('Config', function() {
         return {
             getApiUrl : function() {

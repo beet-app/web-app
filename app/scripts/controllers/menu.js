@@ -1,4 +1,4 @@
-BeetApp
+﻿BeetApp
     .controller('MenuController', function($scope, $http, Menu) {
 
 

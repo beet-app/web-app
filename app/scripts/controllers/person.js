@@ -1,4 +1,4 @@
-BeetApp
+﻿BeetApp
     .controller('PersonController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Person) {
 
         $scope.formData = {};
@@ -112,18 +112,6 @@ BeetApp
                 });                
             }
 
-
-
-
-
-            /*
-            Person.create($scope.formData)
-
-                .success(function(data) {
-                    alert("ok");
-                    $location.path("person/list");
-                });
-            */
         };
 
         $scope.htmlElement = function(attribute){
@@ -160,7 +148,6 @@ BeetApp
             .success(function(data) {
                 $('#beet-loader-close').trigger("click"); 
                 $scope.persons = data;
-                //images/uploads/persons/{{person._id}}.png
             });
 
 

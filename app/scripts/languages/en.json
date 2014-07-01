@@ -1,37 +1,42 @@
-{
+﻿{
 
-     "global": {
-"choose_company": "Choose company:" 
-"choose_language": "Choose Language" 
-"suggest_language": "Post a language" 
-"notifications": "Notifications" 
-     } 
-     "languages": {
-     "en", "English", 
-     "es", "Spanish", 
-     "en_us": "Portuguese (BR)" 
-     } 
-"attributes": {
-"personal": {
-"name": "Name", 
-"gender": "Sex," 
-"cpf": "CPF" 
-"postcode": "CEP" 
-"street", "street", 
-"complement": "Complement" 
-"neighborhood": "Neighbourhood" 
-"city": "City", 
-"state", "State", 
-"birth_date": "Date of Birth" 
-"email", "Email", 
-"video_link": "Video Link" 
-} 
-"training_contract": {
-"percentage_athlete": "Percentage Athlete" 
-"percentage_representative": "Percentage of Representative" 
-"percentage_club": "Percent Club" 
-} 
-} 
+    "global": {
+		"choose_company"  : "Escolha a companhia:" ,
+		"choose_language" : "Escolha a Linguagem"  ,
+		"suggest_language" : "Sugira uma linguagem" ,
+		"notifications"   : "Notificações",
+		"all_notifications"   : "Ver todas as notificações"
+    },
+    "languages" : {
+    	"en"    : "Inglês"        ,
+    	"es"    : "Espanhol"      ,
+    	"pt_br" : "Portugûes(BR)" 
+    },
+	"attributes" : {
+	   "personal": {
+			 "name" : "Nome",
+			 "gender" : "Sexo",
+			 "cpf" : "CPF",
+			 "postcode" : "CEP",
+			 "street" : "Rua",
+			 "complement" : "Complemento",
+			 "neighborhood" : "Bairro",
+			 "city" : "Cidade",
+			 "state" : "Estado",
+			 "birth_date" : "Data de Nascimento",
+			 "email" : "E-mail",
+			 "video_link" : "Link do Video"
+		},
+		"training_contract" : {
+			"percentage_athlete" : "Porcentagem do Atleta",
+			"percentage_representative" : "Porcentagem do Representante",
+			"percentage_club" : "Porcentagem do Clube"
+		}
+	}
 
 
-  }
+ }
+
+
+
+

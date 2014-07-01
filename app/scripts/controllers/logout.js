@@ -1,4 +1,4 @@
-BeetApp
+﻿BeetApp
     .controller('LogoutController', function($scope, $http, $location, Login) {
 
         $scope.formData = {};

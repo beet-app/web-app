@@ -1,19 +1,25 @@
-{
+ï»¿{
 
     "global": {
+
 		"choose_company"  : "Escolha a companhia:" ,
 		"choose_language" : "Escolha a Linguagem"  ,
 		"suggest_language" : "Sugira uma linguagem" ,
-		"notifications"   : "Notificações",
-		"all_notifications"   : "Ver todas as notificações"
+		"notifications"   : "NotificaÃ§Ãµes",
+		"all_notifications"   : "Ver todas as notificaÃ§Ãµes"
+
     },
     "languages" : {
-    	"en"    : "Inglês"        ,
+
+    	"en"    : "InglÃªs"        ,
     	"es"    : "Espanhol"      ,
-    	"pt_br" : "Portugûes(BR)" 
+    	"pt_br" : "PortugÃ»es(BR)" 
+
     },
 	"attributes" : {
+
 	   "personal": {
+
 			 "name" : "Nome",
 			 "gender" : "Sexo",
 			 "cpf" : "CPF",
@@ -26,17 +32,14 @@
 			 "birth_date" : "Data de Nascimento",
 			 "email" : "E-mail",
 			 "video_link" : "Link do Video"
+
 		},
 		"training_contract" : {
+
 			"percentage_athlete" : "Porcentagem do Atleta",
 			"percentage_representative" : "Porcentagem do Representante",
 			"percentage_club" : "Porcentagem do Clube"
-		}
+		
 	}
 
-
  }
-
-
-
-

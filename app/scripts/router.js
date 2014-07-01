@@ -1,4 +1,4 @@
-BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+﻿BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     $httpProvider.defaults.withCredentials = true;
 
     $httpProvider.responseInterceptors.push(function($q, $location) {

@@ -1,4 +1,4 @@
-BeetApp
+﻿BeetApp
 
     .factory('Main', function($http) {
         return {
