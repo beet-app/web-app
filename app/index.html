@@ -33,6 +33,7 @@
     
     <link rel="stylesheet" href="styles/plugins.css">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/components/datepicker/datepicker.css">
     <link rel="stylesheet" href="#" id="theme-color">
     <!-- endbuild -->
 
@@ -167,7 +168,7 @@
             </ul>
         </li>
         <li class="dropdown-footer clearfix">
-            <a href="#" class="pull-left" translate="gloval.all_notifications"></a>
+            <a href="#" class="pull-left" translate="global.all_notifications"></a>
             <a href="#" class="pull-right">
                 <i class="fa fa-cog"></i>
             </a>
@@ -185,7 +186,7 @@
     </a>
     <ul class="dropdown-menu">
         <li>
-            <a ui-sref="profile">
+            <a ui-sref="user/edit({_id:session.user._id})">
                 <i class="glyph-icon flaticon-account"></i> Perfil
             </a>
         </li>
@@ -259,6 +260,7 @@
 
 
 </div>
+
 
 
 
@@ -355,6 +357,7 @@
 <script src="assets/plugins/quicksearch/jquery.quicksearch.js"></script>
 <!-- END MANDATORY SCRIPTS -->
 
+<script src="scripts/components/datepicker/bootstrap-datepicker.js"></script>
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
@@ -362,20 +365,18 @@
 <script src="scripts/util.js"></script>
 <script src="scripts/application.js"></script>
 <script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/menu.js"></script>
 <script src="scripts/controllers/login.js"></script>
 <script src="scripts/controllers/signup.js"></script>
 <script src="scripts/controllers/logout.js"></script>
 <script src="scripts/controllers/person.js"></script>
-<script src="scripts/controllers/person-list.js"></script>
 <script src="scripts/controllers/company.js"></script>
-<script src="scripts/controllers/company-list.js"></script>
+<script src="scripts/controllers/user.js"></script>
 <script src="scripts/services/main.js"></script>
-<script src="scripts/services/menu.js"></script>
 <script src="scripts/services/login.js"></script>
 <script src="scripts/services/signup.js"></script>
 <script src="scripts/services/person.js"></script>
 <script src="scripts/services/company.js"></script>
+<script src="scripts/services/user.js"></script>
 
 
 <!-- endbuild -->

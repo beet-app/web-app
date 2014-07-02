@@ -168,7 +168,14 @@
                         break;
 
                     case "DATE":
-                        html = "<input type='TEXT' "+attr+" value='"+value+"' class='form-control input-lg' />";
+                        html = "<div class='input-append date' id='dpYears' data-date='12-02-2012' data-date-format='dd-mm-yyyy' data-date-viewmode='years'><input class='span2' size='16' type='text' "+attr+" value='"+value+"' readonly=''><span class='add-on'><i class='glyphicon glyphicon-calendar'></i></span></div>";
+        $(function(){
+            $('#dpYears').datepicker();
+        });
+
+
+
+                      
                         break;
 
                         

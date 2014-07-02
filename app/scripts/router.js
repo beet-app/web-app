@@ -93,6 +93,14 @@
             controller: 'CompanyListController'
         })
 
+        .state('user/edit', {
+            url: '/user/edit/:_id',
+            templateUrl: 'views/user/user.html',
+            controller: 'UserController'
+        })        
+
+
+/*
         .state('todo', {
             url: '/todo',
             templateUrl: 'views/todo/todo.html',
@@ -127,7 +135,7 @@
             }
 
         });
-
+*/
 });
 
 
