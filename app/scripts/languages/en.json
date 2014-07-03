@@ -2,44 +2,70 @@
 
     "global": {
 
-		"choose_company"  : "Escolha a companhia:" ,
-		"choose_language" : "Escolha a Linguagem"  ,
-		"suggest_language" : "Sugira uma linguagem" ,
-		"notifications"   : "Notificações",
-		"all_notifications"   : "Ver todas as notificações"
+		"choose_company"  : "Choose company:" ,
+		"choose_language" : "Choose language"  ,
+		"suggest_language" : "Suggest language" ,
+		"notifications"   : "Notifications",
+		"all_notifications"   : "See all notifications"
 
     },
     "languages" : {
 
-    	"en"    : "Inglês"        ,
-    	"es"    : "Espanhol"      ,
-    	"pt_br" : "Portugûes(BR)" 
+    	"en"    : "English"      ,
+    	"es"    : "Spanish"      ,
+    	"pt_br" : "Portuguese(BR)" 
 
     },
 	"attributes" : {
 
 	   "personal": {
 
-			 "name" : "Nome",
-			 "gender" : "Sexo",
-			 "cpf" : "CPF",
-			 "postcode" : "CEP",
-			 "street" : "Rua",
-			 "complement" : "Complemento",
-			 "neighborhood" : "Bairro",
-			 "city" : "Cidade",
-			 "state" : "Estado",
-			 "birth_date" : "Data de Nascimento",
+			 "name" : "Name",
+			 "gender" : "Gender",
+			 "cpf" : "Identify ID",
+			 "postcode" : "Post code",
+			 "street" : "Street",
+			 "complement" : "Complement",
+			 "neighborhood" : "Neighborhood",
+			 "city" : "City",
+			 "state" : "State",
+			 "birth_date" : "Birth date",
 			 "email" : "E-mail",
-			 "video_link" : "Link do Video"
+			 "video_link" : "Video link"
 
 		},
 		"training_contract" : {
 
-			"percentage_athlete" : "Porcentagem do Atleta",
-			"percentage_representative" : "Porcentagem do Representante",
-			"percentage_club" : "Porcentagem do Clube"
+			"initial_date" : "Initial date",
+			"final_date" : "Final date",
+			"number" : "Number contract",
+			"percentage_athlete" : "Percentage Athlete",
+			"percentage_representative" : "Percentage Representative",
+			"percentage_club" : "Percentage Club",
+			"professional_training" : "Professional training",
+			"transport" : "Transport",
+			"feeding" : "Feeding",
+			"accommodation" : "Accommodation",
+			"clothing" : "Clothing",
+			"health_care" : "Health Care",
+			"dental_care" : "Dental Care",
+			"psychological_assistance" : "Psychological Assistance",
+			"school_supplies" : "School Supplies",
+			"sport_supplies" : "Sport Supplies",
+			"leisure" : "Leisure",
+			"foreign_language_classes" : "Foreign Language Classes",
+			"computer_science_classes" : "Computer Science Classes"
+		},
+		"professional_contract" : {
+
+			"initial_date" : "Initial date",
+			"final_date" : "Final date",
+			"number" : "Number contract",
+			"federative_rights" : "Federative Rights",
+			"percentage_athlete" : "Percentage Athlete",
+			"percentage_representative" : "Percentage Representative",
+			"percentage_club" : "Percentage Club",			
+			"salary" : "Salary"
 		}
 	}
-
  }

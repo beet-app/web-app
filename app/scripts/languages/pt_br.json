@@ -36,10 +36,36 @@
 		},
 		"training_contract" : {
 
+			"initial_date" : "Data inicial",
+			"final_date" : "Data final",
+			"number" : "Número do contrato",
 			"percentage_athlete" : "Porcentagem do Atleta",
 			"percentage_representative" : "Porcentagem do Representante",
-			"percentage_club" : "Porcentagem do Clube"
+			"percentage_club" : "Porcentagem do Clube",
+			"professional_training" : "Formação Profissional",
+			"transport" : "Transporte",
+			"feeding" : "Alimentação",
+			"accommodation" : "Alojamento",
+			"clothing" : "Vestuário",
+			"health_care" : "Assistência Médica",
+			"dental_care" : "Assistência Odontológica",
+			"psychological_assistance" : "Assistência Psicológica",
+			"school_supplies" : "Material Escolar",
+			"sport_supplies" : "Material Esportivo",
+			"leisure" : "Recreação e Lazer",
+			"foreign_language_classes" : "Aulas de Línguas Estrangeiras",
+			"computer_science_classes" : "Aulas de Informática"
+		},
+		"professional_contract" : {
+
+			"initial_date" : "Data inicial",
+			"final_date" : "Data final",
+			"number" : "Número do contrato",
+			"federative_rights" : "Direitos Federativos",
+			"percentage_athlete" : "Porcentagem do Atleta",
+			"percentage_representative" : "Porcentagem do Representante",
+			"percentage_club" : "Porcentagem do Clube",			
+			"salary" : "Salário"
 		}
 	}
-
  }
