@@ -1,5 +1,5 @@
 ﻿BeetApp
-    .controller('PersonController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Person) {
+    .controller('PersonController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Person, Attribute) {
 
         $scope.formData = {};
 
@@ -8,7 +8,7 @@
 
         $('#beet-loader-open').trigger("click");
 
-        Person.getPersons($rootScope.session.company._id)
+        objService.getByCompany($rootScope.session.company._id)
             .success(function(data) {
                 $timeout(function(){
                     $scope.persons = data;
@@ -69,11 +69,11 @@
 
 
         if ($stateParams._id != undefined){
-            Person.getOne($stateParams._id)
+            objService.getOne($stateParams._id)
                 .success(function(data) {
                     $timeout(function(){
-                        $scope.person = data;
-                        $("#imgAvatar").attr("src","/images/uploads/persons/" + data._id + ".png");
+                        $scope.data = data;
+                        $("#imgAvatar").attr("src","/images/uploads/"+objModule.description+"/" + data._id + ".png");
                         $scope._id = $scope.person._id;
                         $('#beet-loader-close').trigger("click");
                     });
@@ -84,21 +84,20 @@
 
 
         $scope.save = function() {
-            var arrName;
 
             var objSend = new Object();
 
-            objSend["attributes"] = fillAttributes;
+            objSend["attributes"] = fillAttributes();
             objSend["company"] = $rootScope.session.company._id;
             objSend["active"] = true;
 
             if ($scope._id != undefined){
-                Person.update(objSend, $scope._id)
+                objService.update(objSend, $scope._id)
                 .success(function(data) {
                     $location.path("person/list");
                 });
             }else{
-                Person.create(objSend)
+                objService.create(objSend)
                 .success(function(data) {
                     $location.path("person/list");
                 });                
@@ -107,7 +106,7 @@
         };
 
         $scope.edit = function(_id) {
-            $location.path('person/edit/' + _id);
+            $location.path(objModule.description + '/edit/' + _id);
         };     
     });
 
@@ -117,17 +116,20 @@ BeetApp
         $('#beet-loader-open').trigger("click"); 
         $scope.formData = {};
 
-        Person.getByCompany($rootScope.session.company._id)
+        var objService = Person;
+        var objModule =  $rootScope.session.menu.modules[0];
+
+        objService.getByCompany($rootScope.session.company._id)
             .success(function(data) {
                 $('#beet-loader-close').trigger("click"); 
                 $scope.persons = data;
             });
 
         $scope.new = function() {
-            $location.path('person/create'); 
+            $location.path(objModule.description + '/create'); 
         };
 
         $scope.edit = function(_id) {
-            $location.path('person/edit/' + _id);
+            $location.path(objModule.description + '/edit/' + _id);
         };     
     });
