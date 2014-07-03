@@ -3,6 +3,8 @@
 
         $scope.formData = {};
 
+        var objService = Person;
+        var objModule =  $rootScope.session.menu.modules[0];
 
         $('#beet-loader-open').trigger("click");
 
@@ -14,8 +16,7 @@
                 });
             });
 
-        var moduleId = $rootScope.session.menu.modules[0];
-        Person.getAttributes(moduleId)
+        objService.getByModule(objModule._id)
             .success(function(data) {
                 $scope.attributeGroups = data;
                 $timeout(function(){
@@ -67,13 +68,13 @@
             });
 
 
-        if ($stateParams.personId != undefined){
-            Person.getOne($stateParams.personId)
+        if ($stateParams._id != undefined){
+            Person.getOne($stateParams._id)
                 .success(function(data) {
                     $timeout(function(){
                         $scope.person = data;
-                        $("#imgPerson").attr("src","/images/uploads/persons/" + data._id + ".png");
-                        $scope.personId = $scope.person._id;
+                        $("#imgAvatar").attr("src","/images/uploads/persons/" + data._id + ".png");
+                        $scope._id = $scope.person._id;
                         $('#beet-loader-close').trigger("click");
                     });
                 });
@@ -82,57 +83,31 @@
         }
 
 
-        $scope.savePerson = function() {
+        $scope.save = function() {
             var arrName;
-            var objSend = new Object();
-            var objAttributes = new Object();
-            $("[ng-model]").each(function(){
-                arrName = $(this).attr("ng-model").split(".");
-                if (objAttributes[arrName[0]] == undefined){
-                    objAttributes[arrName[0]] = new Object();
-                }
-                objAttributes[arrName[0]][arrName[1]] = $(this).val();
-            });
 
-            objSend["attributes"] = objAttributes;
+            var objSend = new Object();
+
+            objSend["attributes"] = fillAttributes;
             objSend["company"] = $rootScope.session.company._id;
             objSend["active"] = true;
 
-            if ($scope.personId != undefined){
-                Person.update(objSend, $scope.personId)
+            if ($scope._id != undefined){
+                Person.update(objSend, $scope._id)
                 .success(function(data) {
-                    $("#beet-modal-success").trigger("click");
                     $location.path("person/list");
                 });
             }else{
                 Person.create(objSend)
                 .success(function(data) {
-                    $("#beet-modal-success").trigger("click");
                     $location.path("person/list");
                 });                
             }
 
         };
 
-        $scope.htmlElement = function(attribute){
-
-            var html = "";
-            var value = "";
-            if ($scope.person != undefined){
-                if ($scope.person.attributes[attribute.group.description] != undefined){
-                    if ($scope.person.attributes[attribute.group.description] != undefined){
-                        value = $scope.person.attributes[attribute.group.description][attribute.description];
-                    }
-                }
-            }
-            html = createHtml(attribute, value);
-            
-            return $sce.trustAsHtml(html);
-        }
-
-
-        $scope.editPerson = function(personId) {
-            $location.path('person/edit/' + personId);
+        $scope.edit = function(_id) {
+            $location.path('person/edit/' + _id);
         };     
     });
 
@@ -142,20 +117,17 @@ BeetApp
         $('#beet-loader-open').trigger("click"); 
         $scope.formData = {};
 
-        var companyId = $rootScope.session.company._id;
-
-        Person.getPersons(companyId)
+        Person.getByCompany($rootScope.session.company._id)
             .success(function(data) {
                 $('#beet-loader-close').trigger("click"); 
                 $scope.persons = data;
             });
 
-
-        $scope.newPerson = function() {
+        $scope.new = function() {
             $location.path('person/create'); 
         };
 
-        $scope.editPerson = function(personId) {
-            $location.path('person/edit/' + personId);
+        $scope.edit = function(_id) {
+            $location.path('person/edit/' + _id);
         };     
     });

@@ -241,6 +241,8 @@ if ($.fn.sparkline) {
 
 //******************************** SKIN COLORS SWITCH ******************************//
 
+
+
 var setColor = function (color) {
     var color_ = 'color-'+color;
     $('#theme-color').attr("href", "/styles/colors/" + color_ + ".css");

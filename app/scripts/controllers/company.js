@@ -9,12 +9,12 @@
             });
 
 
-        $scope.createCompany = function() {
+        $scope.create = function() {
             $location.path('company/create'); 
         };
 
-        $scope.editCompany = function(companyId) {
-            $location.path('company/edit/' + companyId);
+        $scope.edit = function(_id) {
+            $location.path('company/edit/' + _id);
         };     
     });
 
@@ -23,7 +23,7 @@ BeetApp
     .controller('CompanyController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Company) {
 
         $scope.formData = {};
-
+moduleId = "53ad6b5b964efb2010000002";
 
         $('#main-content').hide();
         $('#loaderImage').show(); 
