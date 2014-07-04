@@ -11,8 +11,11 @@
      });
 
 BeetApp
-    .factory('Common', function($timeout, Config, Attribute) {
+    .factory('Common', function($timeout, $http, Config, Attribute) {
         return {
+            isValidImage: function(src) {
+                return $http.get(src);  
+            },        
             loadAttributesByModule : function(objModule) {
                 
                 $('#beet-loader-close').trigger("click"); 

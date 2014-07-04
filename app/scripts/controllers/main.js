@@ -1,5 +1,5 @@
 ﻿BeetApp
-    .controller('MainController', function($scope, $rootScope,$sce, $http, $location, $translate, Login) {
+    .controller('MainController', function($scope, $rootScope,$sce, $http, $location, $translate, Login, Common) {
         $scope.formData = {};
 
         $rootScope.languages = new Array("pt_br", "en", "es");
@@ -25,7 +25,7 @@
         $rootScope.createHtmlElement = function(attribute, data){
             var strHtml = createHtml(attribute, data);
             return $sce.trustAsHtml(strHtml);
-        }
+        };
 /*
 
 		if ($location.path() != "/login"){
@@ -46,8 +46,6 @@
             })
 */
     });
-
-
 
 
 /*
@@ -128,9 +126,11 @@
         if (attribute.group != undefined){
 
             if (data != undefined){
-                if (data.attributes[attribute.group.description] != undefined){
+                if (data.attributes != undefined){
                     if (data.attributes[attribute.group.description] != undefined){
-                        value = data.attributes[attribute.group.description][attribute.description];
+                        if (data.attributes[attribute.group.description] != undefined){
+                            value = data.attributes[attribute.group.description][attribute.description];
+                        }
                     }
                 }
             }
@@ -229,3 +229,4 @@ function fillAttributes(){
     });
     return objAttributes;
 }
+

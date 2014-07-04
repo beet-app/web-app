@@ -82,7 +82,7 @@
         })     
 
         .state('company/edit', {
-            url: '/company/edit/:companyId',
+            url: '/company/edit/:_id',
             templateUrl: 'views/company/company.html',
             controller: 'CompanyController'
         })        
@@ -90,7 +90,7 @@
         .state('company/list', {
             url: '/company/list',
             templateUrl: 'views/company/list.html',
-            controller: 'CompanyListController'
+            controller: 'CompanyController'
         })
 
         .state('user/edit', {

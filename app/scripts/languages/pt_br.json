@@ -18,7 +18,7 @@
     },
 	"attributes" : {
 
-	   "personal": {
+	   "person_data": {
 
 			 "name" : "Nome",
 			 "gender" : "Sexo",

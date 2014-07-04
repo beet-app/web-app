@@ -1,13 +1,14 @@
-<div style="float:left;width:auto;display:none;">
-    <div style="float:left;cursor:pointer;" ng-repeat="company in companies" ng-click='editCompany(company._id)'>
-        <img src="images/uploads/companies/{{company._id}}.png" alt="{{person.attributes.personal.name}}" title="{{company.attributes.personal.name}}" class="" style="width:20%;height:20%">
+<div style="float:left;width:100%;display:none;">
+    <div style="float:left;cursor:pointer;" ng-repeat="data in allModuleData" ng-click='edit(data._id)'>
+        <img src="images/uploads/{{session.menu.modules[0].description}}/{{data._id}}.png" title="" class="" style="width:40%;height:40%">
     </div>   
 </div>
+
 <form class="form-horizontal" role="form">          
     <!-- BEGIN TABS -->
     <div class="tabbable tabbable-custom form">
         <ul class="nav nav-tabs">
-            <li class="tab-index" ng-repeat="(description,attributeGroup) in attributeGroups">
+            <li class="tab-index" ng-repeat="(description,attributeGroup) in attributes">
                 <a href="#{{description}}" data-toggle="tab">{{description}}</a>
             </li>
             <li class="tab-index">
@@ -38,7 +39,10 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane" ng-repeat="(description,attributeGroup) in attributeGroups" id="{{description}}" >
+            <div class="tab-pane" ng-repeat="(description,attributeGroup) in attributes" id="{{description}}" >
+                <div class="page-title"> <i class="icon-custom-left"></i>
+                    <h3><strong>Dados da Empresa</strong></h3>
+                </div>                
                 <div class="row profile">
                     <div class="col-md-12">                        
                         <div class="row profile-classic">
@@ -47,7 +51,7 @@
                                     <div class="panel-body">
                                         <div class="row" ng-repeat="attribute in attributeGroup">
                                             <div class="control-label c-gray col-md-2" translate="attributes.{{description}}.{{attribute.description}}">:</div> 
-                                            <div class="col-md-8" ng-bind-html='createHtmlElement({{attribute}},{{company}})'>
+                                            <div class="col-md-8" ng-bind-html='createHtmlElement({{attribute}},{{moduleData}})'>
                                             </div>
                                         </div>                                               
                                     </div>
@@ -61,7 +65,7 @@
             <div class="tab-pane" id="tabUsers" >
 
                 <div class="page-title"> <i class="icon-custom-left"></i>
-                    <h3><strong>Membros</strong>{{company.personal.name}}</h3>
+                    <h3><strong>Membros</strong></h3>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -86,7 +90,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="member in company.members">
+                                                <tr ng-repeat="member in moduleData.members">
                                                     <td>{{member.user.local.name}}</td>
                                                     <td>{{member.user.local.email}}</td>
                                                     <td>{{member.profile.description}}</td>
@@ -122,3 +126,4 @@
     <!--END TABS-->
       
 </form>
+

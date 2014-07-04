@@ -1,166 +1,88 @@
 ﻿BeetApp
-    .controller('CompanyListController', function($scope, $rootScope, $http, $location, $timeout, Company) {
+    .controller('CompanyController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Attribute,Company, Common) {
 
         $scope.formData = {};
+        $scope.moduleData = {};
 
-        Company.get()
-            .success(function(data) {
-                $scope.companies = data;
-            });
+        $('#beet-loader-open').trigger("click");
 
+        var objService = Company;
 
-        $scope.create = function() {
-            $location.path('company/create'); 
-        };
+        // retirar
+        $rootScope.session.menu = {"description":"Empresa","url":"company/list","icon_class":"glyph-icon flaticon-pages","_id":"538dcc59c2cd7d080c000005","__v":0,"modules":[{"_id":"53ad6b5b964efb2010000002","description":"company"}]};
 
-        $scope.edit = function(_id) {
-            $location.path('company/edit/' + _id);
-        };     
-    });
+        var objModule =  $rootScope.session.menu.modules[0];
 
-
-BeetApp
-    .controller('CompanyController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Company) {
-
-        $scope.formData = {};
-moduleId = "53ad6b5b964efb2010000002";
-
-        $('#main-content').hide();
-        $('#loaderImage').show(); 
-
-        Company.get()
-            .success(function(data) {
-                $timeout(function(){
-                    $scope.companies = data;    
-                });
-            });
-
-        var moduleId = $rootScope.session.menu.modules[0]; 
-        Company.getAttributes(moduleId)
-            .success(function(data) {
-                $scope.attributeGroups = data;
-                $timeout(function(){
-                    $('#main-content').show();
-                    $('#loaderImage').hide();
-
-                    $("[id='personal.name']").keyup(function(){
-                        $("#lblName").text($("[id='personal.name']").val());   
-
-                    });
-                    $("[id='personal.name']").trigger("keyup");
-
-                    $("[id='personal.birth_date']").keyup(function(){
-                        $("#lblBirthDate").text($("[id='personal.birth_date']").val());
-                    });
-                    $("[id='personal.birth_date']").trigger("keyup");
-
-                    $("[id='personal.city']").keyup(function(){
-                        $("#lblCity").text($("[id='personal.city']").val());
-                    });
-                    $("[id='personal.city']").trigger("keyup");
-
-
-                    $("[id='personal.postcode']").keyup(function(){
-                        if($("[id='personal.postcode']").val().replace("-","").length == 8)
-                        {
-                            $("[id='personal.postcode']").attr("disabled","disabled");
-
-                            Company.getPostCodeDetails($("[id='personal.postcode']").val())
-                                .success(function (data) {
-                                    $timeout(function(){
-                                        $("[id='personal.neighborhood']").val(data.bairro);
-                                        $("[id='personal.street']").val(data.logradouro);
-                                        $("[id='personal.state']").val(data.estado);
-                                        $("[id='personal.city']").val(data.cidade);
-                                        $("[id='personal.complement']").focus();   
-                                    });                                
-                                });
-
-                            $("[id='personal.postcode']").removeAttr("disabled");
-
-                        }
-                    });
-
-                    $(".tab-pane:first").addClass("active");
-                    $(".tab-index:first").addClass("active");
-                });
-            });
-
-
-        if ($stateParams.companyId != undefined){
-            Company.getOne($stateParams.companyId)
-                .success(function(data) {
+        if ($location.path() == "/" + objModule.description + "/list"){
+            objService.get()
+                .success(function(allModuleData) {
                     $timeout(function(){
-                        $scope.company = data;
-                        $scope.companyId = $scope.company._id;
+                        $scope.allModuleData = allModuleData;
+                        $('#beet-loader-close').trigger("click");
                     });
                 });
+        }else{
+
+
+            if ($stateParams._id != undefined){
+                objService.getOne($stateParams._id)
+                    .success(function(moduleData) {
+                        $timeout(function(){
+                            $scope.moduleData = moduleData;
+                            $("#imgAvatar").attr("src","/images/uploads/"+objModule.description+"/" + moduleData._id + ".png");
+                            $('#beet-loader-close').trigger("click");
+                        });
+                    });
+            }else{
+                $('#beet-loader-close').trigger("click");
+            }
+                        
+            Attribute.getByModule(objModule._id)
+                .success(function(data) {
+
+                    $scope.attributes = data;
+
+                    $timeout(function(){
+                        Common.loadAttributesByModule(objModule);
+                    });
+                });
+
+
         }
 
+        $scope.save = function() {
 
-        $scope.saveCompany = function() {
-            var arrName;
             var objSend = new Object();
-            var objAttributes = new Object();
-            $("[ng-model]").each(function(){
-                arrName = $(this).attr("ng-model").split(".");
-                if (objAttributes[arrName[0]] == undefined){
-                    objAttributes[arrName[0]] = new Object();
-                }
-                objAttributes[arrName[0]][arrName[1]] = $(this).val();
-            });
 
-            objSend["attributes"] = objAttributes;
-            objSend["company"] = $rootScope.session.company._id;
-            objSend["active"] = true;
+            objSend["attributes"] = fillAttributes();
 
-            if ($scope.companyId != undefined){
-                Company.update(objSend, $scope.companyId)
+            if ($scope.moduleData._id != undefined){
+                objService.update(objSend, $scope.moduleData._id)
                 .success(function(data) {
                     $("#beet-modal-success").trigger("click");
-                    $location.path("company/list");
+                    $location.path(objModule.description + "/list");
                 });
             }else{
-                Company.create(objSend)
+                objService.create(objSend)
                 .success(function(data) {
                     $("#beet-modal-success").trigger("click");
-                    $location.path("company/list");
+                    $location.path(objModule.description + "/list");
                 });                
             }
 
-
-
-
-
-            /*
-            Company.create($scope.formData)
-
-                .success(function(data) {
-                    alert("ok");
-                    $location.path("company/list");
-                });
-            */
         };
 
-        $scope.htmlElement = function(attribute){
+        $scope.create = function() {
+            $location.path(objModule.description + '/create'); 
+        };
 
-            var html = "";
-            var value = "";
-            if ($scope.company != undefined){
-                if ($scope.company.attributes[attribute.group.description] != undefined){
-                    if ($scope.company.attributes[attribute.group.description] != undefined){
-                        value = $scope.company.attributes[attribute.group.description][attribute.description];
-                    }
-                }
-            }
+        $scope.edit = function(_id) {
+            $location.path(objModule.description + '/edit/' + _id);
+        };   
 
-            html = createHtml(attribute, value);
-            return $sce.trustAsHtml(html);
-        }
-
-
-        $scope.editCompany = function(companyId) {
-            $location.path('company/edit/' + companyId);
-        };     
+        $scope.delete = function(_id) {
+            $location.path(objModule.description + '/delete/' + _id);
+        };         
     });
+
 
