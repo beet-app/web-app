@@ -1,5 +1,5 @@
 ﻿BeetApp
-    .factory('Company', function($http, Config) {
+    .factory('Attribute', function($http, Config) {
         return {
             getByModule : function(moduleId) {
                 

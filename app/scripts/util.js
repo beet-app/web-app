@@ -11,69 +11,58 @@
      });
 
 BeetApp
-    .factory('Common', function($http, Config, Attribute) {
+    .factory('Common', function($timeout, Config, Attribute) {
         return {
-            loadAttributesByModule : function(moduleId) {
+            loadAttributesByModule : function(objModule) {
                 
+                $('#beet-loader-close').trigger("click"); 
 
-		        Attribute.getByModule(objModule._id)
-		            .success(function(data) {
+                $("[id='personal.name']").keyup(function(){
+                    $("#lblName").text($("[id='personal.name']").val());   
 
-		                $scope.attributes = data;
+                });
+                $("[id='personal.name']").trigger("keyup");
 
-		                $timeout(function(){
-		                    $('#beet-loader-close').trigger("click"); 
+                $("[id='personal.birth_date']").keyup(function(){
+                    $("#lblBirthDate").text($("[id='personal.birth_date']").val());
+                });
+                $("[id='personal.birth_date']").trigger("keyup");
 
-		                    $("[id='personal.name']").keyup(function(){
-		                        $("#lblName").text($("[id='personal.name']").val());   
-
-		                    });
-		                    $("[id='personal.name']").trigger("keyup");
-
-		                    $("[id='personal.birth_date']").keyup(function(){
-		                        $("#lblBirthDate").text($("[id='personal.birth_date']").val());
-		                    });
-		                    $("[id='personal.birth_date']").trigger("keyup");
-
-		                    $("[id='personal.city']").keyup(function(){
-		                        $("#lblCity").text($("[id='personal.city']").val());
-		                    });
-		                    $("[id='personal.city']").trigger("keyup");
+                $("[id='personal.city']").keyup(function(){
+                    $("#lblCity").text($("[id='personal.city']").val());
+                });
+                $("[id='personal.city']").trigger("keyup");
 
 
-		                    $("[id='personal.postcode']").keyup(function(){
-		                        if($("[id='personal.postcode']").val().replace("-","").length == 8)
-		                        {
-		                            $("[id='personal.postcode']").attr("disabled","disabled");
+                $("[id='personal.postcode']").keyup(function(){
+                    if($("[id='personal.postcode']").val().replace("-","").length == 8)
+                    {
+                        $("[id='personal.postcode']").attr("disabled","disabled");
 
-		                            Company.getPostCodeDetails($("[id='personal.postcode']").val())
-		                                .success(function (data) {
-		                                    $timeout(function(){
-		                                        $("[id='personal.neighborhood']").val(data.bairro);
-		                                        $("[id='personal.street']").val(data.logradouro);
-		                                        $("[id='personal.state']").val(data.estado);
-		                                        $("[id='personal.city']").val(data.cidade);
-		                                        $("[id='personal.complement']").focus();   
-		                                    });                                
-		                                });
+                        Attribute.getPostCodeData($("[id='personal.postcode']").val())
+                            .success(function (data) {
+                                $timeout(function(){
+                                    $("[id='personal.neighborhood']").val(data.bairro);
+                                    $("[id='personal.street']").val(data.logradouro);
+                                    $("[id='personal.state']").val(data.estado);
+                                    $("[id='personal.city']").val(data.cidade);
+                                    $("[id='personal.complement']").focus();   
+                                });                                
+                            });
 
-		                            $("[id='personal.postcode']").removeAttr("disabled");
+                        $("[id='personal.postcode']").removeAttr("disabled");
 
-		                        }
-
-
-		                    });
-
-		                    $(".tab-pane:first").addClass("active");
-		                    $(".tab-index:first").addClass("active");
-		                });
-		            });
+                    }
 
 
+                });
 
-            },          
-            getPostCodeData : function(postcode) {
-                return $http.get('http://api.postmon.com.br/v1/cep/' + postcode,{withCredentials : false});
-            },            
+                $(".tab-pane:first").addClass("active");
+                $(".tab-index:first").addClass("active");
+
+					
+
+
+            }         
         }
      });

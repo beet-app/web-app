@@ -60,7 +60,7 @@
 </div>
 <div class="navbar-center" style="font-size:8px;height:10px;margin-top:-5px;">
     <div data-style="btn-dark" >
-        <img src="images/uploads/companies/{{session.company._id}}.png" style="width:32px;height:32px;"/>
+        <img src="images/uploads/company/{{session.company._id}}.png" style="width:32px;height:32px;"/>
         <button class="btn btn-dark" data-modal="modal-12" style="padding-left:1px;">
             &nbsp;&nbsp;
             {{session.company.attributes.personal.name}}
@@ -295,7 +295,7 @@
                 <ul>
                     <li style="padding:20px;" ng-repeat="company in session.companies">
                         <div ng-click='changeCompany($index)' style='cursor:pointer;'>
-                            <img src="images/uploads/companies/{{company._id}}.png" style="width:24px;height:24px;" />
+                            <img src="images/uploads/company/{{company._id}}.png" style="width:24px;height:24px;" />
                             &nbsp;&nbsp;
                             <strong>{{company.attributes.personal.name}}</strong>
                         </div>
@@ -377,6 +377,7 @@
 <script src="scripts/services/person.js"></script>
 <script src="scripts/services/company.js"></script>
 <script src="scripts/services/user.js"></script>
+<script src="scripts/services/attribute.js"></script>
 
 
 <!-- endbuild -->

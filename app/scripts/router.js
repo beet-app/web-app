@@ -64,15 +64,15 @@
         })     
 
         .state('person/edit', {
-            url: '/person/edit/:personId',
+            url: '/person/edit/:_id',
             templateUrl: 'views/person/person.html',
             controller: 'PersonController'
         })        
 
         .state('person/list', {
             url: '/person/list',
-            templateUrl: 'views/person/person-list.html',
-            controller: 'PersonListController'
+            templateUrl: 'views/person/list.html',
+            controller: 'PersonController'
         })
 
         .state('company/create', {

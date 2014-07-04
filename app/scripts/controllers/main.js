@@ -1,5 +1,5 @@
 ﻿BeetApp
-    .controller('MainController', function($scope, $rootScope, $http, $location, $translate, Login) {
+    .controller('MainController', function($scope, $rootScope,$sce, $http, $location, $translate, Login) {
         $scope.formData = {};
 
         $rootScope.languages = new Array("pt_br", "en", "es");
