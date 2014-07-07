@@ -8,7 +8,6 @@
 
         var objService = Person;
         var objModule =  $rootScope.session.menu.modules[0];
-                alert($('.imgAvatar').length);
 
 
         if ($location.path() == "/" + objModule.description + "/list"){

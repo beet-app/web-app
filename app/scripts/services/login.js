@@ -15,11 +15,6 @@
             },          
             post : function(data) {
                 return $http.post(Config.getApiUrl() + '/login', data);
-            },   
-            isImage : function(img) {
-                return $http.get(img);
-            }     
-
-                   
+            }              
         }
      });

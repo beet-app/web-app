@@ -1,6 +1,7 @@
-﻿BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+﻿BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     $httpProvider.defaults.withCredentials = true;
-
+    $locationProvider.html5Mode(true);
+    
     $httpProvider.responseInterceptors.push(function($q, $location) {
       return function(promise) {
         return promise.then(

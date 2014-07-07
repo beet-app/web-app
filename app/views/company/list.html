@@ -34,7 +34,9 @@
                     <div class="col-md-4 member-entry" ng-repeat="data in allModuleData">
                         <div class="row member">
                             <div class="col-xs-3"  style="cursor:pointer" ng-click='edit(data._id)'>
-                                <img src="images/uploads/{{session.menu.modules[0].description}}/{{data._id}}.png" alt="" class="pull-left img-responsive">
+
+                                    <avatar module="{{session.menu.modules[0].description}}" photo="{{data._id}}" scale="auto" class="pull-left img-responsive">
+                                    </avatar>                                
                                 <!--assets/img/avatars/avatar2_big.png-->
                             </div>
                             <div class="col-xs-9">

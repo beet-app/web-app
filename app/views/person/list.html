@@ -35,7 +35,9 @@
                         <div class="row member">
                             <div class="col-xs-3"  style="cursor:pointer" ng-click='edit(data._id)'>
                                 <div>
-                                    <img src="vai" class='imgAvatar' />
+                                    <avatar module="{{session.menu.modules[0].description}}" photo="{{data._id}}" scale="auto" class="pull-left img-responsive">
+
+
                                 </div>
                             </div>
                             <div class="col-xs-9">
