@@ -1,3 +1,9 @@
+<div style="float:left;width:100%;display:none;">
+    <div style="float:left;cursor:pointer;" ng-repeat="data in allModuleData" ng-click='edit(data._id)'>
+        <img src="images/uploads/{{session.menu.modules[0].description}}/{{data._id}}.png" title="" class="" style="width:40%;height:40%">
+    </div>   
+</div>
+
 <form class="form-horizontal" role="form">          
     <!-- BEGIN TABS -->
     <div class="tabbable tabbable-custom form">
@@ -12,7 +18,8 @@
                 <div class="col-md-12">
                     <ul class="list-unstyled profile-nav col-md-3">
                         <li>
-                            <img src="assets/img/avatars/avatar2_big.png" id="imgAvatar" alt="avatar 4"/>
+                            <avatar module="{{session.menu.modules[0].description}}" photo="{{moduleData._id}}" scale="auto" class="pull-left img-responsive">
+                                    </avatar>   
                         </li>
                     </ul>
                     <div class="col-md-9">

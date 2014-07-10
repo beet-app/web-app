@@ -129,7 +129,9 @@
                 if (data.attributes != undefined){
                     if (data.attributes[attribute.group.description] != undefined){
                         if (data.attributes[attribute.group.description] != undefined){
-                            value = data.attributes[attribute.group.description][attribute.description];
+                            if (data.attributes[attribute.group.description][attribute.description] != undefined){
+                                value = data.attributes[attribute.group.description][attribute.description];
+                            }
                         }
                     }
                 }
