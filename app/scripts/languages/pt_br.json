@@ -6,8 +6,12 @@
 		"choose_language" : "Escolha a Linguagem"  ,
 		"suggest_language" : "Sugira uma linguagem" ,
 		"notifications"   : "Notificações",
-		"all_notifications"   : "Ver todas as notificações"
+		"all_notifications"   : "Ver todas as notificações",
 
+		"buttons" : {
+			"save" : "Salvar",
+			"cancel" : "Cancelar"
+		}
     },
     "languages" : {
 
@@ -66,6 +70,17 @@
 			"percentage_representative" : "Porcentagem do Representante",
 			"percentage_club" : "Porcentagem do Clube",			
 			"salary" : "Salário"
+		},
+		"company_data" : {
+			"name" : "Nome",
+			"cnpj" : "CNPJ",
+			"postcode" : "CEP",
+			"street" : "Rua",
+			"number" : "Número",
+			"complement" : "Complemento",
+			"neighborhood" : "Bairro",
+			"city" : "Cidade",
+			"state" : "Estado"
 		}
 	}
  }
