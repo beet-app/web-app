@@ -1,17 +1,20 @@
 BeetApp
     .factory('Expense', function($http, Config) {
         return {
-            getByCompany : function(companyId) {
-                return $http.get(Config.getApiUrl() + "/" + companyId +'/expense');
+            getByPersonAndInterval : function(personId, initialDate, finalDate) {
+                return $http.get(Config.getApiUrl() + "/expense/" + personId + "/" + initialDate + "/" + finalDate);
             },
             getOne : function(expenseId) {
                 return $http.get(Config.getApiUrl() + '/expense/' + personId);
-            },            
+            },   
+            getByCompany : function(companyId) {
+                return $http.get(Config.getApiUrl() + '/expense/' + companyId);
+            }, 
             create : function(data) {
                 return $http.post(Config.getApiUrl() + '/expense', data);
             },
-            update : function(data, expenseId) {
-                return $http.put(Config.getApiUrl() + '/expense/' + expenseId, data);
+            update : function(_id) {
+                return $http.put(Config.getApiUrl() + '/expense/' + _id, data);
             }
         }
      });

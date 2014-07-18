@@ -18,12 +18,17 @@ BeetApp
                     });
                 });
         }else{
-            if ($stateParams._id != undefined){
-                objService.getOne($stateParams._id)
+            if ($stateParams.personId != undefined){
+
+                var now = new Date.now();
+
+                var initialDate = ($stateParams.initialDate!=undefined) ? $stateParams.initialDate : now.getYear() + "-" + now.getMonth() + "-1";
+                var finalDate = ($stateParams.finalDate!=undefined)     ? $stateParams.finalDate : now.getYear() + "-" + (parseInt(now.getMonth())+1).toString() + "-1";
+
+                objService.getByPersonAndInterval($stateParams.personId, initialDate, finalDate)
                     .success(function(moduleData) {
                         $timeout(function(){
                             $scope.moduleData = moduleData;
-                            $("#imgAvatar").attr("src","/images/uploads/"+objModule.description+"/" + moduleData._id + ".png");
                             $('#beet-loader-close').trigger("click");
                         });
                     });
@@ -36,17 +41,18 @@ BeetApp
 
                     $scope.attributes = data;
 
-                    $timeout(function(){
-                        Common.loadAttributesByModule(objModule);                        
-                    });
                 });
         }
 
-        $scope.save = function() {
+        $scope.save = function(expenseId) {
 
             var objSend = new Object();
 
-            objSend["attributes"] = fillAttributes();
+            objSend["items"] = Array();
+
+            $(".description[expense='"+expenseId+"']").each(function(){
+
+            });
 
             if ($scope.moduleData._id != undefined){
                 objService.update(objSend, $scope.moduleData._id)
