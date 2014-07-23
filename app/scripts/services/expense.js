@@ -8,12 +8,12 @@ BeetApp
                 return $http.get(Config.getApiUrl() + '/expense/' + personId);
             },   
             getByCompany : function(companyId) {
-                return $http.get(Config.getApiUrl() + '/expense/' + companyId);
+                return $http.get(Config.getApiUrl() + "/" + companyId + '/expense');
             }, 
             create : function(data) {
                 return $http.post(Config.getApiUrl() + '/expense', data);
             },
-            update : function(_id) {
+            update : function(data, _id) {
                 return $http.put(Config.getApiUrl() + '/expense/' + _id, data);
             }
         }

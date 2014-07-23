@@ -98,7 +98,22 @@
             url: '/user/edit/:_id',
             templateUrl: 'views/user/user.html',
             controller: 'UserController'
+        })    
+        .state('expense/list', {
+            url: '/expense/list',
+            templateUrl: 'views/expense/list.html',
+            controller: 'ExpenseController'
+        })   
+        .state('expense/view', {
+            url: '/expense/view/:personId',
+            templateUrl: 'views/expense/expense.html',
+            controller: 'ExpenseController'
         })        
+        .state('expense/view/date', {
+            url: '/expense/view/:personId/:initialDate/:finalDate',
+            templateUrl: 'views/expense/expense.html',
+            controller: 'ExpenseController'
+        })                 
 
 
 /*

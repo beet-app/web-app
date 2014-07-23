@@ -1,57 +1,87 @@
-<div style="float:left;width:100%;display:none;">
-    <div style="float:left;cursor:pointer;" ng-repeat="data in allModuleData" ng-click='edit(data._id)'>
-        <img src="images/uploads/{{session.menu.modules[0].description}}/{{data._id}}.png" title="" class="" style="width:40%;height:40%">
-    </div>   
+<div class="page-title"> <i class="icon-custom-left"></i>
+    <h3><strong>Despesas</strong></h3>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 ">
+
+                <table class="table dataTable table-responsive table-red" id="table-editable">
+                    <thead>
+                        <tr role="row">
+                            <th width="40%">Description</th>
+                            <th width="30%">Category</th>
+                            <th width="20%" class="text-center">Value</th>
+                            <th  width="5%" class="text-center">Edit</th>
+                            <th  width="5%" class="text-center">Delete</th>
+                        </tr>
+                    </thead>                                    
+                    <tbody ng-repeat="(description,allData) in allModuleData">
+                        <tr>
+                            <td colspan="13"><b>{{description}}</b></td>
+                        </tr>
+                        <tr ng-repeat="data in allData">
+                            <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.description"></td>
+                            <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.category"></td>
+                            <td class="text-center" ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.value"></td>
+                            <td class="text-center">
+                                <a class="delete btn btn-danger" ng-click="delete(data._id)">
+                                    <i class="fa fa-times-circle"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a class="delete btn btn-warning" ng-click="edit(data)">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                            </td>                            
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-striped dataTable table-responsive table-red" id="table-editabl">                                   
+                    <tbody>
+                        <tr>
+                            <td ng-repeat="attribute in attributes.expense_data" style="vertical-align:middle;">
+
+                                <table class="table" id="table-editab">                                   
+                                    <tbody>
+                                        <tr>
+                                            <td translate="attribute.expense_data.{{attribute.description}}" style="vertical-align:middle;font-weight:bold;">
+
+                                            </td>         
+                                            <td ng-bind-html='createHtmlElement({{attribute}},{{moduleData}})'>>
+                                                
+                                            </td>                                                
+                                        </tr>
+                                    </tbody>
+                                </table>                        
+                            </td> 
+                            <td style="vertical-align:middle;">
+                                <button id="table-edit_new" class="btn btn-success" ng-click="save()">
+                                    Salvar
+                                </button>
+                            </td>              
+                            <td style="vertical-align:middle;">
+                                <button id="table-edit_cancel" class="btn btn-danger" ng-click="cancel()">
+                                    Cancelar
+                                </button>
+                            </td>                                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
-<form class="form-horizontal" role="form">          
-    <!-- BEGIN TABS -->
-    <div class="tabbable tabbable-custom form">
-        <ul class="nav nav-tabs">
-            <li class="tab-index" ng-repeat="(description,attributeGroup) in attributes">
-                <a href="#{{description}}" data-toggle="tab">{{description}}</a>
-            </li>
-            <li class="tab-index">
-                <a href="#tabUsers" data-toggle="tab">Membros</a>
-            </li>                
-        </ul>
-        <div class="tab-content">
-            <div class="space20"></div>
-            <div class="tab-pane" ng-repeat="(description,attributeGroup) in attributes" id="{{description}}" >
-                <div class="page-title"> <i class="icon-custom-left"></i>
-                    <h3><strong>Despesa</strong></h3>
-                </div>                
-                <div class="row profile">
-                    <div class="col-md-12">                        
-                        <div class="row profile-classic">
-                            <div class="col-md-12 m-t-20">
-                                <div class="panel">                           
-                                    <div class="panel-body">
-                                        <div class="row" ng-repeat="attribute in attributeGroup">
-                                            <div class="control-label c-gray col-md-2" translate="attributes.{{description}}.{{attribute.description}}">:</div> 
-                                            <div class="col-md-8" ng-bind-html='createHtmlElement({{attribute}},{{moduleData}})'>
-                                            </div>
-                                        </div>                                               
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+                <div class="btn-group" style="float:left;">
+                    <div  style="float:left;" >
+
+                    </div>   
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="align-center">
-                        <button class="btn btn-primary m-r-20" type="submit" ng-click="save()" translate="global.buttons.save">Save</button>
-                        <button type="reset" class="btn btn-default" translate="global.buttons.cancel">Cancel</button>
-                    </div>
-                </div>  
-            </div>  
-
-        </div>
-
     </div>
-    <!--END TABS-->
-      
-</form>
-
+</div>
