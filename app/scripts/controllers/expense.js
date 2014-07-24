@@ -18,8 +18,18 @@ BeetApp
                     });
                 });
         }else{
-            if ($stateParams.personId != undefined){
 
+            loadData();
+                        
+            Attribute.getByModule(objModule._id)
+                .success(function(data) {
+                    $scope.attributes = data;
+ 
+                });
+        } 
+
+        function loadData(){
+            if ($stateParams.personId != undefined){
                 var now = new Date(); 
                 var initialDate;
                 var finalDate;
@@ -50,44 +60,68 @@ BeetApp
                     finalDate = $stateParams.finalDate;
                 }                
                 objService.getByPersonAndInterval($stateParams.personId, initialDate, finalDate)
-                    .success(function(allModuleData) {
-                        $timeout(function(){
-                            $scope.allModuleData = allModuleData;
-                            $('#beet-loader-close').trigger("click");
-                        });
-                    });
+                    .success(function(allData) {
+                        
+                            $timeout(function(){
+                                $scope.allModuleData = allData;
+                                $('#beet-loader-close').trigger("click");
+                            });       
+                        
+                           
+                    });    
             }else{
                 $('#beet-loader-close').trigger("click");
             }
-                        
-            Attribute.getByModule(objModule._id)
-                .success(function(data) {
-                    $scope.attributes = data;
- 
-                });
-        } 
 
+        }
+
+        function formatDate(date, format){
+            if (format=="dd/mm/yyyy"){
+                arr = date.split("-");
+                return arr[2] + "/" + arr[1] + "/" + arr[0];
+            }else{
+                arr = date.split("/");
+                return arr[2] + "-" + arr[1] + "-" + arr[0];                
+            }
+
+        }
+        $scope.formatDateToDefault = function(date){
+            return formatDate(date,"dd/mm/yyyy");
+        }
         $scope.save = function() {
 
             var objSend = new Object();
 
             objSend["attributes"] = fillAttributes();
-            objSend["person"] = $scope.moduleData.person;
 
+            //modificar
+            objSend.attributes.expense_data.date = formatDate(objSend.attributes.expense_data.date, "");
+
+
+            objSend["person"] = $scope.moduleData.person;
+            $('#beet-loader-open').trigger("click");
             if ($scope.moduleData._id != undefined){
                 objService.update(objSend, $scope.moduleData._id)
                 .success(function(data) {
-                    $("#beet-modal-success").trigger("click");
-                    $location.path(objModule.description + '/view/' + $scope.moduleData.person);
+                    $timeout(function(){
+                        loadData();
+                    });                    
                 });
             }else{
                 objService.create(objSend)
                 .success(function(data) {
-                    $("#beet-modal-success").trigger("click");
-
-                    $location.path(objModule.description + '/view/' + $scope.moduleData.person);
+                    $timeout(function(){
+                        loadData();
+                    });                      
                 });                
             }
+
+            
+            $scope.moduleData._id = undefined;
+            $("[id='expense_data.description']").val("");
+            $("[id='expense_data.category']").val("");
+            $("[id='expense_data.date']").val("");
+            $("[id='expense_data.value']").val("");            
         };
 
         $scope.view = function(personId) {
@@ -97,16 +131,16 @@ BeetApp
             $scope.moduleData._id = editData._id;
             $("[id='expense_data.description']").val(editData.attributes.expense_data.description);
             $("[id='expense_data.category']").val(editData.attributes.expense_data.category);
-            $("[id='expense_data.date']").val(editData.attributes.expense_data.date);
+            $("[id='expense_data.date']").val(formatDate(editData.attributes.expense_data.date,"dd/mm/yyyy"));
             $("[id='expense_data.value']").val(editData.attributes.expense_data.value);
 
         };         
         $scope.cancel = function(editData) {
             $scope.moduleData._id = undefined;
-            $("[id='expense.description']").val("");
-            $("[id='expense.category']").val("");
-            $("[id='expense.date']").val("");
-            $("[id='expense.value']").val("");
+            $("[id='expense_data.description']").val("");
+            $("[id='expense_data.category']").val("");
+            $("[id='expense_data.date']").val("");
+            $("[id='expense_data.value']").val("");
 
         };   
 

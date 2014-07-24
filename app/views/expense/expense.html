@@ -9,16 +9,16 @@
                 <table class="table dataTable table-responsive table-red" id="table-editable">
                     <thead>
                         <tr role="row">
-                            <th width="40%">Description</th>
-                            <th width="30%">Category</th>
-                            <th width="20%" class="text-center">Value</th>
+                            <th width="40%" translate="attributes.expense_data.description"></th>
+                            <th width="30%" translate="attributes.expense_data.category">Category</th>
+                            <th width="20%" translate="attributes.expense_data.value" class="text-center">Value</th>
                             <th  width="5%" class="text-center">Edit</th>
                             <th  width="5%" class="text-center">Delete</th>
                         </tr>
                     </thead>                                    
                     <tbody ng-repeat="(description,allData) in allModuleData">
                         <tr>
-                            <td colspan="13"><b>{{description}}</b></td>
+                            <td colspan="13" style="font-weight:bold;" ng-bind="formatDateToDefault(description)"><b></b></td>
                         </tr>
                         <tr ng-repeat="data in allData">
                             <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.description"></td>
@@ -45,7 +45,7 @@
                                 <table class="table" id="table-editab">                                   
                                     <tbody>
                                         <tr>
-                                            <td translate="attribute.expense_data.{{attribute.description}}" style="vertical-align:middle;font-weight:bold;">
+                                            <td translate="attributes.expense_data.{{attribute.description}}" style="vertical-align:middle;font-weight:bold;">
 
                                             </td>         
                                             <td ng-bind-html='createHtmlElement({{attribute}},{{moduleData}})'>>
@@ -56,12 +56,12 @@
                                 </table>                        
                             </td> 
                             <td style="vertical-align:middle;">
-                                <button id="table-edit_new" class="btn btn-success" ng-click="save()">
+                                <button id="table-edit_new" class="btn btn-success" ng-click="save()" ng-translate="global.buttons.save">
                                     Salvar
                                 </button>
                             </td>              
                             <td style="vertical-align:middle;">
-                                <button id="table-edit_cancel" class="btn btn-danger" ng-click="cancel()">
+                                <button id="table-edit_cancel" class="btn btn-danger" ng-click="cancel()" ng-translate="global.buttons.cancel">
                                     Cancelar
                                 </button>
                             </td>                                            

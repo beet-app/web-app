@@ -81,6 +81,12 @@
 			"neighborhood" : "Bairro",
 			"city" : "Cidade",
 			"state" : "Estado"
+		},
+		"expense_data" : {
+			"category" : "Categoria",
+			"description" : "Descrição",
+			"value" : "Valor",
+			"date" : "Data"
 		}
 	}
  }
