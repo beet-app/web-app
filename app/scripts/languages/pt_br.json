@@ -38,6 +38,7 @@
 			 "video_link" : "Link do Video"
 
 		},
+
 		"training_contract" : {
 
 			"initial_date" : "Data inicial",
@@ -60,6 +61,7 @@
 			"foreign_language_classes" : "Aulas de Línguas Estrangeiras",
 			"computer_science_classes" : "Aulas de Informática"
 		},
+
 		"professional_contract" : {
 
 			"initial_date" : "Data inicial",
@@ -71,7 +73,9 @@
 			"percentage_club" : "Porcentagem do Clube",			
 			"salary" : "Salário"
 		},
+
 		"company_data" : {
+
 			"name" : "Nome",
 			"cnpj" : "CNPJ",
 			"postcode" : "CEP",
@@ -82,11 +86,27 @@
 			"city" : "Cidade",
 			"state" : "Estado"
 		},
+
 		"expense_data" : {
+
 			"category" : "Categoria",
 			"description" : "Descrição",
 			"value" : "Valor",
 			"date" : "Data"
+		},
+
+		"user_data" : {
+
+			"name" : "Nome",
+			"gender" : "Sexo",
+			"cpf" : "CPF",
+			"postcode" : "CEP",
+		    "street" : "Rua",
+			"complement" : "Complemento",
+			"neighborhood" : "Bairro",
+			"city" : "Cidade",
+			"state" : "Estado",
+			"birth_date" : "Data de Nascimento"
 		}
 	}
  }
