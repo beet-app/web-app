@@ -14,6 +14,7 @@
 		}
 
     },
+    
     "languages" : {
 
     	"en"    : "English"      ,
@@ -21,6 +22,7 @@
     	"pt_br" : "Portuguese(BR)" 
 
     },
+
 	"attributes" : {
 
 	   "personal": {
@@ -37,8 +39,8 @@
 			 "birth_date" : "Birth date",
 			 "email" : "E-mail",
 			 "video_link" : "Video link"
-
 		},
+
 		"training_contract" : {
 
 			"initial_date" : "Initial date",
@@ -61,6 +63,7 @@
 			"foreign_language_classes" : "Foreign Language Classes",
 			"computer_science_classes" : "Computer Science Classes"
 		},
+
 		"professional_contract" : {
 
 			"initial_date" : "Initial date",
@@ -72,6 +75,7 @@
 			"percentage_club" : "Percentage Club",			
 			"salary" : "Salary"
 		},
+
 		"company_data" : {
 			"name" : "Name",
 			"cnpj" : "CNPJ",			
@@ -82,6 +86,20 @@
 			"city" : "City",
 			"state" : "State",			
 			"number" : "Number"
+		},
+
+		"user_data" : {
+
+			"name" : "Name",
+			"gender" : "Gender",
+			"cpf" : "Identify ID",
+			"postcode" : "Post code",
+			"street" : "Street",
+			"complement" : "Complement",
+			"neighborhood" : "Neighborhood",
+			"city" : "City",
+			"state" : "State",
+			"birth_date" : "Birth date",
 		}
 	}
  }
