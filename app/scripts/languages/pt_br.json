@@ -108,5 +108,18 @@
 			"state" : "Estado",
 			"birth_date" : "Data de Nascimento"
 		}
+	},
+	"person" : {
+		"create" : "Novo Atleta",
+		"title" : "Atletas",
+		"person_data" : "Dados Pessoais",
+		"professional_contract" : "Contrato Profissional",
+		"training_contract" : "Contrato de Formação"
+	},
+	"expense" : {
+		"title" : "Despesas"
+	},
+	"user" : {
+		"user_data" : "Dados do Usuário"
 	}
  }

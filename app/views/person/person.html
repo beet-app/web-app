@@ -9,7 +9,7 @@
     <div class="tabbable tabbable-custom form">
         <ul class="nav nav-tabs">
             <li class="tab-index" ng-repeat="(description,attributeGroup) in attributes">
-                <a href="#{{description}}" data-toggle="tab">{{description}}</a>
+                <a href="#{{description}}" data-toggle="tab" translate="{{session.menu.modules[0].description}}.{{description}}">{{description}}</a>
             </li>
         </ul>
         <div class="tab-content">
