@@ -10,7 +10,8 @@
 
 		"buttons" : {
 			"save" : "Salvar",
-			"cancel" : "Cancelar"
+			"cancel" : "Cancelar",
+			"add" : "Adicionar"
 		}
     },
     "languages" : {
@@ -92,7 +93,8 @@
 			"category" : "Categoria",
 			"description" : "Descrição",
 			"value" : "Valor",
-			"date" : "Data"
+			"date" : "Data",
+			"observation" : "Observação"
 		},
 
 		"user_data" : {

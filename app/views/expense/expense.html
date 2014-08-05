@@ -9,9 +9,10 @@
                 <table class="table dataTable table-responsive table-red" id="table-editable">
                     <thead>
                         <tr role="row">
-                            <th width="40%" translate="attributes.expense_data.description"></th>
-                            <th width="30%" translate="attributes.expense_data.category">Category</th>
-                            <th width="20%" translate="attributes.expense_data.value" class="text-center">Value</th>
+                            <th width="30%" translate="attributes.expense_data.description"></th>
+                            <th width="20%" translate="attributes.expense_data.category">Category</th>
+                            <th width="30%" translate="attributes.expense_data.observation">Observation</th>
+                            <th width="10%" translate="attributes.expense_data.value" class="text-center">Value</th>
                             <th  width="5%" class="text-center">Edit</th>
                             <th  width="5%" class="text-center">Delete</th>
                         </tr>
@@ -23,6 +24,7 @@
                         <tr ng-repeat="data in allData">
                             <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.description"></td>
                             <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.category"></td>
+                            <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.observation"></td>
                             <td class="text-center" ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.value"></td>
                             <td class="text-center">
                                 <a class="delete btn btn-danger" ng-click="delete(data._id)">
@@ -37,33 +39,27 @@
                         </tr>
                     </tbody>
                 </table>
-                <table class="table table-striped dataTable table-responsive table-red" id="table-editabl">                                   
+                <table class="table dataTable table-responsive table-red" id="table-editabl" width="50%">                                   
                     <tbody>
-                        <tr>
-                            <td ng-repeat="attribute in attributes.expense_data" style="vertical-align:middle;">
+                        <tr ng-repeat="attribute in attributes.expense_data" style="vertical-align:middle;">
 
-                                <table class="table" id="table-editab">                                   
-                                    <tbody>
-                                        <tr>
-                                            <td translate="attributes.expense_data.{{attribute.description}}" style="vertical-align:middle;font-weight:bold;">
+                                <td translate="attributes.expense_data.{{attribute.description}}" style="vertical-align:middle;font-weight:bold;">
 
-                                            </td>         
-                                            <td ng-bind-html='createHtmlElement({{attribute}},{{moduleData}})'>>
-                                                
-                                            </td>                                                
-                                        </tr>
-                                    </tbody>
-                                </table>                        
-                            </td> 
-                            <td style="vertical-align:middle;">
-                                <button id="table-edit_new" class="btn btn-success" ng-click="save()" ng-translate="global.buttons.save">
-                                    Salvar
-                                </button>
-                            </td>              
-                            <td style="vertical-align:middle;">
+                                </td>         
+                                <td ng-bind-html='createHtmlElement({{attribute}},{{moduleData}})'>>
+                                    
+                                </td>                                                
+                    
+                            </tr> 
+                            <tr>
+                            <td style="vertical-align:middle;" align="right" colspan="99">
                                 <button id="table-edit_cancel" class="btn btn-danger" ng-click="cancel()" ng-translate="global.buttons.cancel">
                                     Cancelar
                                 </button>
+                                &nbsp;
+                                <button id="table-edit_new" class="btn btn-success" ng-click="save()" ng-translate="global.buttons.save">
+                                    Salvar
+                                </button>                                
                             </td>                                            
                         </tr>
                     </tbody>

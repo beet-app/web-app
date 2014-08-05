@@ -20,40 +20,40 @@ BeetApp
                 
                 $('#beet-loader-close').trigger("click"); 
 
-                $("[id='personal.name']").keyup(function(){
-                    $("#lblName").text($("[id='personal.name']").val());   
+                $("[id='person_data.name']").keyup(function(){
+                    $("#lblName").text($("[id='person_data.name']").val());   
 
                 });
-                $("[id='personal.name']").trigger("keyup");
+                $("[id='person_data.name']").trigger("keyup");
 
-                $("[id='personal.birth_date']").keyup(function(){
-                    $("#lblBirthDate").text($("[id='personal.birth_date']").val());
+                $("[id='person_data.birth_date']").keyup(function(){
+                    $("#lblBirthDate").text($("[id='person_data.birth_date']").val());
                 });
-                $("[id='personal.birth_date']").trigger("keyup");
+                $("[id='person_data.birth_date']").trigger("keyup");
 
-                $("[id='personal.city']").keyup(function(){
-                    $("#lblCity").text($("[id='personal.city']").val());
+                $("[id='person_data.city']").keyup(function(){
+                    $("#lblCity").text($("[id='person_data.city']").val());
                 });
-                $("[id='personal.city']").trigger("keyup");
+                $("[id='person_data.city']").trigger("keyup");
 
 
-                $("[id='personal.postcode']").keyup(function(){
-                    if($("[id='personal.postcode']").val().replace("-","").length == 8)
+                $("[id='person_data.postcode']").keyup(function(){
+                    if($("[id='person_data.postcode']").val().replace("-","").length == 8)
                     {
-                        $("[id='personal.postcode']").attr("disabled","disabled");
+                        $("[id='person_data.postcode']").attr("disabled","disabled");
 
-                        Attribute.getPostCodeData($("[id='personal.postcode']").val())
+                        Attribute.getPostCodeData($("[id='person_data.postcode']").val())
                             .success(function (data) {
                                 $timeout(function(){
-                                    $("[id='personal.neighborhood']").val(data.bairro);
-                                    $("[id='personal.street']").val(data.logradouro);
-                                    $("[id='personal.state']").val(data.estado);
-                                    $("[id='personal.city']").val(data.cidade);
-                                    $("[id='personal.complement']").focus();   
+                                    $("[id='person_data.neighborhood']").val(data.bairro);
+                                    $("[id='person_data.street']").val(data.logradouro);
+                                    $("[id='person_data.state']").val(data.estado);
+                                    $("[id='person_data.city']").val(data.cidade);
+                                    $("[id='person_data.complement']").focus();   
                                 });                                
                             });
 
-                        $("[id='personal.postcode']").removeAttr("disabled");
+                        $("[id='person_data.postcode']").removeAttr("disabled");
 
                     }
 

@@ -49,6 +49,8 @@
             var objSend = new Object();
 
             objSend["attributes"] = fillAttributes();
+            objSend["company"] = $rootScope.session.company._id;
+            objSend["active"] = true;
 
             if ($scope.moduleData._id != undefined){
                 objService.update(objSend, $scope.moduleData._id)

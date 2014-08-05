@@ -120,6 +120,7 @@ BeetApp
             $scope.moduleData._id = undefined;
             $("[id='expense_data.description']").val("");
             $("[id='expense_data.category']").val("");
+            $("[id='expense_data.observation']").val("");
             $("[id='expense_data.date']").val("");
             $("[id='expense_data.value']").val("");            
         };
@@ -131,6 +132,7 @@ BeetApp
             $scope.moduleData._id = editData._id;
             $("[id='expense_data.description']").val(editData.attributes.expense_data.description);
             $("[id='expense_data.category']").val(editData.attributes.expense_data.category);
+            $("[id='expense_data.observation']").val(editData.attributes.expense_data.observation);
             $("[id='expense_data.date']").val(formatDate(editData.attributes.expense_data.date,"dd/mm/yyyy"));
             $("[id='expense_data.value']").val(editData.attributes.expense_data.value);
 
@@ -139,6 +141,7 @@ BeetApp
             $scope.moduleData._id = undefined;
             $("[id='expense_data.description']").val("");
             $("[id='expense_data.category']").val("");
+            $("[id='expense_data.observation']").val("");
             $("[id='expense_data.date']").val("");
             $("[id='expense_data.value']").val("");
 
