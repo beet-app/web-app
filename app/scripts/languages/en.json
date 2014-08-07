@@ -14,7 +14,6 @@
 		}
 
     },
-    
     "languages" : {
 
     	"en"    : "English"      ,
@@ -22,10 +21,9 @@
     	"pt_br" : "Portuguese(BR)" 
 
     },
-
 	"attributes" : {
 
-	   "personal": {
+	   "person_data": {
 
 			 "name" : "Name",
 			 "gender" : "Gender",
@@ -99,7 +97,20 @@
 			"neighborhood" : "Neighborhood",
 			"city" : "City",
 			"state" : "State",
-			"birth_date" : "Birth date",
+			"birth_date" : "Birth date"
 		}
+	},
+	"person" : {
+		"create" : "New Athlete",
+		"title" : "Athlete",
+		"person_data" : "Personal Data",
+		"professional_contract" : "Professional Contract",
+		"training_contract" : "Training Contract"
+	},
+	"expense" : {
+		"title" : "Expenses"
+	},
+	"user" : {
+		"user_data" : "User Data"
 	}
  }
