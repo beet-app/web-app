@@ -61,7 +61,7 @@
 <div class="navbar-center" style="font-size:8px;height:10px;margin-top:-5px;">
     <div data-style="btn-dark" >
         <avatar module="company" photo="{{session.company._id}}" scale="32px" class=""></avatar>
-        <button class="btn btn-dark" data-modal="modal-12" style="padding-left:1px;">
+        <button class="btn btn-dark btn-modal-trigger" data-modal="modal-12" style="padding-left:1px;">
             &nbsp;&nbsp;
             {{session.company.attributes.company_data.name}}
             &nbsp;&nbsp;
@@ -276,16 +276,16 @@
 <!-- BEGIN MODALS -->
     <link href="assets/plugins/modal/css/component.css" rel="stylesheet">
 
-    <button class="btn btn-dark" id="beet-modal-success" data-modal="modal-11" style="display:none"></button>  
-    <button class="btn btn-dark" id="beet-loader-open" data-modal="modal-13" style="display:none"></button>
-    <button class="btn btn-dark" id="beet-modal-login-failed" data-modal="modal-14" style="display:none"></button>
+    <button class="btn btn-dark btn-modal-trigger" id="beet-modal-success" data-modal="modal-11" style="display:none"></button>
+    <button class="btn btn-dark btn-modal-trigger" id="beet-loader-open" data-modal="modal-13" style="display:none"></button>
+    <button class="btn btn-dark btn-modal-trigger" id="beet-modal-login-failed" data-modal="modal-14" style="display:none"></button>
 
     <div class="md-modal md-effect-11" id="modal-11">
         <div class="md-content md-content-green">
             <h3>Confirmação</h3>
             <div>
                 <p>Dados salvos com sucesso !</p>
-                <button class="btn btn-default">Ok</button>
+                <button class="btn btn-default btn-modal-close">Ok</button>
             </div>
         </div>
     </div>
@@ -303,7 +303,7 @@
                         </div>
                     </li>
                 </ul>
-                <button class="btn btn-default" id="modal-companies-close" style='display:none;'>Ok</button>
+                <button class="btn btn-default btn-modal-close" id="modal-companies-close" style='display:none;'>Ok</button>
             </div>
         </div>
     </div>
@@ -312,7 +312,7 @@
     <div class="md-modal md-effect-12" id="modal-13">
         <div class="md-content">
             <div id="loaderImage" style="margin-left:250px;margin-top:0px;"></div>
-            <button class="btn btn-default" id="beet-loader-close" style="display:none;">Ok</button>
+            <button class="btn btn-default btn-modal-close" id="beet-loader-close" style="display:none;">Ok</button>
         </div>
     </div>    
 
@@ -321,7 +321,7 @@
             <h3>Acesso Negado</h3>
             <div>
                 <p>Dados Inválidos !</p>
-                <button class="btn btn-default">Ok</button>
+                <button class="btn btn-default btn-modal-close">Ok</button>
             </div>
         </div>
     </div>
@@ -342,6 +342,7 @@
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/angular-translate/angular-translate.js"></script>
 <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="bower_components/platform/platform.js"></script>
 
 <script src="assets/plugins/jquery-migrate-1.2.1.js"></script>
 <script src="assets/plugins/jquery-ui/jquery-ui-1.10.4.min.js"></script>
@@ -383,6 +384,7 @@
 <script src="scripts/services/expense.js"></script>
 <script src="scripts/directives/datepicker.js"></script>
 <script src="scripts/directives/avatar.js"></script>
+<script src="scripts/directives/attribute.js"></script>
 
 
 <!-- endbuild -->

@@ -92,7 +92,7 @@ BeetApp
 
             var objSend = new Object();
 
-            objSend["attributes"] = fillAttributes();
+            objSend["attributes"] = fillExpenseAttributes();
 
             //modificar
             objSend.attributes.expense_data.date = formatDate(objSend.attributes.expense_data.date, "");
@@ -118,11 +118,8 @@ BeetApp
 
             
             $scope.moduleData._id = undefined;
-            $("[id='expense_data.description']").val("");
-            $("[id='expense_data.category']").val("");
-            $("[id='expense_data.observation']").val("");
-            $("[id='expense_data.date']").val("");
-            $("[id='expense_data.value']").val("");            
+            $("[id='table-edit_cancel']").trigger("click");
+
         };
 
         $scope.view = function(personId) {
@@ -135,6 +132,7 @@ BeetApp
             $("[id='expense_data.observation']").val(editData.attributes.expense_data.observation);
             $("[id='expense_data.date']").val(formatDate(editData.attributes.expense_data.date,"dd/mm/yyyy"));
             $("[id='expense_data.value']").val(editData.attributes.expense_data.value);
+            $('#modal-expense-open').trigger('click');
 
         };         
         $scope.cancel = function(editData) {
@@ -145,7 +143,16 @@ BeetApp
             $("[id='expense_data.date']").val("");
             $("[id='expense_data.value']").val("");
 
-        };   
+        };
+
+        $scope.add = function() {
+            $("[id='expense_data.description']").val("");
+            $("[id='expense_data.category']").val("");
+            $("[id='expense_data.observation']").val("");
+            $("[id='expense_data.date']").val("");
+            $("[id='expense_data.value']").val("");
+            $('#modal-expense-open').trigger('click');
+        };
 
         $scope.delete = function(_id) {
             $location.path(objModule.description + '/delete/' + _id);

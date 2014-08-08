@@ -1,3 +1,4 @@
+/*
 BeetApp.directive("datepickerk", function () {
   return {
     replace: true,
@@ -17,4 +18,23 @@ BeetApp.directive("datepickerk", function () {
 
 
   };
+});*/
+
+BeetApp.directive("datepicker", function () {
+    return {
+        replace: true,
+        restrict: 'E',
+        scope: { data: '='}, //, options: '=', placeholder: '@', ngModel: '='
+        templateUrl:'views/directives/datepicker.html',
+        link: function (scope, element) {
+            scope.value="";
+            $(function(){
+                $('#dpYears').datepicker();
+            });
+        }
+
+
+
+
+    };
 });

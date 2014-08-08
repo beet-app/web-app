@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 ">
 
-                <table class="table dataTable table-responsive table-red" id="table-editable">
+                <table class="table dataTable table-responsive table-red" id="table-editable" ng-show="allModuleData">
                     <thead>
                         <tr role="row">
                             <th width="30%" translate="attributes.expense_data.description"></th>
@@ -32,52 +32,62 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                <a class="delete btn btn-warning" ng-click="edit(data)">
+                                <a id="teste" class="delete btn btn-warning" ng-click="edit(data)">
                                     <i class="fa fa-pencil-square-o"></i>
                                 </a>
                             </td>                            
                         </tr>
                     </tbody>
                 </table>
-                <table class="table dataTable table-red" id="table-editabl" style="width:500px;">                                   
-                    <tbody>
-                        <tr ng-repeat="attribute in attributes.expense_data" style="vertical-align:middle;">
 
-                                <td translate="attributes.expense_data.{{attribute.description}}" style="vertical-align:middle;font-weight:bold;">
 
-                                </td>         
-                                <td ng-bind-html='createHtmlElement({{attribute}},{{moduleData}})'>>
-                                    
-                                </td>                                                
-                    
-                            </tr> 
-                            <tr>
-                            <td style="vertical-align:middle;" align="right" colspan="99">
-                                <button id="table-edit_cancel" class="btn btn-danger" ng-click="cancel()" ng-translate="global.buttons.cancel">
-                                    Cancelar
-                                </button>
-                                &nbsp;
-                                <button id="table-edit_new" class="btn btn-success" ng-click="save()" ng-translate="global.buttons.save">
-                                    Salvar
-                                </button>                                
-                            </td>                                            
-                        </tr>
-                    </tbody>
-                </table>
+                <div  ng-hide="allModuleData" style="margin-top:20px;margin-bottom:20px;color:red;font-weight: bold;">
+                    Não existem despesas cadastradas para mês !
+                </div>
+
+
+
+                <button class="btn btn-dark btn-modal-trigger" id="modal-expense-open" data-modal="modal-expense" style="display:none;">dsads</button>
+
+                <div class="md-modal md-effect-11" id="modal-expense">
+                    <div class="md-content md-content-white">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                        <div ng-repeat="attribute in attributes.expense_data"  style="font-weight:bold;margin-top:30px;">
+                                            <attribute data="attribute"></attribute>
+                                        </div>
+
+                                        <div style="float:left;width:100%">
+                                            <button id="table-edit_cancel" class="btn btn-danger btn-modal-close" style="float:left;" ng-click="cancel()" ng-translate="global.buttons.cancel">
+                                                Cancelar
+                                            </button>
+                                            &nbsp;&nbsp;
+                                            <button id="table-edit_new" class="btn btn-success" style="margin-left:5px;float:left;" ng-click="save()" ng-translate="global.buttons.save">
+                                                Salvar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="align-center">
+                            <button class="btn btn-primary m-r-20" ng-click="add()" translate="global.buttons.add">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md-overlay"></div>
+
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="row">
-                <div class="btn-group" style="float:left;">
-                    <div  style="float:left;" >
-
-                    </div>   
-
-                </div>
-            </div>
-    </div>
-</div>
+<script src="../../assets/plugins/modal/js/modalEffects.js"></script>
