@@ -27,15 +27,15 @@
                             <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.observation"></td>
                             <td class="text-center" ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.value"></td>
                             <td class="text-center">
+                                <a id="teste" class="delete btn btn-warning" ng-click="edit(data)">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
                                 <a class="delete btn btn-danger" ng-click="delete(data._id)">
                                     <i class="fa fa-times-circle"></i>
                                 </a>
                             </td>
-                            <td class="text-center">
-                                <a id="teste" class="delete btn btn-warning" ng-click="edit(data)">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                </a>
-                            </td>                            
                         </tr>
                     </tbody>
                 </table>

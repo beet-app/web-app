@@ -51,22 +51,22 @@
 			"initial_date" : "Data inicial",
 			"final_date" : "Data final",
 			"number" : "Número do contrato",
-			"percentage_athlete" : "Porcentagem do Atleta",
-			"percentage_representative" : "Porcentagem do Representante",
-			"percentage_club" : "Porcentagem do Clube",
-			"professional_training" : "Formação Profissional",
-			"transport" : "Transporte",
-			"feeding" : "Alimentação",
-			"accommodation" : "Alojamento",
-			"clothing" : "Vestuário",
-			"health_care" : "Assistência Médica",
-			"dental_care" : "Assistência Odontológica",
-			"psychological_assistance" : "Assistência Psicológica",
-			"school_supplies" : "Material Escolar",
-			"sport_supplies" : "Material Esportivo",
-			"leisure" : "Recreação e Lazer",
-			"foreign_language_classes" : "Aulas de Línguas Estrangeiras",
-			"computer_science_classes" : "Aulas de Informática"
+			"percentage_athlete" : "Porcentagem do Atleta (%)",
+			"percentage_representative" : "Porcentagem do Representante (%)",
+			"percentage_club" : "Porcentagem do Clube (%)",
+			"professional_training" : "Formação Profissional (R$)",
+			"transport" : "Transporte (R$)",
+			"feeding" : "Alimentação (R$)",
+			"accommodation" : "Alojamento (R$)",
+			"clothing" : "Vestuário (R$)",
+			"health_care" : "Assistência Médica (R$)",
+			"dental_care" : "Assistência Odontológica (R$)",
+			"psychological_assistance" : "Assistência Psicológica (R$)",
+			"school_supplies" : "Material Escolar (R$)",
+			"sport_supplies" : "Material Esportivo (R$)",
+			"leisure" : "Recreação e Lazer (R$)",
+			"foreign_language_classes" : "Aulas de Línguas Estrangeiras (R$)",
+			"computer_science_classes" : "Aulas de Informática (R$)"
 		},
 
 		"professional_contract" : {
@@ -75,10 +75,10 @@
 			"final_date" : "Data final",
 			"number" : "Número do contrato",
 			"federative_rights" : "Direitos Federativos",
-			"percentage_athlete" : "Porcentagem do Atleta",
-			"percentage_representative" : "Porcentagem do Representante",
-			"percentage_club" : "Porcentagem do Clube",			
-			"salary" : "Salário"
+			"percentage_athlete" : "Porcentagem do Atleta (%)",
+			"percentage_representative" : "Porcentagem do Representante (%)",
+			"percentage_club" : "Porcentagem do Clube (%)",
+			"salary" : "Salário (R$)"
 		},
 
 		"company_data" : {
@@ -106,7 +106,13 @@
 		"user_data" : {
 
 			"name" : "Nome",
-			"gender" : "Sexo",
+			"gender" : {
+			 	"description":"Sexo",
+			 	"selection" : {
+			 		"male" : "Masculino",
+			 		"female" : "Feminino"
+			 	}
+			 },
 			"cpf" : "CPF",
 			"postcode" : "CEP",
 		    "street" : "Rua",
