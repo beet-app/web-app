@@ -92,7 +92,7 @@ BeetApp
 
             var objSend = new Object();
 
-            objSend["attributes"] = fillExpenseAttributes();
+            objSend["attributes"] = fillAttributes();
 
             //modificar
             objSend.attributes.expense_data.date = formatDate(objSend.attributes.expense_data.date, "");

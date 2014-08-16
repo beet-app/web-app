@@ -26,7 +26,13 @@
 	   "person_data": {
 
 			 "name" : "Name",
-			 "gender" : "Gender",
+			 "gender" : {
+			 	"description":"Gender",
+			 	"selection" : {
+			 		"male" : "Male",
+			 		"female" : "Female"
+			 	}
+			 },
 			 "cpf" : "Identify ID",
 			 "postcode" : "Post code",
 			 "street" : "Street",

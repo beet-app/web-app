@@ -65,7 +65,6 @@
                     $location.path(objModule.description + "/list");
                 });                
             }
-
         };
 
         $scope.create = function() {

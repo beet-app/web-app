@@ -17,11 +17,12 @@ BeetApp
                 return $http.get(src);  
             },        
             loadAttributesByModule : function(objModule) {
-                
+                    
                 $('#beet-loader-close').trigger("click"); 
 
-                $("[id='person_data.name']").keyup(function(){
-                    $("#lblName").text($("[id='person_data.name']").val());   
+                $("#person_data.name #input").keyup(function(){
+                    
+                    $("#lblName").text($("[id='person_data.name'] input").val());   
 
                 });
                 $("[id='person_data.name']").trigger("keyup");

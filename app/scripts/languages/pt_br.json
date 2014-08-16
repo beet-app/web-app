@@ -26,7 +26,13 @@
 	   "person_data": {
 
 			 "name" : "Nome",
-			 "gender" : "Sexo",
+			 "gender" : {
+			 	"description":"Sexo",
+			 	"selection" : {
+			 		"male" : "Masculino",
+			 		"female" : "Feminino"
+			 	}
+			 },
 			 "cpf" : "CPF",
 			 "postcode" : "CEP",
 			 "street" : "Rua",

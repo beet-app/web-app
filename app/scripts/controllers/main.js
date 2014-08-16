@@ -222,18 +222,6 @@
 
 function fillAttributes(){
     var objAttributes = new Object();
-    $("[ng-model]").each(function(){
-        arrName = $(this).attr("ng-model").split(".");
-        if (objAttributes[arrName[0]] == undefined){
-            objAttributes[arrName[0]] = new Object();
-        }
-        objAttributes[arrName[0]][arrName[1]] = $(this).val();
-    });
-    return objAttributes;
-}
-
-function fillExpenseAttributes(){
-    var objAttributes = new Object();
     $("[model]").each(function(){
         arrName = $(this).attr("model").split(".");
         if (objAttributes[arrName[0]] == undefined){
