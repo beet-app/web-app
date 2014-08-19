@@ -91,7 +91,21 @@
 			"state" : "State",			
 			"number" : "Number"
 		},
-
+        "expense_data" : {
+            "category" : {
+                "description":"Category",
+                "selection" : {
+                    "travel":"Travel",
+                    "sporting_goods":"Sport Goods",
+                    "food":"Food",
+                    "other":"Other"
+                }
+            },
+            "description" : "Description",
+            "value" : "Value",
+            "date" : "Date",
+            "observation" : "Observation"
+        },
 		"user_data" : {
 
 			"name" : "Name",

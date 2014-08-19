@@ -95,8 +95,15 @@
 		},
 
 		"expense_data" : {
-
-			"category" : "Categoria",
+            "category" : {
+                "description":"Selecione a Categoria",
+                "selection" : {
+                    "travel":"Viagem",
+                    "sporting_goods":"Material Esportivo",
+                    "food":"Alimentação",
+                    "other":"Outros"
+                }
+            },
 			"description" : "Descrição",
 			"value" : "Valor",
 			"date" : "Data",

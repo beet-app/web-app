@@ -28,11 +28,17 @@ BeetApp.directive("datepicker", function () {
         templateUrl:'views/directives/datepicker.html',
         link: function (scope, element) {
             scope.value="";
-            $(function(){
-                $('#dpYears').datepicker();
-            });
-        }
 
+        },
+        compile : function(){
+            return {
+                post : function(scope, element, attributes){
+
+                    setTimeout(function(){$('#dpYears').datepicker()},1000);
+
+                }
+            }
+        }
 
 
 

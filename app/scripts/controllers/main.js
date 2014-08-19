@@ -222,12 +222,26 @@
 
 function fillAttributes(){
     var objAttributes = new Object();
+    var value="";
+    var element;
+    var template="";
     $("[model]").each(function(){
         arrName = $(this).attr("model").split(".");
         if (objAttributes[arrName[0]] == undefined){
             objAttributes[arrName[0]] = new Object();
         }
-        objAttributes[arrName[0]][arrName[1]] = $(this).val();
+        if ($(this).attr("template")){
+            template = $(this).attr("template").toLowerCase();
+        }else{
+            template = "";
+        }
+
+        if (template != "radio" && template != "dropdown"){
+            value = $(this).val();
+        }else{
+            value = document.querySelector('[model="'+$(this).attr("model") + '"]').selected;
+        }
+        objAttributes[arrName[0]][arrName[1]] = value;
     });
     return objAttributes;
 }

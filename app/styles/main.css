@@ -1,0 +1,5 @@
+core-dropdown::shadow #menu {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
