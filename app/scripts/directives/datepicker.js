@@ -2,7 +2,7 @@ BeetApp.directive("datepicker", function () {
     return {
         replace: true,
         restrict: 'E',
-        scope: { data: '='}, //, options: '=', placeholder: '@', ngModel: '='
+        scope: { data: '=', value:'='}, //, options: '=', placeholder: '@', ngModel: '='
         templateUrl:'views/directives/datepicker.html',
         link: function (scope, element) {
             scope.value="";

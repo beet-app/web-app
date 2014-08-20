@@ -7,7 +7,6 @@
         return promise.then(
           // Success: just return the response
           function(response){
-            $('#beet-loader-open').trigger("click");
             return response;
           }, 
           // Error: check the error status to get only the 401

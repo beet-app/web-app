@@ -39,7 +39,7 @@
 
 
 
-    <script src="assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
 </head>
 
 <body  ng-app="beetApp" ng-controller="MainController">
@@ -344,28 +344,25 @@
 <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
 <script src="bower_components/platform/platform.js"></script>
 
+<script src="scripts/components/datepicker/bootstrap-datepicker.js"></script>
 
-<script src="assets/plugins/jquery-ui/jquery-ui-1.10.4.min.js"></script>
+<script src="assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script src="assets/plugins/jquery-mobile/jquery.mobile-1.4.2.js"></script>
-<script src="assets/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script>
-<script src="assets/plugins/bootstrap-select/bootstrap-select.js"></script>
 <script src="assets/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="assets/plugins/mmenu/js/jquery.mmenu.min.all.js"></script>
 <script src="assets/plugins/nprogress/nprogress.js"></script>
-<script src="assets/plugins/breakpoints/breakpoints.js"></script>
-<script src="assets/plugins/numerator/jquery-numerator.js"></script>
-<script src="assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-cookie/jquery.cookie.min.js"></script>
 <script src="assets/plugins/modal/js/classie.js"></script>
 <script src="assets/plugins/modal/js/modalEffects.js"></script>
-<script src="assets/plugins/quicksearch/jquery.quicksearch.js"></script>
 <!-- END MANDATORY SCRIPTS -->
 
-<script src="scripts/components/datepicker/bootstrap-datepicker.js"></script>
+
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/router.js"></script>
 <script src="scripts/util.js"></script>
+<script src="scripts/application.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/login.js"></script>
 <script src="scripts/controllers/signup.js"></script>
@@ -385,6 +382,8 @@
 <script src="scripts/directives/datepicker.js"></script>
 <script src="scripts/directives/avatar.js"></script>
 <script src="scripts/directives/attribute.js"></script>
+<!-- endbuild -->
+
 
 <link rel="import" href="bower_components/paper-input/paper-input.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
@@ -395,9 +394,6 @@
 <link rel="import" href="bower_components/core-dropdown/core-dropdown.html">
 
 
-<!-- endbuild -->
-
-<script src="scripts/application.js"></script>
 
 </body>
 </html>
