@@ -26,7 +26,6 @@
                         $timeout(function(){
                             $scope.moduleData = moduleData;
                             $("#imgAvatar").attr("src","/images/uploads/"+objModule.description+"/" + moduleData._id + ".png");
-                            $('#beet-loader-close').trigger("click");
                         });
                     });
             }else{
@@ -39,7 +38,8 @@
                     $scope.attributes = data;
 
                     $timeout(function(){
-                        Common.loadAttributesByModule(objModule);                        
+                        Common.loadAttributesByModule(objModule);    
+                        $('#beet-loader-close').trigger("click");                    
                     });
                 });
         }

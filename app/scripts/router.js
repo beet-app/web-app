@@ -7,12 +7,15 @@
         return promise.then(
           // Success: just return the response
           function(response){
+            $('#beet-loader-open').trigger("click");
             return response;
           }, 
           // Error: check the error status to get only the 401
           function(response) {
-            if (response.status === 401)
+            $('#beet-loader-open').trigger("click");
+            if (response.status === 401){
              $location.url('/login');
+            }
              return $q.reject(response);
           }
         );

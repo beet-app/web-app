@@ -4,7 +4,7 @@
 
         $rootScope.languages = new Array("pt_br", "en", "es");
         
-
+        $('#beet-loader-close').trigger("click");  
         $scope.changeCompany = function(intIndex) {
             $rootScope.session.menus = $rootScope.session.companies[intIndex].menus;
             $rootScope.session.company = $rootScope.session.companies[intIndex];
