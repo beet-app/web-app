@@ -10,99 +10,9 @@
         }
      });
 
-BeetApp
-    .factory('Common', function($timeout, $http, Config, Attribute) {
-        return {
-            isValidImage: function(src) {
-                return $http.get(src);  
-            },        
-            loadAttributesByModule : function(objModule) {
-
-                $("[id='person_data.name']").keyup(function(){
-                    
-                    $("#lblName").text($("[id='person_data.name'] input").val());   
-
-                });
-                $("[id='person_data.name']").trigger("keyup");
-
-                $("[id='person_data.birth_date']").keyup(function(){
-                    $("#lblBirthDate").text($("[id='person_data.birth_date']").val());
-                });
-                $("[id='person_data.birth_date']").trigger("keyup");
-
-                $("[id='person_data.city']").keyup(function(){
-                    $("#lblCity").text($("[id='person_data.city']").val());
-                });
-                $("[id='person_data.city']").trigger("keyup");
-
-
-                $("[id='person_data.postcode']").keyup(function(){
-                    if($("[id='person_data.postcode']").val().replace("-","").length == 8)
-                    {
-                        $("[id='person_data.postcode']").attr("disabled","disabled");
-
-                        Attribute.getPostCodeData($("[id='person_data.postcode']").val())
-                            .success(function (data) {
-                                $timeout(function(){
-                                    $("[id='person_data.neighborhood']").val(data.bairro);
-                                    $("[id='person_data.street']").val(data.logradouro);
-                                    $("[id='person_data.state']").val(data.estado);
-                                    $("[id='person_data.city']").val(data.cidade);
-                                    $("[id='person_data.complement']").focus();   
-                                });                                
-                            });
-
-                        $("[id='person_data.postcode']").removeAttr("disabled");
-
-                    }
-
-
-                });
-
-                $(".tab-pane:first").addClass("active");
-                $(".tab-index:first").addClass("active");
-
-					
-
-
-            }         
-        }
-     });
-
-
 function toggleDialog(id) {
     var dialog = document.querySelector('#'+id);
     dialog.toggle();
-}
-
-function setPolymerMask(data){
-    var mask = data.type.properties.mask;
-    var id   = data.group.description + "." + data.description;
-
-    switch(mask.toLowerCase()) {
-        case "postcode":
-            $("[id='"+id+"']").attr("maxlength","9");
-            document.querySelector('[id="'+id+'"]').addEventListener('input', function(event) {
-                event.target.value = event.target.value.replace(/\D/g,"").replace(/^(\d{5})(\d)/,"$1-$2");
-            });
-            break;
-        default:
-            break;
-    }
-}
-
-function setPolymerMirror(data){
-    var mirror = data.type.properties.mirror;
-    var id     = data.group.description + "." + data.description;
-
-    if (mirror=="label" || mirror=="span"){
-        mirror = mirror + "." + id;
-    }
-
-    document.querySelector('[id="'+id+'"]').addEventListener('input', function(event) {
-        $("[id='"+mirror+"']").text(event.target.value);
-    });
-
 }
 
 

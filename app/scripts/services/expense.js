@@ -2,7 +2,10 @@ BeetApp
     .factory('Expense', function($http, Config) {
         return {
             getByPersonAndInterval : function(personId, initialDate, finalDate) {
-                return $http.get(Config.getApiUrl() + "/expense/" + personId + "/" + initialDate + "/" + finalDate);
+                return $http.get(Config.getApiUrl() + "/expense/person/" + personId + "/" + initialDate + "/" + finalDate);
+            },
+            getByCompanyAndInterval : function(companyId, initialDate, finalDate) {
+                return $http.get(Config.getApiUrl() + "/expense/company/" + companyId + "/" + initialDate + "/" + finalDate);
             },
             getOne : function(expenseId) {
                 return $http.get(Config.getApiUrl() + '/expense/' + personId);

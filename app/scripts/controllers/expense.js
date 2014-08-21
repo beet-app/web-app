@@ -1,5 +1,5 @@
 BeetApp
-    .controller('ExpenseController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Attribute, Expense, Common, Person) {
+    .controller('ExpenseController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Attribute, Expense, Common, Person, Company) {
 
         $scope.formData = {};
         $scope.moduleData = {};
@@ -13,7 +13,14 @@ BeetApp
             Person.getByCompany($rootScope.session.company._id)
                 .success(function(allModuleData) {
                     $timeout(function(){
-                        $scope.allModuleData = allModuleData;
+                        $scope.allPersonData = allModuleData;
+                    });
+                });
+
+            Company.getOne($rootScope.session.company._id)
+                .success(function(allModuleData) {
+                    $timeout(function(){
+                        $scope.allCompanyData = new Array(allModuleData);
                         $('#beet-loader-close').trigger("click");
                     });
                 });
@@ -41,8 +48,13 @@ BeetApp
             //modificar
             objSend.attributes.expense_data.date = formatDate(objSend.attributes.expense_data.date, "");
 
+            if ($scope.moduleData.person != undefined){
+                objSend["person"] = $scope.moduleData.person;
+            }else if ($scope.moduleData.company != undefined){
+                objSend["company"] = $scope.moduleData.company;
+            }
 
-            objSend["person"] = $scope.moduleData.person;
+
             $('#beet-loader-open').trigger("click");
             if ($scope.moduleData._id != undefined){
                 objService.update(objSend, $scope.moduleData._id)
@@ -63,9 +75,13 @@ BeetApp
             clearExpenseDialog();
         };
 
-        $scope.view = function(personId) {
-            $location.path(objModule.description + '/view/' + personId);
-        };   
+        $scope.viewPerson = function(personId) {
+            $location.path(objModule.description + '/view/person/' + personId);
+        };
+        $scope.viewCompany = function(companyId) {
+            $location.path(objModule.description + '/view/company/' + companyId);
+        };
+
         $scope.edit = function(editData) {
             clearExpenseDialog();
             $scope.moduleData._id = editData._id;
@@ -98,12 +114,10 @@ BeetApp
         }
 
         function loadData(){
-            if ($stateParams.personId != undefined){
+            if ($stateParams.personId != undefined || $stateParams.companyId != undefined){
                 var now = new Date();
                 var initialDate;
                 var finalDate;
-
-                $scope.moduleData.person = $stateParams.personId;
 
                 if ($stateParams.initialDate==undefined){
                     initialDate = now.getFullYear();
@@ -128,16 +142,36 @@ BeetApp
                 }else{
                     finalDate = $stateParams.finalDate;
                 }
-                objService.getByPersonAndInterval($stateParams.personId, initialDate, finalDate)
-                    .success(function(allData) {
 
-                        $timeout(function(){
-                            $scope.allModuleData = allData;
-                            $('#beet-loader-close').trigger("click");
+
+                if ($stateParams.personId != undefined) {
+                    $scope.moduleData.person = $stateParams.personId;
+                    objService.getByPersonAndInterval($scope.moduleData.person, initialDate, finalDate)
+                        .success(function(allData) {
+
+                            $timeout(function(){
+                                $scope.allModuleData = allData;
+                                $('#beet-loader-close').trigger("click");
+                            });
+
+
                         });
+                }else if($stateParams.companyId != undefined){
+                    $scope.moduleData.company = $stateParams.companyId;
+                    objService.getByCompanyAndInterval($scope.moduleData.company, initialDate, finalDate)
+                        .success(function(allData) {
+
+                            $timeout(function(){
+                                $scope.allModuleData = allData;
+                                $('#beet-loader-close').trigger("click");
+                            });
 
 
-                    });
+                        });
+                }
+
+
+
             }else{
                 $('#beet-loader-close').trigger("click");
             }

@@ -89,7 +89,7 @@
             <ul class="dropdown-menu-list withScroll" data-height="130">
                 <li class="clearfix" ng-repeat="language in languages" ng-click="changeLanguage(language)">
                     <span class="pull-left p-r-5">
-                        <img src="/images/flags/{{language}}.png" alt="avatar 4">
+                        <img ng-src="/images/flags/{{language}}.png" alt="{{language}}">
                     </span>
                     <div class="clearfix">
                         <div>
@@ -332,6 +332,7 @@
 
 
 <!-- BEGIN MANDATORY SCRIPTS -->
+<script src="bower_components/platform/platform.js"></script>
 <script src="bower_components/jquery/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -342,7 +343,7 @@
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/angular-translate/angular-translate.js"></script>
 <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-<script src="bower_components/platform/platform.js"></script>
+
 
 <script src="scripts/components/datepicker/bootstrap-datepicker.js"></script>
 
@@ -382,6 +383,7 @@
 <script src="scripts/directives/datepicker.js"></script>
 <script src="scripts/directives/avatar.js"></script>
 <script src="scripts/directives/attribute.js"></script>
+<script src="scripts/directives/common.js"></script>
 <!-- endbuild -->
 
 

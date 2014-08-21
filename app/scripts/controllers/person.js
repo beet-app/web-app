@@ -38,9 +38,10 @@
                     $scope.attributes = data;
 
                     $timeout(function(){
-                        Common.loadAttributesByModule(objModule);    
+                        $(".tab-pane:first").addClass("active");
+                        $(".tab-index:first").addClass("active");
                         $('#beet-loader-close').trigger("click");                    
-                    });
+                    },1000);
                 });
         }
 

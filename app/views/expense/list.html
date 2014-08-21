@@ -27,17 +27,16 @@
             <div class="panel-body">
                 <div class="row">
 
-                    <div class="col-md-4 member-entry" ng-repeat="data in allModuleData">
-                        <div class="row member">
+                    <div class="col-md-4 member-entry" ng-repeat="data in allPersonData">
+                        <div class="row member"  style="min-height:120px;">
                             <div class="col-xs-3"  style="cursor:pointer" ng-click='view(data._id)'>
-                                    <avatar module="person" photo="{{data._id}}" scale="auto" class="pull-left img-responsive">
-                                    </avatar>                                
-                                <!--assets/img/avatars/avatar2_big.png-->
+                                <avatar module="person" photo="{{data._id}}" scale="auto" class="pull-left img-responsive">
+                                </avatar>
                             </div>
                             <div class="col-xs-9">
-                                <h3 class="m-t-0 member-name" style="cursor:pointer" ng-click='view(data._id)'>
+                                <h3 class="m-t-0 member-name" style="cursor:pointer" ng-click='viewPerson(data._id)'>
                                     <strong>
-                                        <span ng-bind="data.attributes.person_data.name">
+                                        <span ng-bind="data.attributes.person_data.name" style="font-size:24px;">
                                     </strong>
                                 </h3>
                                 <div class="pull-left">
@@ -60,6 +59,22 @@
                                         <span ng-bind="data.attributes.person_data.city">
                                     </p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 member-entry" ng-repeat="data in allCompanyData">
+                        <div class="row member"  style="min-height:120px;">
+                            <div class="col-xs-3"  style="cursor:pointer" ng-click='view(data._id)'>
+                                <avatar module="company" photo="{{data._id}}" scale="auto" class="pull-left img-responsive">
+                                </avatar>
+                            </div>
+                            <div class="col-xs-9">
+                                <h3 class="m-t-0 member-name" style="cursor:pointer" ng-click='viewCompany(data._id)'>
+                                    <strong>
+                                        <span style="font-size:24px;" ng-bind="data.attributes.company_data.name">
+                                    </strong>
+                                </h3>
                             </div>
                         </div>
                     </div>

@@ -1,17 +1,16 @@
 ﻿BeetApp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     $httpProvider.defaults.withCredentials = true;
     //$locationProvider.html5Mode(true);
-    
+
     $httpProvider.responseInterceptors.push(function($q, $location) {
       return function(promise) {
         return promise.then(
           // Success: just return the response
           function(response){
             return response;
-          }, 
+          },
           // Error: check the error status to get only the 401
           function(response) {
-            $('#beet-loader-open').trigger("click");
             if (response.status === 401){
              $location.url('/login');
             }
@@ -106,54 +105,64 @@
             templateUrl: 'views/expense/list.html',
             controller: 'ExpenseController'
         })   
-        .state('expense/view', {
-            url: '/expense/view/:personId',
+        .state('expense/view/person', {
+            url: '/expense/view/person/:personId',
             templateUrl: 'views/expense/expense.html',
             controller: 'ExpenseController'
-        })        
-        .state('expense/view/date', {
-            url: '/expense/view/:personId/:initialDate/:finalDate',
+        })
+        .state('expense/view/company', {
+            url: '/expense/view/company/:companyId',
             templateUrl: 'views/expense/expense.html',
             controller: 'ExpenseController'
-        })                 
-
-
-/*
-        .state('todo', {
-            url: '/todo',
-            templateUrl: 'views/todo/todo.html',
-            controller: 'TodoController'
+        })
+        .state('expense/view/person/date', {
+            url: '/expense/view/person/:personId/:initialDate/:finalDate',
+            templateUrl: 'views/expense/expense.html',
+            controller: 'ExpenseController'
+        })
+        .state('expense/view/company/date', {
+            url: '/expense/view/company/:companyId/:initialDate/:finalDate',
+            templateUrl: 'views/expense/expense.html',
+            controller: 'ExpenseController'
         })
 
-        // nested list with custom controller
-        .state('home.list', {
-            url: '/list',
-            templateUrl: 'partial-home-list.html',
-            controller: function($scope) {
-                $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
-            }
-        })
 
-        // nested list with just some random string data
-        .state('home.paragraph', {
-            url: '/paragraph',
-            template: 'I could sure use a drink right now.'
-        })
+    /*
+            .state('todo', {
+                url: '/todo',
+                templateUrl: 'views/todo/todo.html',
+                controller: 'TodoController'
+            })
 
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('about', {
-            url: '/about',
-            views: {
-                '': { templateUrl: 'partial-about.html' },
-                'columnOne@about': { template: 'Look I am a column!' },
-                'columnTwo@about': {
-                    templateUrl: 'table-data.html',
-                    controller: 'scotchController'
+            // nested list with custom controller
+            .state('home.list', {
+                url: '/list',
+                templateUrl: 'partial-home-list.html',
+                controller: function($scope) {
+                    $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
                 }
-            }
+            })
 
-        });
-*/
+            // nested list with just some random string data
+            .state('home.paragraph', {
+                url: '/paragraph',
+                template: 'I could sure use a drink right now.'
+            })
+
+            // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+            .state('about', {
+                url: '/about',
+                views: {
+                    '': { templateUrl: 'partial-about.html' },
+                    'columnOne@about': { template: 'Look I am a column!' },
+                    'columnTwo@about': {
+                        templateUrl: 'table-data.html',
+                        controller: 'scotchController'
+                    }
+                }
+
+            });
+    */
 });
 
 
