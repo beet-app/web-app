@@ -3,7 +3,7 @@
         return {
             replace: true,
             restrict: 'E',
-            scope: { module: '@', photo: '@', scale: '@', class: '@'}, //, options: '=', placeholder: '@', ngModel: '=' 
+            scope: { module: '@', photo: '@', scale: '@', class: '@', width:'@', height:'@'}, //, options: '=', placeholder: '@', ngModel: '='
             templateUrl:"views/directives/avatar.html",
             compile: function(tElem,attrs) {
                 //do optional DOM transformation here

@@ -3,3 +3,36 @@ core-dropdown::shadow #menu {
     border: 1px solid #ccc;
     overflow: hidden;
 }
+
+
+paper-fab {
+    color: #FFF;
+    margin-right:2em;
+}
+
+paper-fab.blue {
+    background: #5677fc;
+}
+
+paper-fab.green {
+    background: #259b24;
+}
+
+paper-fab.yellow {
+    background: #ffeb3b;
+    color: #000;
+}
+paper-fab.black {
+    background: #FFF;
+    color: #000000;
+}
+
+paper-toast {
+    text-align: center;
+    bottom: 30px;
+    left: 1024px;
+    background-color:#259B24;
+    color: #FFFFFF;
+    z-index:999999;
+    font-weight: bold;
+}

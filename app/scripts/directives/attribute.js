@@ -33,6 +33,7 @@
                         });
                     }else if (data.type.template.toLowerCase() == "radio"){
                         if (value!="") {
+                            value = value.toLowerCase();
                             document.querySelector('[name="' + value + '"]').checked = true;
                             document.querySelector('[id="' + id + '"]').selected = value;
                             document.querySelector('[id="' + id + '"]').selectedChanged();

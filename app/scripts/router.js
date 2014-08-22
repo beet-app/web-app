@@ -71,9 +71,9 @@
             controller: 'PersonController'
         })        
 
-        .state('person/list', {
-            url: '/person/list',
-            templateUrl: 'views/person/list.html',
+        .state('person', {
+            url: '/person',
+            templateUrl: 'views/person/person.html',
             controller: 'PersonController'
         })
 
