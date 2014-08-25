@@ -90,7 +90,12 @@
                     $("[id='"+mirror+"']").text(event.target.value);
                 });
 
+            },
+            showToastMessage: function(text) {
+                var toast = document.querySelector('#beet-toast-message');
+                toast.show();
             }
+
 
 
 

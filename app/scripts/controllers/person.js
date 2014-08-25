@@ -1,5 +1,5 @@
 ﻿BeetApp
-    .controller('PersonController', function($scope, $rootScope,$stateParams, $sce, $http, $location, $timeout, Attribute,Person, Common) {
+    .controller('PersonController', function($scope, $rootScope,$stateParams, $sce, $q, $http, $location, $timeout, Attribute,Person, Common) {
 
         var objService = Person;
         var objModule =  $rootScope.session.menu.modules[0];
@@ -8,27 +8,24 @@
 
         function loadPage(){
 
-            $('#beet-loader-open').trigger("click");
+            $rootScope.loadingContent = true;
 
-            $scope.moduleData = undefined;
+            $scope.moduleData = undefined; 
 
             objService.getByCompany($rootScope.session.company._id)
-                .success(function(allModuleData) {
-                    $timeout(function(){
-                        $scope.allModuleData = allModuleData;
-                        $('#beet-loader-close').trigger("click");
-                    });
-                });
-            Attribute.getByModule(objModule._id)
-                .success(function(data) {
-                    $timeout(function(){
-                        $scope.attributes = data;
-                    });
-                });
+                .then(function(allModuleData) {
+                    $scope.allModuleData = allModuleData;
+                    
+                    Attribute.getByModule(objModule._id)
+                        .then(function(data) {
+                            $scope.attributes = data;
 
+                            $rootScope.loadingContent = false;
+                            $rootScope.moduleLoading = false;
+                        });    
+                });
 
         }
-
 
         $scope.save = function() {
 
@@ -42,14 +39,14 @@
                 objService.update(objSend, $scope.moduleData._id)
                     .success(function(data) {
                         loadPage();
-                        $timeout(function(){showToastMessage();},500);
+                        Common.showToastMessage();
 
                     });
             }else{
                 objService.create(objSend)
                     .success(function(data) {
                         loadPage();
-                        $timeout(function(){showToastMessage();},500);
+                        Common.showToastMessage();
                     });
             }
         };
@@ -57,42 +54,34 @@
         $scope.create = function() {
             $scope.moduleData = {};
             $scope.$apply();
-            $(".tab-pane:first").addClass("active");
-            $(".tab-index:first").addClass("active");
         };
 
         $scope.edit = function(_id) {
-            $('#beet-loader-open').trigger("click");
+            $rootScope.moduleLoading = true;
 
 
             if (_id != undefined){
                 $scope.moduleData = undefined;
+                $(".message-active").each(function(){
+                    $(this).removeClass("message-active");
+                });
+
+                $("[id='message-"+_id+"']").addClass("message-active");                
                 objService.getOne(_id)
-                    .success(function(moduleData) {
+                    .then(function(moduleData) {
+                        $scope.moduleData = moduleData;
                         $timeout(function(){
-                            $scope.moduleData = moduleData;
-                            $scope.$apply();
-
-                            $(".message-active").each(function(){
-                                $(this).removeClass("message-active");
-                            });
-
-                            $("[id='message-"+_id+"']").addClass("message-active");
-
-                            $(".tab-pane:first").addClass("active");
-                            $(".tab-index:first").addClass("active");
-                            $('#beet-loader-close').trigger("click");
+                            $rootScope.moduleLoading = false;    
                         });
                     });
-            }else{
-                $('#beet-loader-close').trigger("click");
             }
-
         };
 
         $scope.cancel = function() {
             $scope.moduleData = undefined;
-
+            $(".message-active").each(function(){
+                $(this).removeClass("message-active");
+            });            
         };
 
         $scope.delete = function(_id) {

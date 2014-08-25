@@ -1,11 +1,27 @@
 ﻿BeetApp
-    .factory('Person', function($http, Config) {
+    .factory('Person', function($http, $q, Config) {
         return {
             getByCompany : function(companyId) {
-                return $http.get(Config.getApiUrl() + "/" + companyId +'/person');
+                var defer = $q.defer();
+                $http.get(Config.getApiUrl() + "/" + companyId +'/person')
+                    .success(function(data){
+                        defer.resolve(data);
+                    })
+                    .error(function(data){
+                        defer.resolve(data);
+                    });                
+                return defer.promise;
             },
             getOne : function(personId) {
-                return $http.get(Config.getApiUrl() + '/person/' + personId);
+                var defer = $q.defer();
+                $http.get(Config.getApiUrl() + '/person/' + personId)
+                    .success(function(data){
+                        defer.resolve(data);
+                    })
+                    .error(function(data){
+                        defer.resolve(data);
+                    });
+                return defer.promise;
             },            
             create : function(data) {
                 return $http.post(Config.getApiUrl() + '/person', data);

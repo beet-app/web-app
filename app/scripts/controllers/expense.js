@@ -4,24 +4,22 @@ BeetApp
         $scope.formData = {};
         $scope.moduleData = {};
         
-        $('#beet-loader-open').trigger("click");
+        $rootScope.loadingContent = true;
 
         var objService = Expense;
         var objModule =  $rootScope.session.menu.modules[0];
 
         if ($location.path() == "/" + objModule.description + "/list"){
             Person.getByCompany($rootScope.session.company._id)
-                .success(function(allModuleData) {
-                    $timeout(function(){
-                        $scope.allPersonData = allModuleData;
-                    });
+                .then(function(allModuleData) {
+                    $scope.allPersonData = allModuleData;
                 });
 
             Company.getOne($rootScope.session.company._id)
                 .success(function(allModuleData) {
                     $timeout(function(){
                         $scope.allCompanyData = new Array(allModuleData);
-                        $('#beet-loader-close').trigger("click");
+                        $rootScope.loadingContent = false;
                     });
                 });
         }else{
@@ -29,7 +27,7 @@ BeetApp
             loadData();
                         
             Attribute.getByModule(objModule._id)
-                .success(function(data) {
+                .then(function(data) {
                     $scope.attributes = data;
  
                 });
@@ -55,7 +53,7 @@ BeetApp
             }
 
 
-            $('#beet-loader-open').trigger("click");
+            $rootScope.loadingContent = true;
             if ($scope.moduleData._id != undefined){
                 objService.update(objSend, $scope.moduleData._id)
                 .success(function(data) {
@@ -151,7 +149,7 @@ BeetApp
 
                             $timeout(function(){
                                 $scope.allModuleData = allData;
-                                $('#beet-loader-close').trigger("click");
+                                $rootScope.loadingContent = false;
                             });
 
 
@@ -163,7 +161,7 @@ BeetApp
 
                             $timeout(function(){
                                 $scope.allModuleData = allData;
-                                $('#beet-loader-close').trigger("click");
+                                $rootScope.loadingContent = false;
                             });
 
 
@@ -173,7 +171,7 @@ BeetApp
 
 
             }else{
-                $('#beet-loader-close').trigger("click");
+                $rootScope.loadingContent = false;
             }
 
         }

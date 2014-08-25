@@ -14,10 +14,6 @@ function toggleDialog(id) {
     var dialog = document.querySelector('#'+id);
     dialog.toggle();
 }
-function showToastMessage(text) {
-    var toast = document.querySelector('#beet-toast-message');
-    toast.show();
-}
 
 
         /*

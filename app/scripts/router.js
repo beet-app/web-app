@@ -3,6 +3,7 @@
     //$locationProvider.html5Mode(true);
 
     $httpProvider.responseInterceptors.push(function($q, $location) {
+
       return function(promise) {
         return promise.then(
           // Success: just return the response
@@ -50,7 +51,7 @@
         .state('home', {
             url: '/home',
             templateUrl: 'views/home.html',
-            controller: 'MainController'
+            controller: 'HomeController'
         })
 
         .state('menu', {

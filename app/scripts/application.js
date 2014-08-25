@@ -638,12 +638,21 @@ if ($('.magnific').length && $.fn.magnificPopup) {
 /****  Initiation of Main Functions  ****/
 jQuery(document).ready(function () {
 
-    manageSidebar();
-    toggleSidebarMenu();
-    customScroll();
+
+
+        $html.removeClass('sidebar-hidden').removeClass('sidebar-large').removeClass('sidebar-thin').addClass('sidebar-medium');
+        $('.sidebar-nav li.current').removeClass('active');
+        $('.sidebar-nav li.current .submenu').removeClass('in');
+        $sidebar_toggle.attr('id', 'menu-thin');
+        sidebarHeight();
+        $sidebar.removeClass('collapse');
+        $("#menu-right").trigger("close");
+
     liveTile();
     handleSlider();
     tableResponsive();
+
+    //destroySideScroll();
 
 });
 

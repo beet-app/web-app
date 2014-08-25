@@ -4,7 +4,7 @@
 html { font-size: 100%; height: 100%; }
 body {font-family: 'Open Sans', verdana, arial;font-weight: 300; margin-top: 40px;background: #DFE5E9;}
 #wrapper { width: 100%;}
-#main-content {width: 100%;padding:10px 20px;background-color: #DFE5E9;}
+#main-content {width: 100%;padding:0px 15px 0px 0px;background-color: #FFFFFF;position: fixed;height: 100%;}
 #sidebar{background-color: #2B2E33;}
 ul {margin: 0;padding: 0;list-style: none;}
 /****  Margin  ****/
@@ -372,7 +372,7 @@ a, a:focus, a:hover, a:active {  outline: 0;}
 
 /****  Medium Sidebar  ****/
 .sidebar-medium #wrapper {padding-left: 125px;}
-.sidebar-medium #sidebar {width: 125px;position: absolute;}
+.sidebar-medium #sidebar {width: 125px;overflow: hidden;}
 .sidebar-medium #sidebar .sidebar-img {max-height: 40px;max-width:40px;display: block;margin: auto;margin-bottom:6px;}
 .sidebar-medium .sidebar-nav li a{padding:18px 20px 12px 20px;text-align:center}
 .sidebar-medium #sidebar li a span.arrow, .sidebar-medium .sidebar-nav li a .label, .sidebar-medium .sidebar-nav li a .badge{display: none;}

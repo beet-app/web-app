@@ -1,5 +1,5 @@
-<div id="main-content" class="page-mailbox"  style="overflow-y: hidden;">
-    <div class="row" data-equal-height="true">
+<div id="main-content" class="page-mailbox" >
+    <div class="row" data-equal-height="true"  style="overflow-y: scroll;">
         <div class="col-md-4 list-messages">
             <div class="panel panel-default">
                 <div class="panel-body messages">
@@ -9,7 +9,7 @@
                         </span>
                         <input type="text" class="form-control bd-0 bd-white" placeholder="Search">
                     </div>
-                    <div id="messages-list" class="panel panel-default" data-height="window" data-padding="90" style="height: 655px;overflow-y: scroll;">
+                    <div id="messages-list" class="panel panel-default" data-height="window" data-padding="90" style="height:580px;overflow-y:scroll;overflow-h:hidden">
                         <div class="message-item media" ng-repeat="data in allModuleData" id="message-{{data._id}}">
                             <div class="pull-left text-center">
                                 <paper-checkbox></paper-checkbox>
@@ -27,38 +27,15 @@
 
                             </div>
                         </div>
-                        <!--
-                        <div class="message-item media message-active">
-                            <div class="pull-left text-center">
-                                <div class="pos-rel message-checkbox">
-                                    <div class=" ui-checkbox"><input type="checkbox" data-style="flat-red"></div>
-                                </div>
-                                <div>
-                                    <strong><i class="fa fa-paperclip"></i> 2</strong>
-                                </div>
-                            </div>
-                            <div class="message-item-right">
-                                <div class="media">
-                                    <img src="./Pixit - Responsive Boostrap3 Admin_files/avatar4_big.png" alt="avatar 4" width="50" class="pull-left">
-                                    <div class="media-body">
-                                        <small class="pull-right">23 Sept</small>
-                                        <h5><strong>Jerry Smith</strong></h5>
-                                        <h4>Re: Check Dropbox</h4>
-                                    </div>
-                                </div>
-                                <p class="f-14">Hello Steve, I have added new files in your Dropbox in order to show you how to...</p>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-8 col-md-8 email-hidden-sm detail-message"  ng-if="moduleData">
-            <div id="message-detail" class="panel panel-default" data-height="window" data-padding="40" style="height: 705px;">
+            <div id="message-detail" class="panel panel-default" data-height="window" data-padding="40">
 
-                <div class="col-md-12 m-t-20" style="margin-bottom: 10px;">
+                <div class="col-md-10 m-t-20" style="margin-bottom: 10px;">
                     <div class="pull-left">
                         <div class="media-body" style="float:left;">
                             <avatar module="{{session.menu.modules[0].description}}" photo="{{moduleData._id}}" width="50" class="pull-left"></avatar>
@@ -69,9 +46,10 @@
 
                     </div>
                     <div class="pull-right">
-                        <paper-fab icon="arrow-back" class="black" role="button" tabindex="0" aria-label="done"></paper-fab>
-                        <paper-fab icon="arrow-forward" class="black" role="button" tabindex="0" aria-label="done"></paper-fab>
+                        <paper-fab icon="arrow-back" class="black" role="button" tabindex="0" aria-label="done" ng-click="prev()"></paper-fab>
+                        <paper-fab icon="arrow-forward" class="black" role="button" tabindex="0" aria-label="done" ng-click="next()"></paper-fab>
                         <paper-fab icon="close" role="button" tabindex="0" aria-label="arrow-forward" ng-click="cancel()"></paper-fab>
+
                         <paper-fab icon="done" class="green" role="button" tabindex="0" aria-label="done" ng-click="save()"></paper-fab>
                     </div>
                 </div>
@@ -81,12 +59,12 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="tabbable tabbable-custom form" style="">
                                 <ul class="nav nav-tabs">
-                                    <li class="tab-index" ng-repeat="(description,attributeGroup) in attributes">
+                                    <li class="tab-index" ng-class="{'active':$index==0}" ng-repeat="(description,attributeGroup) in attributes">
                                         <a href="#{{description}}" data-toggle="tab" translate="{{session.menu.modules[0].description}}.{{description}}">{{description}}</a>
                                     </li>
                                 </ul>
-                                <div class="tab-content message-body" style="height: 655px;overflow-y: scroll;">
-                                    <div class="tab-pane" ng-repeat="(description,attributeGroup) in attributes" id="{{description}}" >
+                                <div class="tab-content message-body"  style="float:left;height:500px;width:100%;overflow-y:scroll;">
+                                    <div class="tab-pane" ng-class="{'active': $index==0}" ng-repeat="(description,attributeGroup) in attributes" id="{{description}}" >
                                         <div class="row profile-classic">
                                             <div class="col-md-12 m-t-20">
                                                 <div class="panel">
@@ -109,7 +87,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-8 col-md-8 email-hidden-sm detail-message"  ng-if="!moduleData">
+        <div class="col-lg-8 col-md-8 email-hidden-sm detail-message"  ng-if="!moduleData && !moduleLoading">
             <div class="panel panel-default" data-height="window" style="height: 705px;vertical-align: middle">
 
                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -126,5 +104,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-8 col-md-8 email-hidden-sm detail-message"  ng-show="!moduleData && moduleLoading">
+            <div class="panel panel-default" data-height="window" style="height: 705px;vertical-align: middle" ng-include src="'views/loading.html'">
+
+            </div>
+        </div>        
     </div>
 </div>

@@ -1,18 +1,18 @@
 BeetApp
-    .controller('LoginController', function($scope,$rootScope, $http, $location, Login) {
+    .controller('LoginController', function($scope,$rootScope, $http, $location, Login, Common) {
 
         $scope.formData = {};
-        
-        hideMenus();
 
-        $('#beet-loader-open').trigger("click");
+        $rootScope.loadingPage = true;
 
         Login.get()
             .success(function (data) {
                 loadData(data);
             })
             .error(function (error) {
-                $('#beet-loader-close').trigger("click");
+                $("#wrapper").show();
+                $rootScope.loadingPage = false;
+                $rootScope.login = true;
             });
 
         $scope.checkLogin = function() {
@@ -20,11 +20,11 @@ BeetApp
             if ($scope.formData.email != undefined) {
                 Login.post($scope.formData)
                     .success(function(data) {
-                        $('#beet-loader-open').trigger("click");
                         loadData(data);
                     })
                     .error(function(data) {
-                        $("#beet-modal-login-failed").trigger("click");
+                        Common.showToastMessage("Dados Inválidos !");
+
                     });
             }
         }; 
@@ -39,7 +39,8 @@ BeetApp
                     $rootScope.session.company = companies[0];       
                     $rootScope.session.menus = companies[0].menus;
                     $rootScope.session.menu = companies[0].menus[0];
-                    showMenus();
+                    $rootScope.loadingPage = false;
+                    $rootScope.login = false;
                     $location.path('home');                                          
                 })
                 .error(function (error) {
