@@ -119,7 +119,7 @@ BeetApp
 
                 if ($stateParams.initialDate==undefined){
                     initialDate = now.getFullYear();
-                    if (now.getMonth().toString().length==1){
+                    if ((now.getMonth()+1).toString().length==1){
                         initialDate = initialDate + "-" + "0" + (parseInt(now.getMonth())+1).toString();
                     }else{
                         initialDate = initialDate + "-" + (parseInt(now.getMonth())+1).toString();
@@ -131,7 +131,7 @@ BeetApp
 
                 if ($stateParams.finalDate==undefined){
                     finalDate = now.getFullYear();
-                    if (now.getMonth().toString().length==1){
+                    if ((now.getMonth()+2).toString().length==1){
                         finalDate = finalDate + "-" + "0" + (parseInt(now.getMonth())+2).toString();
                     }else{
                         finalDate = finalDate + "-" + (parseInt(now.getMonth())+2).toString();
