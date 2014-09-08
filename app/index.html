@@ -60,7 +60,7 @@
         <div class="navbar-center" style="font-size:8px;height:10px;margin-top:-5px;">
             <div data-style="btn-dark" >
                 <avatar module="company" photo="{{session.company._id}}" scale="32px" class=""></avatar>
-                <button class="btn btn-dark btn-modal-trigger" data-modal="modal-12" style="padding-left:1px;">
+                <button class="btn btn-dark" data-modal="modal-12" style="padding-left:1px;" ng-click="toggleDialog('dialog-companies');">
                     &nbsp;&nbsp;
                     {{session.company.attributes.company_data.name}}
                     &nbsp;&nbsp;
@@ -279,25 +279,19 @@
 <!-- BEGIN MODALS -->
     <link href="assets/plugins/modal/css/component.css" rel="stylesheet">
 
-    <button class="btn btn-dark btn-modal-trigger" id="beet-modal-login-failed" data-modal="modal-14" style="display:none"></button>
-
-    <div class="md-modal md-effect-12" id="modal-12">
-        <div class="md-content">
-            <div>
-                <h2 translate="global.choose_company"></h2>
-                <ul>
-                    <li style="padding:20px;" ng-repeat="company in session.companies">
-                        <div ng-click='changeCompany($index)' style='cursor:pointer;'>
-                            <avatar module="company" photo="{{company._id}}" scale="32px" class=""></avatar>
-                            &nbsp;&nbsp;
-                            <strong>{{company.attributes.company_data.name}}</strong>
-                        </div>
-                    </li>
-                </ul>
-                <button class="btn btn-default btn-modal-close" id="modal-companies-close" style='display:none;'>Ok</button>
+    <paper-dialog opened="{{dialogCompany}}" id="dialog-companies" heading="{{'global.choose_company' | translate}}" transition="paper-dialog-transition-bottom" layered="true" backdrop="true" autoCloseDisabled="true">
+            <div style="padding:20px;" ng-repeat="company in session.companies">
+                <div ng-click='changeCompany($index)' style='cursor:pointer;'>
+                    <avatar module="company" photo="{{company._id}}" scale="32px" class=""></avatar>
+                    &nbsp;&nbsp;
+                    <strong>{{company.attributes.company_data.name}}</strong>
+                </div>
             </div>
-        </div>
-    </div>
+            <button class="btn btn-default btn-modal-close" id="modal-companies-close" style='display:none;'>Ok</button>
+        <paper-button label="Fechar" raisedbutton="" role="button" tabindex="0" aria-label="colored" ng-click="toggleDialog();" style="background: #375B5F;color: #fff;position:absolute;right:5%;bottom:5%;"></paper-button>
+    </paper-dialog>
+
+
 
     <div class="md-modal md-effect-11" id="modal-14">
         <div class="md-content md-content-red">

@@ -3,12 +3,16 @@
         $scope.formData = {};
 
         $rootScope.languages = new Array("pt_br", "en", "es");
+
+        $rootScope.dialogCompany = false;
         
         $scope.changeCompany = function(intIndex) {
             $rootScope.session.menus = $rootScope.session.companies[intIndex].menus;
             $rootScope.session.company = $rootScope.session.companies[intIndex];
             $("#modal-companies-close").trigger("click");
-            $location.path('home'); 
+            $scope.toggleDialog();
+            $location.path('home');
+
         };
 
         $scope.changeMenu = function(menu) {
@@ -25,6 +29,19 @@
             var strHtml = createHtml(attribute, data);
             return $sce.trustAsHtml(strHtml);
         };
+
+
+        $scope.toggleDialog = function(strDialog){
+            if ($rootScope.dialogCompany){
+                $rootScope.dialogCompany = false;
+            }else{
+                $rootScope.dialogCompany = true;
+            }
+
+            //var d = document.querySelector("#" + strDialog);
+            //d.toggle();
+        };
+
 
 /*              
 
