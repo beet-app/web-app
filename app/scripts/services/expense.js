@@ -18,6 +18,9 @@ BeetApp
             },
             update : function(data, _id) {
                 return $http.put(Config.getApiUrl() + '/expense/' + _id, data);
+            },
+            delete : function(_id) {
+                return $http.delete(Config.getApiUrl() + '/expense/' + _id);
             }
         }
      });

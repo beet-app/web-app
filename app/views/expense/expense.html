@@ -1,86 +1,159 @@
-<div style="margin:10px;">
-<div class="page-title"> <i class="icon-custom-left"></i>
-    <h3><strong>Despesas</strong></h3>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12 ">
-
-                <table class="table dataTable table-responsive table-red" id="table-editable" ng-show="allModuleData">
-                    <thead>
-                    <tr role="row">
-                        <th width="30%" translate="attributes.expense_data.description"></th>
-                        <th width="20%" translate="attributes.expense_data.category.description">Category</th>
-                        <th width="30%" translate="attributes.expense_data.observation">Observation</th>
-                        <th width="10%" translate="attributes.expense_data.value" class="text-center">Value</th>
-                        <th  width="5%" class="text-center">Edit</th>
-                        <th  width="5%" class="text-center">Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody ng-repeat="(description,allData) in allModuleData">
-                    <tr>
-                        <td colspan="13" style="font-weight:bold;" ng-bind="formatDateToDefault(description)"><b></b></td>
-                    </tr>
-                    <tr ng-repeat="data in allData">
-                        <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.description"></td>
-                        <td translate="attributes.{{session.menu.modules[0].description}}_data.category.selection.{{data.attributes.expense_data.category}}"></td>
-                        <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.observation"></td>
-                        <td class="text-center" ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.value"></td>
-                        <td class="text-center">
-                            <a id="teste" class="delete btn btn-warning" ng-click="edit(data)">
-                                <i class="fa fa-pencil-square-o"></i>
-                            </a>
-                        </td>
-                        <td class="text-center">
-                            <a class="delete btn btn-danger" ng-click="delete(data._id)">
-                                <i class="fa fa-times-circle"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
-
-                <div ng-hide="allModuleData" style="margin-top:20px;margin-bottom:20px;color:red;font-weight: bold;">
-                    Não existem despesas cadastradas para mês !
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="align-center">
-                            <button class="btn btn-primary m-r-20" ng-click="add()" translate="global.buttons.add">Adicionar</button>
-                        </div>
+<div id="main-content" class="page-mailbox" >
+    <div class="row" data-equal-height="true"  style="overflow-y: scroll;">
+        <div class="col-md-3 list-messages">
+            <div class="panel panel-default">
+                <div class="panel-body messages">
+                    <div class="input-group input-group-lg border-bottom">
+                        <span class="input-group-btn">
+                            <a href="" class="btn"><i class="fa fa-search"></i></a>
+                        </span>
+                        <input type="text" class="form-control bd-0 bd-white" placeholder="Search">
                     </div>
-                </div>
-
-                <paper-dialog id="expense-dialog" transition="paper-dialog-transition-bottom" style="min-width:465px;max-width:465px;">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 col-xs-12 ">
-                                    <div ng-repeat="attribute in attributes.expense_data"  style="font-weight:bold;margin-top:10px;">
-                                        <attribute data="attribute"></attribute>
-                                    </div>
-
-                                    <div style="margin-top:10px;float:left;width:100%">
-
-                                        <button id="table-edit_new"  class="btn btn-success" style="float:right;margin-left:5px;margin-right:15px;" ng-click="save()" ng-translate="global.buttons.save">
-                                            Salvar
-                                        </button>
-                                        <button id="table-edit_cancel" class="btn btn-danger btn-modal-close" style="float:right;" ng-click="cancel()" ng-translate="global.buttons.cancel">
-                                            Cancelar
-                                        </button>
-
+                    <div id="messages-list" class="panel panel-default" data-height="window" data-padding="90" style="height:580px;overflow-y:scroll;overflow-h:hidden">
+                        <div class="message-item media" ng-repeat="data in allCompanyData" id="message-company-{{data._id}}">
+                            <div class="message-item" style="cursor:pointer;" ng-click="view(data._id, 'company')">
+                                <div class="media">
+                                    <avatar module="company" photo="{{data._id}}" width="50" class="pull-left"></avatar>
+                                    <div class="media-body">
+                                        <h4 class="c-dark"><strong ng-bind="data.attributes.company_data.name"></strong></h4>
+                                        <h5 class="c-dark" ng-bind="data.attributes.company_data.birth_date"></h5>
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+                        <div class="message-item media" ng-repeat="data in allPersonData" id="message-person-{{data._id}}">
+                            <div class="message-item" style="cursor:pointer;" ng-click="view(data._id,'person')">
+                                <div class="media">
+                                    <avatar module="person" photo="{{data._id}}" width="50" class="pull-left"></avatar>
+                                    <div class="media-body">
+                                        <h4 class="c-dark"><strong ng-bind="data.attributes.person_data.name"></strong></h4>
+                                        <h5 class="c-dark" ng-bind="data.attributes.person_data.birth_date"></h5>
+                                        <h5 class="c-dark">Atacante</h5>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                </paper-dialog>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-md-9 email-hidden-sm detail-message"  ng-if="allModuleData">
+            <div id="message-detail" class="panel panel-default" data-height="window" data-padding="40">
+
+                <div class="col-md-12 m-t-20" style="margin-bottom: 10px;">
+                    <div class="pull-left">
+                        <div class="media-body" style="float:left;">
+                            <avatar module="{{moduleMode}}" photo="{{_id}}" width="50" class="pull-left"></avatar>
+                        </div>
+                        <div class="media-body" style="float:left;margin-left:10px;">
+                            <h4 class="c-dark"><strong id="label.person_data.city">{{moduleData.attributes.person_data.name}}</strong></h4>
+                        </div>
+
+                    </div>
+                    <div class="pull-right">
+                        <paper-fab icon="arrow-back" class="black" role="button" tabindex="0" aria-label="done" ng-click="prev()"></paper-fab>
+                        <paper-fab icon="arrow-forward" class="black" role="button" tabindex="0" aria-label="done" ng-click="next()"></paper-fab>
+                        <paper-fab icon="close" role="button" tabindex="0" aria-label="arrow-forward" ng-click="cancel()"></paper-fab>
+                        <paper-fab icon="add" class="green" role="button" tabindex="0" aria-label="done" ng-click="add()"></paper-fab>
+                    </div>
+                </div>
+
+                <div class="panel-body messages message-result">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-8 col-xs-6">
+                            <table class="table dataTable table-responsive table-red" id="table-editable" ng-show="allModuleData">
+                                <thead>
+                                <tr role="row">
+                                    <th width="30%" translate="attributes.expense_data.description"></th>
+                                    <th width="20%" translate="attributes.expense_data.category.description">Category</th>
+                                    <th width="30%" translate="attributes.expense_data.observation">Observation</th>
+                                    <th width="10%" translate="attributes.expense_data.value" class="text-center">Value</th>
+                                    <th  width="5%" class="text-center">Edit</th>
+                                    <th  width="5%" class="text-center">Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody ng-repeat="(description,allData) in allModuleData">
+                                <tr>
+                                    <td colspan="13" style="font-weight:bold;" ng-bind="formatDateToDefault(description)"><b></b></td>
+                                </tr>
+                                <tr ng-repeat="data in allData">
+                                    <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.description"></td>
+                                    <td translate="attributes.{{session.menu.modules[0].description}}_data.category.selection.{{data.attributes.expense_data.category}}"></td>
+                                    <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.observation"></td>
+                                    <td class="text-center" ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.value"></td>
+                                    <td class="text-center">
+                                        <paper-fab style="margin:0px" icon="create" role="button" class="mini yellow" tabindex="0" ng-click="editExpense(data)"></paper-fab>
+                                    </td>
+                                    <td class="text-center">
+                                        <paper-fab style="margin:0px" icon="close" role="button" class="mini" tabindex="0"  ng-click="delete(data._id)"></paper-fab>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-8 email-hidden-sm detail-message"  ng-if="!allModuleData && !moduleLoading">
+            <div class="panel panel-default" data-height="window" style="height: 705px;vertical-align: middle">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="row text-center" style="margin-top: 150px;">
+                        <div>
+                            <paper-fab icon="arrow-back" class="yellow" role="button" tabindex="0" aria-label="reply"></paper-fab>
+                            <h3 class="c-dark"><strong>Selecione um Atleta ou Companhia</strong></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-8 email-hidden-sm detail-message"  ng-if="allModuleData.length==0 && !moduleLoading">
+            <div class="panel panel-default" data-height="window" style="height: 705px;vertical-align: middle">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="row text-center" style="margin-top: 150px;">
+                        <div>
+                            <paper-fab icon="add" class="green" role="button" tabindex="0" aria-label="done" ng-click="add()"></paper-fab>
+                            <h3 class="c-dark"><strong>Adicione uma despesa</strong></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-md-8 email-hidden-sm detail-message"  ng-show="!allModuleData && moduleLoading">
+            <div class="panel panel-default" data-height="window" style="height: 705px;vertical-align: middle" ng-include src="'views/loading.html'">
 
             </div>
         </div>
     </div>
 </div>
-</div>
+
+<paper-dialog id="expense-dialog" transition="paper-dialog-transition-bottom" style="min-width:465px;max-width:465px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                    <div ng-repeat="attribute in attributes.expense_data"  style="font-weight:bold;margin-top:10px;">
+                        <attribute data="attribute"></attribute>
+                    </div>
+
+                    <div style="margin-top:10px;float:left;width:100%">
+
+                        <button id="table-edit_new"  class="btn btn-success" style="float:right;margin-left:5px;margin-right:15px;" ng-click="save()" ng-translate="global.buttons.save">
+                            Salvar
+                        </button>
+                        <button id="table-edit_cancel" class="btn btn-danger btn-modal-close" style="float:right;" ng-click="cancelExpense()" ng-translate="global.buttons.cancel">
+                            Cancelar
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</paper-dialog>

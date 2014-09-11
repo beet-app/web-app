@@ -1,15 +1,8 @@
-
-
-
-    <div class="row" data-equal-height="true" style="width:100%;overflow-y: hidden;text-align:center;">
-        <div style="width:100%;overflow-y: hidden;text-align:center;float:left;margin-top:100px;">
-            <avatar module="company" photo="{{session.company._id}}" scale="256px" class=""></avatar>
-        </div>
-        <div style="margin-top:10px;margain-left:475px;width:100%;text-align:center;float:left;">
-            <div id="loaderImage" style="margin: 0 auto;"></div>
-        </div>
-
+<div class="row" data-equal-height="true" style="width:100%;overflow-y: hidden;text-align:center;">
+    <div style="width:100%;overflow-y: hidden;text-align:center;float:left;margin-top:100px;">
+        <avatar module="company" photo="{{session.company._id}}" scale="256px" class=""></avatar>
     </div>
-<script type="text/javascript">
-    new imageLoader(cImageSrc, 'startAnimation()');
-</script>
+    <div style="margin-top:10px;margain-left:475px;width:100%;text-align:center;float:left;">
+        <div id="loaderImage" style="margin: 0 auto;"><img src="images/preloader.gif" /></div>
+    </div>
+</div>

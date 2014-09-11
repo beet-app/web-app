@@ -1,0 +1,86 @@
+<div style="margin:10px;">
+<div class="page-title"> <i class="icon-custom-left"></i>
+    <h3><strong>Despesas</strong></h3>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 ">
+
+                <table class="table dataTable table-responsive table-red" id="table-editable" ng-show="allModuleData">
+                    <thead>
+                    <tr role="row">
+                        <th width="30%" translate="attributes.expense_data.description"></th>
+                        <th width="20%" translate="attributes.expense_data.category.description">Category</th>
+                        <th width="30%" translate="attributes.expense_data.observation">Observation</th>
+                        <th width="10%" translate="attributes.expense_data.value" class="text-center">Value</th>
+                        <th  width="5%" class="text-center">Edit</th>
+                        <th  width="5%" class="text-center">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="(description,allData) in allModuleData">
+                    <tr>
+                        <td colspan="13" style="font-weight:bold;" ng-bind="formatDateToDefault(description)"><b></b></td>
+                    </tr>
+                    <tr ng-repeat="data in allData">
+                        <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.description"></td>
+                        <td translate="attributes.{{session.menu.modules[0].description}}_data.category.selection.{{data.attributes.expense_data.category}}"></td>
+                        <td ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.observation"></td>
+                        <td class="text-center" ng-bind="data.attributes.{{session.menu.modules[0].description}}_data.value"></td>
+                        <td class="text-center">
+                            <a id="teste" class="delete btn btn-warning" ng-click="edit(data)">
+                                <i class="fa fa-pencil-square-o"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="delete btn btn-danger" ng-click="delete(data._id)">
+                                <i class="fa fa-times-circle"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <div ng-hide="allModuleData" style="margin-top:20px;margin-bottom:20px;color:red;font-weight: bold;">
+                    Não existem despesas cadastradas para mês !
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="align-center">
+                            <button class="btn btn-primary m-r-20" ng-click="add()" translate="global.buttons.add">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <paper-dialog id="expense-dialog" transition="paper-dialog-transition-bottom" style="min-width:465px;max-width:465px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <div ng-repeat="attribute in attributes.expense_data"  style="font-weight:bold;margin-top:10px;">
+                                        <attribute data="attribute"></attribute>
+                                    </div>
+
+                                    <div style="margin-top:10px;float:left;width:100%">
+
+                                        <button id="table-edit_new"  class="btn btn-success" style="float:right;margin-left:5px;margin-right:15px;" ng-click="save()" ng-translate="global.buttons.save">
+                                            Salvar
+                                        </button>
+                                        <button id="table-edit_cancel" class="btn btn-danger btn-modal-close" style="float:right;" ng-click="cancel()" ng-translate="global.buttons.cancel">
+                                            Cancelar
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </paper-dialog>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -97,7 +97,7 @@
 
 		"expense_data" : {
             "category" : {
-                "description":"Selecione a Categoria",
+                "description":"Categoria",
                 "selection" : {
                     "travel":"Viagem",
                     "sporting_goods":"Material Esportivo",

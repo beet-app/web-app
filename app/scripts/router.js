@@ -100,7 +100,8 @@
             url: '/user/edit/:_id',
             templateUrl: 'views/user/user.html',
             controller: 'UserController'
-        })    
+        })
+        /*
         .state('expense/list', {
             url: '/expense/list',
             templateUrl: 'views/expense/list.html',
@@ -126,7 +127,12 @@
             templateUrl: 'views/expense/expense.html',
             controller: 'ExpenseController'
         })
-
+        */
+        .state('expense', {
+            url: '/expense',
+            templateUrl: 'views/expense/expense.html',
+            controller: 'ExpenseController'
+        })
 
     /*
             .state('todo', {

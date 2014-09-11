@@ -3,14 +3,13 @@
 
         var objService = Person;
         var objModule =  $rootScope.session.menu.modules[0];
-
+        $rootScope.loadingContent = true;
         loadPage();
 
         function loadPage(){
 
-            $rootScope.loadingContent = true;
 
-            $scope.moduleData = undefined; 
+            $scope.moduleData = undefined;
 
             objService.getByCompany($rootScope.session.company._id)
                 .then(function(allModuleData) {

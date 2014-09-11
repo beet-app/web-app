@@ -17,7 +17,7 @@
 
         $scope.changeMenu = function(menu) {
             $rootScope.session.menu = menu;
-            $location.path(menu.url); 
+            $location.path(menu.url);
         };
 
         $scope.changeLanguage = function (key) {
