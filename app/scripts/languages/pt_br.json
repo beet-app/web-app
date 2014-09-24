@@ -1,4 +1,5 @@
-﻿{
+﻿
+{
 
     "global": {
 
@@ -79,7 +80,23 @@
 			"percentage_athlete" : "Porcentagem do Atleta (%)",
 			"percentage_representative" : "Porcentagem do Representante (%)",
 			"percentage_club" : "Porcentagem do Clube (%)",
+			"percentage_investor" : "Porcentagem do Investidor (%)",
 			"salary" : "Salário (R$)"
+		},
+
+		"imaging_contract" : {
+
+			"initial_date" : "Data inicial",
+			"final_date" : "Data final",
+			"value" : "Valor (R$)",
+			"notes" : "Observações"
+		},
+
+		"representative_contract" : {
+
+			"initial_date" : "Data inicial",
+			"final_date" : "Data final",
+			"notes" : "Observações"
 		},
 
 		"company_data" : {
@@ -136,7 +153,9 @@
 		"title" : "Atletas",
 		"person_data" : "Dados Pessoais",
 		"professional_contract" : "Contrato Profissional",
-		"training_contract" : "Contrato de Formação"
+		"training_contract" : "Contrato de Formação",
+		"imaging_contract" : "Contrato de Imagem",
+		"representative_contract" : "Contrato de Representação"
 	},
 	"expense" : {
 		"title" : "Despesas"

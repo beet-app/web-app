@@ -74,10 +74,26 @@
 			"final_date" : "Final date",
 			"number" : "Number contract",
 			"federative_rights" : "Federative Rights",
-			"percentage_athlete" : "Percentage Athlete",
-			"percentage_representative" : "Percentage Representative",
-			"percentage_club" : "Percentage Club",			
+			"percentage_athlete" : "Percentage Athlete (%)",
+			"percentage_representative" : "Percentage Representative (%)",
+			"percentage_club" : "Percentage Club (%)",
+			"percentage_investor" : "Percentage Investor (%)",
 			"salary" : "Salary"
+		},
+
+		"imaging_contract" : {
+
+			"initial_date" : "Initial date",
+			"final_date" : "Final date",
+			"value" : "Value ($)",
+			"notes" : "Notes"
+		},
+
+		"representative_contract" : {
+
+			"initial_date" : "Initial date",
+			"final_date" : "Final date",
+			"notes" : "Notes"
 		},
 
 		"company_data" : {
@@ -125,7 +141,9 @@
 		"title" : "Athlete",
 		"person_data" : "Personal Data",
 		"professional_contract" : "Professional Contract",
-		"training_contract" : "Training Contract"
+		"training_contract" : "Training Contract",
+		"imaging_contract" : "Imaging Contract",
+		"representative_contract" : "Representative Contract"
 	},
 	"expense" : {
 		"title" : "Expenses"
