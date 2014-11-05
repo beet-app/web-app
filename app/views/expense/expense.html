@@ -43,22 +43,38 @@
         <div class="col-lg-8 col-md-9 email-hidden-sm detail-message"  ng-if="allModuleData">
             <div id="message-detail" class="panel panel-default" data-height="window" data-padding="40">
 
-                <div class="col-md-12 m-t-20" style="margin-bottom: 10px;">
-                    <div class="pull-left">
-                        <div class="media-body" style="float:left;">
-                            <avatar module="{{moduleMode}}" photo="{{_id}}" width="50" class="pull-left"></avatar>
+                <div class="col-md-12 m-t-20 m-l-10" style="margin-bottom: 10px;">
+                    <div class="row">
+                        <div class="pull-left" style="width:10%">
+                            <paper-fab icon="arrow-back" class="black mini" role="button" tabindex="0" aria-label="done" ng-click="prev()"></paper-fab>
                         </div>
-                        <div class="media-body" style="float:left;margin-left:10px;">
-                            <h4 class="c-dark"><strong id="label.person_data.city">{{moduleData.attributes.person_data.name}}</strong></h4>
+                        <div class="pull-left" style="text-align: center;width:80%;font-size:18px;font-weight: bold;">
+                            {{dateLabel}}
+                        </div>
+                        <div class="pull-right" style="width:10%">
+                            <paper-fab icon="arrow-forward" class="black mini" role="button" tabindex="0" aria-label="done" ng-click="next()"></paper-fab>
+                        </div>
+                    </div>
+                    <div class="row">
+                        &nbsp;
+                    </div>
+                    <div class="row">
+                        <div class="pull-left">
+                            <div class="media-body" style="float:left;">
+                                <avatar module="{{moduleMode}}" photo="{{_id}}" width="50" class="pull-left"></avatar>
+                            </div>
+                            <div class="media-body" style="float:left;margin-left:10px;">
+                                <h4 class="c-dark"><strong id="label.person_data.city">{{moduleData.attributes.person_data.name}}</strong></h4>
+                            </div>
+
                         </div>
 
+                        <div class="pull-right">
+                            <paper-fab icon="close" role="button" tabindex="0" aria-label="arrow-forward" ng-click="cancel()"></paper-fab>
+                            <paper-fab icon="add" class="green" role="button" tabindex="0" aria-label="done" ng-click="add()"></paper-fab>
+                        </div>
                     </div>
-                    <div class="pull-right">
-                        <paper-fab icon="arrow-back" class="black" role="button" tabindex="0" aria-label="done" ng-click="prev()"></paper-fab>
-                        <paper-fab icon="arrow-forward" class="black" role="button" tabindex="0" aria-label="done" ng-click="next()"></paper-fab>
-                        <paper-fab icon="close" role="button" tabindex="0" aria-label="arrow-forward" ng-click="cancel()"></paper-fab>
-                        <paper-fab icon="add" class="green" role="button" tabindex="0" aria-label="done" ng-click="add()"></paper-fab>
-                    </div>
+
                 </div>
 
                 <div class="panel-body messages message-result">
@@ -114,7 +130,21 @@
         <div class="col-lg-8 col-md-8 email-hidden-sm detail-message"  ng-if="allModuleData.length==0 && !moduleLoading">
             <div class="panel panel-default" data-height="window" style="height: 705px;vertical-align: middle">
 
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 m-t-20 m-l-10" style="margin-bottom: 10px;">
+                    <div class="row">
+                        <div class="pull-left" style="width:10%">
+                            <paper-fab icon="arrow-back" class="black mini" role="button" tabindex="0" aria-label="done" ng-click="prev()"></paper-fab>
+                        </div>
+                        <div class="pull-left" style="text-align: center;width:80%;font-size:18px;font-weight: bold;">
+                            {{dateLabel}}
+                        </div>
+                        <div class="pull-right" style="width:10%">
+                            <paper-fab icon="arrow-forward" class="black mini" role="button" tabindex="0" aria-label="done" ng-click="next()"></paper-fab>
+                        </div>
+                    </div>
+                    <div class="row">
+                        &nbsp;
+                    </div>
                     <div class="row text-center" style="margin-top: 150px;">
                         <div>
                             <paper-fab icon="add" class="green" role="button" tabindex="0" aria-label="done" ng-click="add()"></paper-fab>
